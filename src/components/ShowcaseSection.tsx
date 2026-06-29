@@ -11,8 +11,8 @@ if (typeof window !== "undefined") {
 
 const projects = [
   { id: 1, title: "Lumina", category: "Web3 Interface", color: "#1a1a24", type: "sequence" },
-  { id: 2, title: "Aura", category: "Motion Identity", color: "#241a1a", video: "/stararc/STARARC_AI_Motion_Sensor_202606271700.mp4" },
-  { id: 3, title: "Vault", category: "Smart Lock", color: "#1a241e", video: "/stararc/STARARC_Smart_Lock_product_comme…_202606271811.mp4" },
+  { id: 2, title: "Aura", category: "Motion Identity", color: "#241a1a", video: "/STARARC_AI_Motion_Sensor_202606271700.mp4" },
+  { id: 3, title: "Vault", category: "Smart Lock", color: "#1a241e", video: "/STARARC_Smart_Lock_product_comme…_202606271811.mp4" },
   { id: 4, title: "Reveal", category: "Product Architecture", color: "#222", video: "https://res.cloudinary.com/dsizhtxet/video/upload/v1782720859/Product_exploded_reveal_animation_202606211249_1_vfpr9p.mp4" },
 ];
 
@@ -31,7 +31,7 @@ const ImageSequence = () => {
         frame = frame >= 300 ? 1 : frame + 1;
         if (imgRef.current) {
           const paddedIndex = frame.toString().padStart(3, '0');
-          imgRef.current.src = `/stararc/ezgif-82c39d5c449bf5a5-png-split/ezgif-frame-${paddedIndex}.png`;
+          imgRef.current.src = `/ezgif-82c39d5c449bf5a5-png-split/ezgif-frame-${paddedIndex}.png`;
         }
         lastTime = time;
       }
@@ -48,7 +48,7 @@ const ImageSequence = () => {
         ref={imgRef}
         className="w-full h-full object-contain md:object-cover"
         alt="Lumina sequence"
-        src="/stararc/ezgif-82c39d5c449bf5a5-png-split/ezgif-frame-001.png"
+        src="/ezgif-82c39d5c449bf5a5-png-split/ezgif-frame-001.png"
       />
     </div>
   );

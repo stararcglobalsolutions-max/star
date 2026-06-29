@@ -9,19 +9,19 @@ const capabilities = [
     id: "01",
     title: "DIGITAL DIRECTION",
     category: "Web & Strategy",
-    media: "/stararc/video_202606261504sss.mp4",
+    media: "/video_202606261504sss.mp4",
   },
   {
     id: "02",
     title: "MOTION IDENTITY",
     category: "3D & Animation",
-    media: "/stararc/STARARC_AI_Motion_Sensor_202606271700.mp4",
+    media: "/STARARC_AI_Motion_Sensor_202606271700.mp4",
   },
   {
     id: "03",
     title: "WEB3 EXPERIENCES",
     category: "Blockchain",
-    media: "/stararc/video_202606261504.mp4",
+    media: "/video_202606261504.mp4",
   }
 ];
 

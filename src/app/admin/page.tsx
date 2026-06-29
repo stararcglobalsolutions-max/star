@@ -341,7 +341,7 @@ function ProductsView({ onAddProduct }: { onAddProduct: () => void }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/stararc/api/products') // Using basePath /stararc
+    fetch('/api/products') // Using basePath /stararc
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data) && data.length > 0) {
@@ -496,7 +496,7 @@ function AddProductView({ onCancel }: { onCancel: () => void }) {
         status: stockNum > 0 ? "Active" : "Out of Stock"
       };
 
-      await fetch('/stararc/api/products', { // using basePath
+      await fetch('/api/products', { // using basePath
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(productData)

@@ -37,8 +37,8 @@ const shopProducts: Product[] = [
     category: "Hubs",
     price: 499.00,
     images: {
-      white: "/stararc/hub_white.png",
-      black: "/stararc/hub_white.png" // We will apply CSS invert to create the black version dynamically
+      white: "/hub_white.png",
+      black: "/hub_white.png" // We will apply CSS invert to create the black version dynamically
     },
     tagline: "The central brain with LTE and Wi-Fi.",
     description: "Control panel with support for photo verification of alarms, 4 communication channels, and up to 200 connected devices.",
@@ -57,8 +57,8 @@ const shopProducts: Product[] = [
     category: "Detectors",
     price: 199.00,
     images: {
-      white: "/stararc/motion_white.png",
-      black: "/stararc/motion_white.png"
+      white: "/motion_white.png",
+      black: "/motion_white.png"
     },
     tagline: "Wireless outdoor motion detector.",
     description: "Detects intrusion from the first steps and verifies it with a series of photos. Works in temperatures from -25°C to +60°C.",
@@ -77,8 +77,8 @@ const shopProducts: Product[] = [
     category: "Detectors",
     price: 89.00,
     images: {
-      white: "/stararc/door_white.png",
-      black: "/stararc/door_white.png"
+      white: "/door_white.png",
+      black: "/door_white.png"
     },
     tagline: "Opening, tilt, and shock detector.",
     description: "Protects doors and windows. Detects tilt angle changes and shocks, notifying users instantly of forced entries.",
@@ -96,8 +96,8 @@ const shopProducts: Product[] = [
     category: "Fire & Gas",
     price: 129.00,
     images: {
-      white: "/stararc/fire_white.png",
-      black: "/stararc/fire_white.png"
+      white: "/fire_white.png",
+      black: "/fire_white.png"
     },
     tagline: "Wireless smoke and CO detector.",
     description: "A next-generation detector with a patented smoke chamber that does not require cleaning and detects carbon monoxide levels.",
@@ -116,8 +116,8 @@ const shopProducts: Product[] = [
     category: "Water Leak",
     price: 59.00,
     images: {
-      white: "/stararc/leak_white.png",
-      black: "/stararc/leak_white.png"
+      white: "/leak_white.png",
+      black: "/leak_white.png"
     },
     tagline: "Wireless flood detector.",
     description: "Detects water leaks in seconds. Compact, places easily under washing machines or sinks. Resets automatically when dry.",
@@ -135,8 +135,8 @@ const shopProducts: Product[] = [
     category: "Controls",
     price: 49.00,
     images: {
-      white: "/stararc/control_white.png",
-      black: "/stararc/control_white.png"
+      white: "/control_white.png",
+      black: "/control_white.png"
     },
     tagline: "Four-button key fob with feedback.",
     description: "Arm or disarm your security system with one click. Features a panic button to call help in emergencies.",

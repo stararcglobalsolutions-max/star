@@ -152,8 +152,8 @@ const navItems = [
       }
     ]
   },
-  { label: "Shop", dropdown: false, href: "/stararc/shop" },
-  { label: "About us", dropdown: false, href: "/stararc/about" },
+  { label: "Shop", dropdown: false, href: "/shop" },
+  { label: "About us", dropdown: false, href: "/about" },
   { label: "For partners", dropdown: false },
   { label: "Purchase Now", dropdown: false },
 ];
@@ -202,7 +202,7 @@ export default function Header() {
         <div className="flex items-center gap-3 cursor-pointer group pointer-events-auto">
           <div className="w-[120px] md:w-[140px] h-auto group-hover:scale-105 transition-transform duration-500 ease-out">
             <img
-              src={isLight ? "/stararc/starclogo22.jpeg" : "/stararc/starclogo.png"}
+              src={isLight ? "/starclogo22.jpeg" : "/starclogo.png"}
               alt="StarArc Logo"
               className="h-full w-full object-contain"
             />

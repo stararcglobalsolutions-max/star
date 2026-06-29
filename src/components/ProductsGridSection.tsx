@@ -6,14 +6,14 @@ const storeProducts = [
     name: "Aura Motion Sensor",
     tagline: "AI-driven spatial awareness.",
     price: "$149",
-    video: "/stararc/STARARC_AI_Motion_Sensor_202606271700.mp4"
+    video: "/STARARC_AI_Motion_Sensor_202606271700.mp4"
   },
   {
     id: 2,
     name: "Vault Smart Lock",
     tagline: "Keyless entry. Absolute security.",
     price: "$299",
-    video: "/stararc/STARARC_Smart_Lock_product_comme…_202606271811.mp4"
+    video: "/STARARC_Smart_Lock_product_comme…_202606271811.mp4"
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const storeProducts = [
     name: "Security Hub",
     tagline: "Your entire ecosystem, centralized.",
     price: "$499",
-    video: "/stararc/STARARC_Smart_Security_Luxury_Homes_202606271838.mp4"
+    video: "/STARARC_Smart_Security_Luxury_Homes_202606271838.mp4"
   }
 ];
 

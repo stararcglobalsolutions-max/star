@@ -10,7 +10,7 @@ export default function FullWidthVideoSection() {
       */}
       <div className="relative w-full">
         <video
-          src="/stararc/STARARC_Smart_Security_Luxury_Homes_202606271838.mp4"
+          src="/STARARC_Smart_Security_Luxury_Homes_202606271838.mp4"
           autoPlay
           loop
           muted

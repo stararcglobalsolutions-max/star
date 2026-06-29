@@ -8,7 +8,7 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const frameCount = 300;
-const basePath = "/stararc"; // Base path from next.config.ts
+const basePath = ""; // Base path from next.config.ts
 
 const currentFrame = (index: number) =>
   `${basePath}/ezgif-774cadbbbbc65ee4-png-split/ezgif-frame-${String(index).padStart(3, '0')}.png`;
