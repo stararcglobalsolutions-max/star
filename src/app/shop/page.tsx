@@ -26,6 +26,7 @@ export default function ShopPage() {
 
       {/* Top Banner */}
       <div className="w-full bg-[#111111] text-white py-2.5 text-[13px] font-medium tracking-widest uppercase flex items-center">
+        {/* @ts-ignore - marquee is deprecated but used here for effect */}
         <marquee behavior="scroll" direction="left" scrollamount="8" className="w-full">
           <span className="mx-8">🔥 Free Shipping on all orders over ₹5000</span>
           <span className="mx-8">⚡ Flat 20% Off on Premium Security Kits</span>
@@ -33,6 +34,7 @@ export default function ShopPage() {
           <span className="mx-8">🔥 Free Shipping on all orders over ₹5000</span>
           <span className="mx-8">⚡ Flat 20% Off on Premium Security Kits</span>
           <span className="mx-8">🛡️ Next-Gen Hardware Available Now</span>
+        {/* @ts-ignore */}
         </marquee>
       </div>
 
