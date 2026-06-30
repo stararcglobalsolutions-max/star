@@ -25,29 +25,36 @@ export default function ShopPage() {
       <ShopHeader />
 
       {/* Top Banner */}
-      <div className="w-full bg-[#111111] text-white text-center py-2.5 text-[13px] font-medium tracking-wide">
-        Free Shipping + Flat 20% Off on All Products
+      <div className="w-full bg-[#111111] text-white py-2.5 text-[13px] font-medium tracking-widest uppercase flex items-center">
+        <marquee behavior="scroll" direction="left" scrollamount="8" className="w-full">
+          <span className="mx-8">🔥 Free Shipping on all orders over ₹5000</span>
+          <span className="mx-8">⚡ Flat 20% Off on Premium Security Kits</span>
+          <span className="mx-8">🛡️ Next-Gen Hardware Available Now</span>
+          <span className="mx-8">🔥 Free Shipping on all orders over ₹5000</span>
+          <span className="mx-8">⚡ Flat 20% Off on Premium Security Kits</span>
+          <span className="mx-8">🛡️ Next-Gen Hardware Available Now</span>
+        </marquee>
       </div>
 
-      <main className="max-w-7xl mx-auto px-6 py-12">
-
-
+      <main className="w-full px-4 md:px-8 lg:px-12 xl:px-20 py-12">
         {/* Product Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {products.length > 0 ? (
-            products.map((product) => (
-              <ProductCard key={product._id} product={product} />
-            ))
-          ) : (
-            // Dummy items while loading or if empty
-            <>
-              <DummyProductCard name="Copper Night Wall Frame" price={1550} oldPrice={2200} />
-              <DummyProductCard name="Moccasin Old Photo Frame" price={1880} oldPrice={2350} />
-              <DummyProductCard name="Amber Gold Photo Frame" price={1240} oldPrice={1550} />
-              <DummyProductCard name="Twin Glow Photo Frames" price={1640} oldPrice={2050} />
-            </>
-          )}
-        </div>
+        <div className="max-w-[1400px] mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-16">
+              {products.length > 0 ? (
+                products.map((product) => (
+                  <ProductCard key={product._id} product={product} />
+                ))
+              ) : (
+                // Dummy items while loading or if empty
+                <>
+                  <DummyProductCard name="Hub Jeweller" price={15500} oldPrice={19375} />
+                  <DummyProductCard name="MotionProtect" price={4800} oldPrice={6000} />
+                  <DummyProductCard name="DoorProtect Plus" price={3240} oldPrice={4050} />
+                  <DummyProductCard name="StreetSiren" price={8640} oldPrice={10800} />
+                </>
+              )}
+            </div>
+          </div>
       </main>
 
       <Footer />
@@ -58,52 +65,63 @@ export default function ShopPage() {
 function ProductCard({ product }: { product: any }) {
   // Simulating old price for the sale effect based on the screenshot
   const oldPrice = Math.round(product.price * 1.25);
-
   const slug = product.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
   return (
-    <Link href={`/shop/${slug}`} className="group cursor-pointer flex flex-col block">
+    <Link href={`/shop/${slug}`} className="group cursor-pointer flex flex-col h-full relative">
       {/* Image Box */}
-      <div className="relative aspect-square overflow-hidden mb-5">
+      <div className="relative aspect-square overflow-hidden mb-6 rounded-2xl bg-[#f4f5f7] flex items-center justify-center p-8 transition-colors duration-500 group-hover:bg-[#ebeef2]">
+        {/* Sale Badge */}
+        <div className="absolute top-4 left-4 bg-red-600 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full z-10">
+          Save 20%
+        </div>
+        
         {/* Product Image */}
         {product.image ? (
-          <img src={product.image} alt={product.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <img src={product.image} alt={product.name} className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110 drop-shadow-xl" />
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-slate-300">No Image</div>
+          <div className="w-full h-full flex items-center justify-center text-slate-400 font-medium">No Image</div>
         )}
+
+        {/* Quick View Button overlay (appears on hover) */}
+        <div className="absolute inset-0 bg-black/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <div className="bg-white text-black text-[13px] font-bold uppercase tracking-widest px-6 py-3 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+            View Details
+          </div>
+        </div>
       </div>
 
       {/* Details */}
-      <div className="space-y-2 px-1">
-        <h3 className="text-[17px] font-medium text-[#0f2b4c] leading-tight">
-          {product.name}
-        </h3>
-        
-        {/* Product Details/Description */}
-        {product.description && (
-          <p className="text-[14px] text-[#64748b] line-clamp-2 leading-relaxed">
-            {product.description}
-          </p>
-        )}
-
-        <div className="flex items-center gap-3 text-[15px] pt-1">
-          <span className="text-[#94a3b8] line-through font-medium">₹{oldPrice.toFixed(2)}</span>
-          <span className="text-[#ef233c] font-bold">₹{Number(product.price).toFixed(2)}</span>
-        </div>
-
+      <div className="flex flex-col flex-1 px-2">
         {/* Available Colors */}
         {product.colors && product.colors.length > 0 && (
-          <div className="flex items-center gap-1.5 pt-1">
+          <div className="flex items-center gap-1.5 mb-3">
             {product.colors.map((color: string, i: number) => (
-              <div 
-                key={i} 
-                className="w-3 h-3 rounded-full border border-slate-300 shadow-sm"
+              <div
+                key={i}
+                className="w-3.5 h-3.5 rounded-full border border-slate-200 shadow-sm"
                 style={{ backgroundColor: color.toLowerCase() }}
                 title={color}
               />
             ))}
           </div>
         )}
+
+        <h3 className="text-[19px] font-bold text-[#0f2b4c] leading-tight mb-2 group-hover:text-red-600 transition-colors">
+          {product.name}
+        </h3>
+
+        {/* Product Details/Description */}
+        {product.description && (
+          <p className="text-[14px] text-[#64748b] line-clamp-2 leading-relaxed mb-4 font-medium flex-1">
+            {product.description}
+          </p>
+        )}
+
+        <div className="flex items-end gap-3 mt-auto pt-2">
+          <span className="text-[20px] text-[#111111] font-extrabold tracking-tight">₹{Number(product.price).toFixed(2)}</span>
+          <span className="text-[14px] text-[#94a3b8] line-through font-medium mb-0.5">₹{oldPrice.toFixed(2)}</span>
+        </div>
       </div>
     </Link>
   );
@@ -111,27 +129,40 @@ function ProductCard({ product }: { product: any }) {
 
 function DummyProductCard({ name, price, oldPrice }: { name: string, price: number, oldPrice: number }) {
   return (
-    <div className="group cursor-pointer flex flex-col">
-      <div className="relative aspect-square overflow-hidden mb-5">
-
+    <div className="group cursor-pointer flex flex-col h-full relative">
+      <div className="relative aspect-square overflow-hidden mb-6 rounded-2xl bg-[#f4f5f7] flex items-center justify-center p-8 transition-colors duration-500 group-hover:bg-[#ebeef2]">
+        <div className="absolute top-4 left-4 bg-red-600 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full z-10">
+          Save 20%
+        </div>
+        
         <div className="w-full h-full flex items-center justify-center text-slate-400 font-medium">
           Demo Image
         </div>
+
+        <div className="absolute inset-0 bg-black/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <div className="bg-white text-black text-[13px] font-bold uppercase tracking-widest px-6 py-3 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+            View Details
+          </div>
+        </div>
       </div>
-      <div className="space-y-2 px-1">
-        <h3 className="text-[17px] font-medium text-[#0f2b4c] leading-tight">
+
+      <div className="flex flex-col flex-1 px-2">
+        <div className="flex items-center gap-1.5 mb-3">
+          <div className="w-3.5 h-3.5 rounded-full border border-slate-200 shadow-sm bg-black" />
+          <div className="w-3.5 h-3.5 rounded-full border border-slate-200 shadow-sm bg-white" />
+        </div>
+
+        <h3 className="text-[19px] font-bold text-[#0f2b4c] leading-tight mb-2 group-hover:text-red-600 transition-colors">
           {name}
         </h3>
-        <p className="text-[14px] text-[#64748b] line-clamp-2 leading-relaxed">
+        
+        <p className="text-[14px] text-[#64748b] line-clamp-2 leading-relaxed mb-4 font-medium flex-1">
           Control Panel supporting Jeweller protocol with 2G - Nos. of devices connected.
         </p>
-        <div className="flex items-center gap-3 text-[15px] pt-1">
-          <span className="text-[#94a3b8] line-through font-medium">₹{oldPrice.toFixed(2)}</span>
-          <span className="text-[#ef233c] font-bold">₹{price.toFixed(2)}</span>
-        </div>
-        <div className="flex items-center gap-1.5 pt-1">
-          <div className="w-3 h-3 rounded-full border border-slate-300 shadow-sm bg-black" />
-          <div className="w-3 h-3 rounded-full border border-slate-300 shadow-sm bg-white" />
+        
+        <div className="flex items-end gap-3 mt-auto pt-2">
+          <span className="text-[20px] text-[#111111] font-extrabold tracking-tight">₹{price.toFixed(2)}</span>
+          <span className="text-[14px] text-[#94a3b8] line-through font-medium mb-0.5">₹{oldPrice.toFixed(2)}</span>
         </div>
       </div>
     </div>
@@ -184,7 +215,7 @@ export function ShopHeader() {
 
   return (
     <header ref={headerRef} className="w-full bg-white border-b border-slate-100 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative z-50 bg-white">
+      <div className="w-full px-4 md:px-8 lg:px-12 xl:px-20 h-20 flex items-center justify-between relative z-50 bg-white">
 
         {/* Mobile Menu & Logo */}
         <div className="flex items-center gap-4">
@@ -241,7 +272,7 @@ export function ShopHeader() {
               </span>
             )}
           </button>
-          
+
           {/* Cart Dropdown Preview */}
           {isCartOpen && (
             <div className="absolute top-20 right-6 w-[320px] bg-white border border-slate-200 shadow-2xl p-4 z-50 rounded-md">
@@ -251,7 +282,7 @@ export function ShopHeader() {
                   <X size={16} />
                 </button>
               </div>
-              
+
               {cartItems.length === 0 ? (
                 <div className="text-center py-6 text-slate-500 text-sm">
                   Your cart is empty.
@@ -272,7 +303,7 @@ export function ShopHeader() {
                         <p className="text-[12px] text-slate-500">Qty: {item.quantity} {item.color && `• ${item.color}`}</p>
                         <p className="text-[13px] font-bold text-red-600 mt-0.5">₹{Number(item.price * item.quantity).toFixed(2)}</p>
                       </div>
-                      <button 
+                      <button
                         onClick={() => removeFromCart(idx)}
                         className="text-slate-400 hover:text-red-600 transition-colors absolute top-2 right-2"
                       >
@@ -280,7 +311,7 @@ export function ShopHeader() {
                       </button>
                     </div>
                   ))}
-                  
+
                   <div className="border-t border-slate-200 pt-4 mt-2">
                     <div className="flex items-center justify-between font-bold text-slate-800 mb-4">
                       <span>Total</span>
@@ -305,7 +336,7 @@ export function ShopHeader() {
           ${activeDropdown ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-4 invisible pointer-events-none'}
         `}
       >
-        <div className="max-w-7xl mx-auto px-6 py-10 relative max-h-[75vh] overflow-y-auto custom-scrollbar">
+        <div className="w-full px-4 md:px-8 lg:px-12 xl:px-20 py-10 relative max-h-[75vh] overflow-y-auto custom-scrollbar">
           {navItems.map((item) => (
             item.label === activeDropdown && item.columns && item.columns.length > 0 && (
               <div

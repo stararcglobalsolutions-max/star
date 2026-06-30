@@ -153,6 +153,7 @@ export const navItems = [
     ]
   },
   { label: "About us", dropdown: false, href: "/about" },
+  { label: "Shop", dropdown: false, href: "/shop" },
   { label: "For partners", dropdown: false },
   { label: "Purchase Now", dropdown: false },
 ];
