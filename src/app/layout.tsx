@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Outfit } from "next/font/google";
+import { Manrope, Sora } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
-import CustomCursor from "@/components/CustomCursor";
-
-const jakarta = Plus_Jakarta_Sans({
+const manrope = Manrope({
   variable: "--font-sans",
   subsets: ["latin"],
 });
 
-const outfit = Outfit({
+const sora = Sora({
   variable: "--font-heading",
   subsets: ["latin"],
 });
@@ -27,10 +25,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${jakarta.variable} ${outfit.variable} h-full antialiased`}
+      className={`${manrope.variable} ${sora.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col selection:bg-white/20 selection:text-white">
-        <CustomCursor />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

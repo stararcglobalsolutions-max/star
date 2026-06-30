@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ArrowUpRight, Menu, ChevronDown, ChevronRight, ArrowRight } from "lucide-react";
 import { usePathname } from "next/navigation";
 
-const navItems = [
+export const navItems = [
   {
     label: "Products",
     dropdown: true,
@@ -152,7 +152,6 @@ const navItems = [
       }
     ]
   },
-  { label: "Shop", dropdown: false, href: "/shop" },
   { label: "About us", dropdown: false, href: "/about" },
   { label: "For partners", dropdown: false },
   { label: "Purchase Now", dropdown: false },
@@ -164,7 +163,7 @@ export default function Header() {
   const pathname = usePathname();
 
   // Detect light theme based on path
-  const isLight = pathname ? pathname.includes("/shop") : false;
+  const isLight = false;
 
   useEffect(() => {
     // Subtle entry animation for the header
@@ -196,7 +195,7 @@ export default function Header() {
   return (
     <header
       ref={headerRef}
-      className="fixed top-0 left-0 w-full z-50 px-4 md:px-8 py-4 md:py-6 pointer-events-none group/header"
+      className="fixed top-0 left-0 w-full z-50 px-4 md:px-8 pt-0 pb-3 md:pt-0 md:pb-3 pointer-events-none group/header"
     >
       <div className="w-full flex items-center justify-between relative z-50">
         <div className="flex items-center gap-3 cursor-pointer group pointer-events-auto">
@@ -223,7 +222,7 @@ export default function Header() {
                 href={item.href || "#"}
                 onClick={(e) => handleNavClick(e, item)}
                 className={`
-                  relative px-4 py-2.5 rounded-full text-[13px] font-semibold transition-all duration-300 ease-out flex items-center gap-1.5
+                  relative px-4 py-2.5 rounded-full text-[15px] font-semibold transition-all duration-300 ease-out flex items-center gap-1.5
                   ${activeDropdown === item.label 
                     ? (isLight ? 'text-black bg-black/5' : 'text-white bg-white/10') 
                     : (isLight ? 'text-gray-600 hover:text-black hover:bg-black/5' : 'text-gray-300 hover:text-white hover:bg-white/5')
@@ -245,7 +244,7 @@ export default function Header() {
         {/* Right Action */}
         <div className="flex items-center gap-4 pointer-events-auto">
           <button className={`
-            group flex items-center gap-1.5 px-5 py-2.5 rounded-full text-[13px] font-bold transition-all duration-300 hover:scale-105 active:scale-95 whitespace-nowrap
+            group flex items-center gap-1.5 px-5 py-2.5 rounded-full text-[15px] font-bold transition-all duration-300 hover:scale-105 active:scale-95 whitespace-nowrap
             ${isLight 
               ? 'bg-black text-white hover:bg-gray-800 shadow-[0_4px_20px_rgba(0,0,0,0.15)]' 
               : 'bg-white text-black hover:bg-gray-100 shadow-[0_4px_20px_rgba(255,255,255,0.25)]'
@@ -265,7 +264,7 @@ export default function Header() {
       {/* Mega Menu Dropdown */}
       <div
         className={`
-          hidden lg:block absolute top-[85px] left-1/2 -translate-x-1/2 w-[95vw] max-w-[1050px] rounded-3xl overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-auto
+          hidden lg:block absolute top-[60px] left-1/2 -translate-x-1/2 w-[95vw] max-w-[1050px] rounded-3xl overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-auto
           ${isLight 
             ? 'bg-white/95 border border-black/10 shadow-[0_40px_80px_rgba(0,0,0,0.12)]' 
             : 'bg-[#111111]/95 border border-white/10 shadow-[0_40px_80px_rgba(0,0,0,0.6)]'

@@ -14,16 +14,18 @@ const ImageSchema = new mongoose.Schema({
 
 const ProductSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  tagline: { type: String, required: true },
-  description: { type: String, required: true },
+  tagline: { type: String },
+  description: { type: String },
   category: { type: String, required: true },
   price: { type: Number, required: true },
   badge: { type: String },
-  colors: { type: [String], required: true },
-  images: { type: ImageSchema, required: true },
-  specs: { type: SpecSchema, required: true },
+  colors: { type: [String] },
+  features: { type: [String] },
+  images: { type: ImageSchema },
+  specs: { type: SpecSchema },
   stock: { type: Number, default: 0 },
   status: { type: String, default: 'Active' },
+  image: { type: String },
 }, { timestamps: true });
 
 export default mongoose.models.Product || mongoose.model('Product', ProductSchema);
