@@ -401,7 +401,7 @@ function AddProductView({ onCancel, onAdd, initialData }: { onCancel: () => void
       name,
       category: tagline || 'General',
       description,
-      features: featuresText.split('\n').map(f => f.trim()).filter(Boolean),
+      features: featuresText.split('\n').map((f: string) => f.trim()).filter(Boolean),
       price: parseFloat(price) || 0,
       stock: parseInt(stock) || 0,
       status: parseInt(stock) > 0 ? 'Active' : 'Out of Stock',
