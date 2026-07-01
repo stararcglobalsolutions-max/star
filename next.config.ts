@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   
-  distDir: "dist",  // Changes output folder name to 'dist'
+  // Removed custom distDir to use default '.next' directory for Hostinger deployment
   allowedDevOrigins: ['192.168.29.198', 'localhost'],
 };
 
