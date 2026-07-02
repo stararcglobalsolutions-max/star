@@ -13,8 +13,8 @@ const frameCount = heroFrames.length;
 const currentFrame = (index: number) => {
   const arrayIndex = Math.min(Math.max(0, index - 1), heroFrames.length - 1);
   const rawUrl = heroFrames[arrayIndex];
-  // Compress images via Cloudinary transformations for faster loading
-  return rawUrl.replace('/upload/', '/upload/q_auto,f_auto,w_1200/');
+  // Compress images via Cloudinary transformations for faster loading (eco quality, reduced width)
+  return rawUrl.replace('/upload/', '/upload/q_auto:eco,f_auto,w_1000/');
 };
 
 export default function HeroScrollAnimation() {
@@ -79,29 +79,31 @@ export default function HeroScrollAnimation() {
       images[index - 1] = img;
     };
 
-    // 1. Eagerly load the first 20 frames for instant interaction
-    const initialBatch = Math.min(20, frameCount);
+    // 1. Eagerly load ONLY the first 3 frames for instant interaction without blocking the network
+    const initialBatch = Math.min(3, frameCount);
     for (let i = 1; i <= initialBatch; i++) {
       loadImage(i);
     }
 
-    // 2. Progressively load the rest in the background to avoid freezing the browser
+    // 2. Progressively load the rest slowly in the background to avoid freezing the browser
     let currentLoadIndex = initialBatch + 1;
     const loadNextBatch = () => {
       if (currentLoadIndex > frameCount) return;
       
-      const nextBatchLimit = Math.min(currentLoadIndex + 5, frameCount + 1);
+      // Load 3 frames at a time to keep concurrent network requests low
+      const nextBatchLimit = Math.min(currentLoadIndex + 3, frameCount + 1);
       for (let i = currentLoadIndex; i < nextBatchLimit; i++) {
         loadImage(i);
       }
       currentLoadIndex = nextBatchLimit;
       
       if (currentLoadIndex <= frameCount) {
-         requestAnimationFrame(loadNextBatch);
+         setTimeout(loadNextBatch, 150); // Wait 150ms between batches to free up the network for other assets
       }
     };
     
-    setTimeout(loadNextBatch, 100); // Start progressively loading very shortly after mount
+    // Delay the massive background loading until the rest of the page has time to render (2000ms delay)
+    setTimeout(loadNextBatch, 2000);
 
     // GSAP ScrollTrigger to animate frames
     const tl = gsap.timeline({
