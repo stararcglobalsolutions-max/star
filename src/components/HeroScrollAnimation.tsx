@@ -27,9 +27,9 @@ export default function HeroScrollAnimation() {
     const context = canvas.getContext("2d");
     if (!context) return;
 
-    // Fixed internal resolution for the canvas to maintain quality
-    canvas.width = 1920;
-    canvas.height = 1080;
+    // Lower internal resolution for the canvas to dramatically improve performance
+    canvas.width = 1280;
+    canvas.height = 720;
 
     // Preload images progressively to prevent flickering and freezing
     const images: (HTMLImageElement | null)[] = new Array(frameCount).fill(null);
@@ -108,8 +108,8 @@ export default function HeroScrollAnimation() {
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: "+=400%", // Scroll distance (adjust to make it slower/faster)
-        scrub: 1, // Smooth scrubbing
+        end: "+=350%", // Slightly shorter scroll for better feel
+        scrub: 0.5, // Lower scrub value for snappier, less laggy response
         pin: true,
       }
     });
@@ -145,8 +145,8 @@ export default function HeroScrollAnimation() {
       <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-black blur-2xl z-0 pointer-events-none rounded-tl-full opacity-100"></div>
 
       {/* Hero Text Content */}
-      <div className="absolute top-[22vh] md:top-40 left-6 md:left-12 z-20 flex flex-col items-start pointer-events-auto mix-blend-difference">
-        <h1 className="text-[2.5rem] md:text-[4rem] font-bold tracking-tighter leading-[0.9] text-white">
+      <div className="absolute top-[22vh] md:top-40 left-6 md:left-12 z-20 flex flex-col items-start pointer-events-auto">
+        <h1 className="text-[2.5rem] md:text-[4rem] font-bold tracking-tighter leading-[0.9] text-white drop-shadow-xl">
           Designed to <br />
           <span className="text-[#a0a0a0]">mean intention</span>
         </h1>
