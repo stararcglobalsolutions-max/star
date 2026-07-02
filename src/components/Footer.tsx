@@ -88,6 +88,8 @@ export default function Footer() {
               {['Blog', 'About us', 'Press page', 'Events', 'Career', 'StarArc Next', 'Reviews and feedback'].map(link => (
                 <li key={link}><a href="#" className="text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">{link}</a></li>
               ))}
+              <li><a href="/terms-and-conditions" className="text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">Terms & Conditions</a></li>
+              <li><a href="/service-agreement" className="text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">Service Agreement</a></li>
             </ul>
 
             <h4 className="font-semibold text-[15px] mb-5">For partners</h4>
