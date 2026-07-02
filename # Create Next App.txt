@@ -1,0 +1,35 @@
+# Create Next App
+
+[Home](http://localhost:3000/stararc)
+[About](http://localhost:3000/stararc)
+[Shop](http://localhost:3000/stararc)
+[Contact Us](http://localhost:3000/stararc)
+[Log in](http://localhost:3000/stararc)
+
+# Designed to mean intention
+[START A PROJECT](http://localhost:3000/contact)
+Hold to 💥 Blast
+Dare ⚡ to touch the lines.
+14+ YEARS SHAPING DIGITAL DIRECTION.
+Websites, AI products, brands, and systems built for clarity, scale and impact.
+
+## We exist to bridge the gap between imagination and execution. StarArc crafts digital experiences that leave a lasting impact through unparalleled precision, immersive depth, and fearless design.
+
+## Selected Works
+
+### Aura
+
+### Nexus
+
+### Zenith
+
+### Strategy & Branding
+
+### Web3 & Blockchain Interfaces
+
+### Immersive 3D Experiences
+
+### Creative Development
+
+### Motion & Interaction Design
+© 2026 StarArc

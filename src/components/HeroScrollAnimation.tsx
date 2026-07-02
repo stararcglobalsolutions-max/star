@@ -4,14 +4,18 @@ import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { heroFrames } from "./heroFrames";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const frameCount = 300;
-const basePath = ""; // Base path from next.config.ts
+const frameCount = heroFrames.length;
 
-const currentFrame = (index: number) =>
-  `${basePath}/ezgif-774cadbbbbc65ee4-png-split/ezgif-frame-${String(index).padStart(3, '0')}.png`;
+const currentFrame = (index: number) => {
+  const arrayIndex = Math.min(Math.max(0, index - 1), heroFrames.length - 1);
+  const rawUrl = heroFrames[arrayIndex];
+  // Compress images via Cloudinary transformations for faster loading
+  return rawUrl.replace('/upload/', '/upload/q_auto,f_auto,w_1200/');
+};
 
 export default function HeroScrollAnimation() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -27,18 +31,26 @@ export default function HeroScrollAnimation() {
     canvas.width = 1920;
     canvas.height = 1080;
 
-    // Preload all images to prevent flickering and ensure smooth scrolling
-    const images: HTMLImageElement[] = [];
+    // Preload images progressively to prevent flickering and freezing
+    const images: (HTMLImageElement | null)[] = new Array(frameCount).fill(null);
 
     // Create an object to hold the current frame index for GSAP to animate
     const airpods = { frame: 1 };
 
     // Function to draw the current frame onto the canvas
     function render() {
-      if (images[airpods.frame - 1] && context && canvas) {
-        context.clearRect(0, 0, canvas.width, canvas.height);
+      if (!context || !canvas) return;
 
-        const img = images[airpods.frame - 1];
+      let frameToDraw = Math.floor(airpods.frame) - 1;
+      
+      // Fallback to the nearest loaded frame if current isn't loaded
+      while (frameToDraw >= 0 && (!images[frameToDraw] || !images[frameToDraw]?.complete)) {
+        frameToDraw--;
+      }
+
+      if (frameToDraw >= 0) {
+        const img = images[frameToDraw]!;
+        context.clearRect(0, 0, canvas.width, canvas.height);
 
         // Calculate scale to cover canvas (object-cover equivalent)
         // Add a 1.15 multiplier to zoom in slightly and crop out the watermark at the edges
@@ -57,17 +69,39 @@ export default function HeroScrollAnimation() {
       }
     }
 
-    for (let i = 1; i <= frameCount; i++) {
+    const loadImage = (index: number) => {
+      if (images[index - 1]) return; // already loading/loaded
       const img = new Image();
-      img.src = currentFrame(i);
+      img.src = currentFrame(index);
       img.onload = () => {
-        // Render the very first frame immediately once it loads
-        if (i === 1) {
-          render();
-        }
+        if (index === 1) render(); // Render immediately once the first frame loads
       };
-      images.push(img);
+      images[index - 1] = img;
+    };
+
+    // 1. Eagerly load the first 20 frames for instant interaction
+    const initialBatch = Math.min(20, frameCount);
+    for (let i = 1; i <= initialBatch; i++) {
+      loadImage(i);
     }
+
+    // 2. Progressively load the rest in the background to avoid freezing the browser
+    let currentLoadIndex = initialBatch + 1;
+    const loadNextBatch = () => {
+      if (currentLoadIndex > frameCount) return;
+      
+      const nextBatchLimit = Math.min(currentLoadIndex + 5, frameCount + 1);
+      for (let i = currentLoadIndex; i < nextBatchLimit; i++) {
+        loadImage(i);
+      }
+      currentLoadIndex = nextBatchLimit;
+      
+      if (currentLoadIndex <= frameCount) {
+         requestAnimationFrame(loadNextBatch);
+      }
+    };
+    
+    setTimeout(loadNextBatch, 100); // Start progressively loading very shortly after mount
 
     // GSAP ScrollTrigger to animate frames
     const tl = gsap.timeline({

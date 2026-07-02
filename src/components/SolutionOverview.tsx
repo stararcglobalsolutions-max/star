@@ -4,22 +4,22 @@ import React from "react";
 const solutions = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1526738549149-8e07eca6c147?q=80&w=1000&auto=format&fit=crop",
+    image: "/solution1.png",
     title: "Assemble your StarArc system"
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000&auto=format&fit=crop",
+    image: "/solution2.png",
     title: "Solutions by facility type"
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1000&auto=format&fit=crop",
+    image: "/solution3.png",
     title: "Customer stories"
   },
   {
     id: 4,
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&auto=format&fit=crop",
+    image: "/solution4.png",
     title: "StarArc Ready products"
   }
 ];
