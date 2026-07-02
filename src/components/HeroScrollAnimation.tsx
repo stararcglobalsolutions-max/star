@@ -13,8 +13,8 @@ const frameCount = heroFrames.length;
 const currentFrame = (index: number) => {
   const arrayIndex = Math.min(Math.max(0, index - 1), heroFrames.length - 1);
   const rawUrl = heroFrames[arrayIndex];
-  // Compress images via Cloudinary transformations for faster loading (eco quality, reduced width)
-  return rawUrl.replace('/upload/', '/upload/q_auto:eco,f_auto,w_1000/');
+  // Compress images via Cloudinary transformations for faster loading (auto quality, reduced width)
+  return rawUrl.replace('/upload/', '/upload/q_auto,f_auto,w_1000/');
 };
 
 export default function HeroScrollAnimation() {
