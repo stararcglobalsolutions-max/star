@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 
 export default function PartnerCTASection() {
   return (
@@ -15,9 +16,9 @@ export default function PartnerCTASection() {
                 Search for companies selling and/or installing security and automation devices.
               </p>
             </div>
-            <button className="bg-[#e60000] hover:bg-[#cc0000] hover:scale-105 active:scale-95 text-white font-semibold text-[14px] px-6 py-2.5 rounded-full transition-all duration-300">
+            <Link href="/shop" className="bg-[#e60000] hover:bg-[#cc0000] hover:scale-105 active:scale-95 text-white font-semibold text-[14px] px-6 py-2.5 rounded-full transition-all duration-300">
               Where to buy
-            </button>
+            </Link>
           </div>
 
           {/* Card 2 */}
@@ -28,9 +29,9 @@ export default function PartnerCTASection() {
                 Become a partner of StarArc Systems as an official distributor, authorized reseller, or installer. Or team up with us as a security or monitoring company.
               </p>
             </div>
-            <button className="bg-white hover:bg-gray-200 hover:scale-105 active:scale-95 text-black font-semibold text-[14px] px-6 py-2.5 rounded-full transition-all duration-300">
+            <Link href="/become-partner" className="bg-white hover:bg-gray-200 hover:scale-105 active:scale-95 text-black font-semibold text-[14px] px-6 py-2.5 rounded-full transition-all duration-300">
               Become a partner
-            </button>
+            </Link>
           </div>
 
         </div>

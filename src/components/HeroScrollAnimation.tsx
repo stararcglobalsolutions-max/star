@@ -69,34 +69,56 @@ export default function HeroScrollAnimation() {
       }
     }
 
-    const loadImage = (index: number) => {
-      if (images[index - 1]) return; // already loading/loaded
+    const CONCURRENCY = 8; // Increased concurrency for faster live server loading
+
+    const loadImage = (index: number, retries = 3) => {
+      if (images[index - 1] && images[index - 1]?.complete) return; 
+      
       const img = new Image();
-      // Use async decoding to prevent image decompression from blocking the main thread
       img.decoding = "async";
+      
+      // Prioritize early frames for instant scroll feel, low priority for later to avoid blocking
+      (img as any).fetchPriority = index <= 15 ? "high" : "low";
+      
       img.src = currentFrame(index);
+      
       img.onload = () => {
-        if (index === 1) render(); // Render immediately once the first frame loads
-        // Chained loading: start loading the next one in this sequence chain once this completes.
-        // We run 4 concurrent chains to load fast without overloading the network/CPU.
-        if (index + 4 <= frameCount) {
-          loadImage(index + 4);
+        if (index === 1) render(); 
+        // Chain loading: load the next image in this concurrent pipeline
+        if (index + CONCURRENCY <= frameCount) {
+          loadImage(index + CONCURRENCY);
         }
       };
+
+      img.onerror = () => {
+        if (retries > 0) {
+          // Retry on failure for robust live-server performance
+          setTimeout(() => loadImage(index, retries - 1), 300);
+        } else {
+          // Skip the failed image but keep the chain alive
+          if (index + CONCURRENCY <= frameCount) {
+            loadImage(index + CONCURRENCY);
+          }
+        }
+      };
+
       images[index - 1] = img;
     };
 
-    // 1. Eagerly load ONLY the first frame instantly so the canvas isn't blank
-    loadImage(1);
+    // 1. Eagerly load the first few frames immediately with high priority
+    for (let i = 1; i <= Math.min(5, frameCount); i++) {
+      loadImage(i);
+    }
 
-    // 2. Delay the massive 300-frame background loading so we don't block the browser's page load event
+    // 2. Start the massive background loading much sooner (500ms instead of 1500ms)
     setTimeout(() => {
-      // Kick off 4 concurrent sequential load chains starting from frame 2
-      const concurrency = Math.min(4, frameCount - 1);
-      for (let i = 2; i <= concurrency + 1; i++) {
-        loadImage(i);
+      // Kick off the remaining chains starting from frame 6
+      for (let i = 6; i <= CONCURRENCY + 5; i++) {
+        if (i <= frameCount) {
+           loadImage(i);
+        }
       }
-    }, 1500); // Wait 1.5 seconds before hammering the network
+    }, 500);
 
     // GSAP ScrollTrigger to animate frames
     const tl = gsap.timeline({

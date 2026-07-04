@@ -8,7 +8,7 @@ import {
   LayoutDashboard, Box, ListOrdered, Lock, Activity, BarChart3, CreditCard,
   FileText, LifeBuoy, ChevronDown, CheckCircle2, AlertTriangle, XCircle,
   Clock, TrendingUp, MoreHorizontal, ArrowUpRight, Battery, Wifi, Shield,
-  Plus, Edit, Trash2, Image as ImageIcon, DollarSign, PackagePlus
+  Plus, Edit, Trash2, Image as ImageIcon, DollarSign, PackagePlus, Briefcase
 } from 'lucide-react';
 
 // ============================================================================
@@ -19,6 +19,7 @@ const SIDEBAR_ITEMS = [
   { icon: Box, label: 'Products', id: 'products' },
   { icon: ListOrdered, label: 'Orders', id: 'orders' },
   { icon: Users, label: 'Customers', id: 'customers' },
+  { icon: Briefcase, label: 'Partners', id: 'partners' },
   { icon: FileText, label: 'Reports', id: 'reports' },
 ];
 
@@ -53,6 +54,7 @@ export default function AdminDashboard() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [products, setProducts] = useState<any[]>([]);
   const [orders, setOrders] = useState<any[]>(RECENT_ORDERS);
+  const [partners, setPartners] = useState<any[]>([]);
   const [editingProduct, setEditingProduct] = useState<any>(null);
 
   useEffect(() => {
@@ -61,6 +63,12 @@ export default function AdminDashboard() {
         .then(res => res.json())
         .then(data => {
           if(Array.isArray(data)) setProducts(data);
+        })
+        .catch(console.error);
+      fetch('/api/partners')
+        .then(res => res.json())
+        .then(data => {
+          if(Array.isArray(data)) setPartners(data);
         })
         .catch(console.error);
     }
@@ -175,6 +183,7 @@ export default function AdminDashboard() {
                 setActiveTab('products'); 
               }} />}
               {activeTab === 'orders' && <OrdersView orders={orders} />}
+              {activeTab === 'partners' && <PartnersView partners={partners} />}
               {['customers', 'reports'].includes(activeTab) && (
                 <div className="flex items-center justify-center h-[60vh] text-slate-400 font-medium border-2 border-dashed border-slate-200 rounded-3xl">
                   {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} module in development...
@@ -681,5 +690,64 @@ function ActionButton({ icon: Icon, danger, onClick }: { icon: any, danger?: boo
     <button onClick={onClick} className={`w-9 h-9 rounded-xl flex items-center justify-center transition-colors shadow-sm ${danger ? 'bg-white border border-slate-200 text-red-500 hover:bg-red-50 hover:border-red-200' : 'bg-white border border-slate-200 text-slate-500 hover:border-slate-300 hover:text-slate-900 hover:bg-slate-50'}`}>
       <Icon className="w-4 h-4" />
     </button>
+  );
+}
+
+// ============================================================================
+// PARTNERS VIEW
+// ============================================================================
+function PartnersView({ partners }: { partners: any[] }) {
+  return (
+    <div className="space-y-6 pb-10">
+      <div className="flex justify-between items-end">
+        <div>
+          <h2 className="text-3xl font-bold tracking-tight mb-2 text-slate-900">Partner Applications</h2>
+          <p className="text-slate-500">Review and manage distributor and reseller requests.</p>
+        </div>
+      </div>
+
+      <div className="bg-white border border-slate-200 rounded-[32px] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.02)]">
+        <table className="w-full text-left">
+          <thead>
+            <tr className="border-b border-slate-200 bg-slate-50">
+              <th className="py-5 px-8 font-bold text-slate-500 text-[10px] uppercase tracking-widest">Name</th>
+              <th className="py-5 px-8 font-bold text-slate-500 text-[10px] uppercase tracking-widest">Company</th>
+              <th className="py-5 px-8 font-bold text-slate-500 text-[10px] uppercase tracking-widest">Contact</th>
+              <th className="py-5 px-8 font-bold text-slate-500 text-[10px] uppercase tracking-widest">Type</th>
+              <th className="py-5 px-8 font-bold text-slate-500 text-[10px] uppercase tracking-widest text-right">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {partners.map((partner, i) => (
+              <motion.tr 
+                initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}
+                key={partner._id || i} 
+                className="border-b border-slate-100 hover:bg-slate-50 transition-colors"
+              >
+                <td className="py-5 px-8 font-bold text-sm text-slate-900">{partner.fullName}</td>
+                <td className="py-5 px-8 text-sm text-slate-600 font-medium">{partner.companyName}</td>
+                <td className="py-5 px-8 text-sm text-slate-500">
+                  <div>{partner.email}</div>
+                  <div className="text-slate-400 text-xs mt-1">{partner.phone}</div>
+                </td>
+                <td className="py-5 px-8">
+                  <span className="px-3 py-1 bg-[#2563FF]/10 text-[#2563FF] border border-[#2563FF]/20 rounded-full text-[10px] font-bold uppercase tracking-widest">
+                    {partner.partnerType}
+                  </span>
+                </td>
+                <td className="py-5 px-8 text-slate-500 text-sm text-right">
+                  {new Date(partner.createdAt).toLocaleDateString()}
+                </td>
+              </motion.tr>
+            ))}
+            {partners.length === 0 && (
+              <tr>
+                <td colSpan={5} className="py-12 text-center text-slate-400 font-medium">No partner applications found.</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 }
