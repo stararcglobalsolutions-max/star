@@ -76,40 +76,60 @@ export default function HeroScrollAnimation() {
       const endLoad = Math.min(frameCount, targetFrame + PRELOAD_AHEAD);
       
       for (let i = startLoad; i <= endLoad; i++) {
-         loadImage(i);
+         queueImage(i);
       }
     }
 
-    const PRELOAD_AHEAD = 5; // Reduced from 25 to 5 to stop 503 server crashes
+    const PRELOAD_AHEAD = 10; 
 
-    const loadImage = (index: number) => {
-      if (index < 1 || index > frameCount) return;
-      if (images[index - 1]) return; // Already loading or loaded
+    // **BULLETPROOF ANTI-503 QUEUE SYSTEM**
+    let loadingCount = 0;
+    const MAX_CONCURRENT = 3; // NEVER allow more than 3 simultaneous network requests
+    const loadQueue: number[] = [];
+
+    const processQueue = () => {
+      if (loadingCount >= MAX_CONCURRENT || loadQueue.length === 0) return;
       
+      const index = loadQueue.shift()!;
+      if (images[index - 1]) {
+        processQueue(); // Skip if already loaded/loading
+        return;
+      }
+
+      loadingCount++;
       const img = new Image();
-      images[index - 1] = img; // Mark as loading synchronously to prevent duplicate requests
-      
+      images[index - 1] = img; // Lock it immediately
       img.decoding = "async";
-      (img as any).fetchPriority = index <= 15 ? "high" : "auto";
+      (img as any).fetchPriority = index <= 10 ? "high" : "auto";
       
       img.onload = () => {
-        if (index === 1) render(); 
+        loadingCount--;
+        if (index === 1) render();
+        processQueue(); // Process next in queue
       };
 
       img.onerror = () => {
-        // Silent retry for robust live-server performance
-        setTimeout(() => {
-          if (img.src) img.src = currentFrame(index); // re-trigger fetch
-        }, 500);
+        loadingCount--;
+        processQueue(); // Move on so we don't block the queue forever
       };
 
       img.src = currentFrame(index);
     };
 
-    // 1. Eagerly load ONLY the first 5 frames to prevent Hostinger 503 connection limits.
-    // The rest will load strictly on-demand as the user scrolls, a few at a time.
+    const queueImage = (index: number) => {
+      if (index < 1 || index > frameCount) return;
+      if (images[index - 1]) return;
+      
+      // Add to queue if not already there
+      if (!loadQueue.includes(index)) {
+        loadQueue.push(index);
+      }
+      processQueue();
+    };
+
+    // 1. Queue the first few frames instantly
     for (let i = 1; i <= 5; i++) {
-      loadImage(i);
+      queueImage(i);
     }
 
     // GSAP ScrollTrigger to animate frames
