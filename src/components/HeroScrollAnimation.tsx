@@ -66,59 +66,49 @@ export default function HeroScrollAnimation() {
           0, 0, img.width, img.height,
           centerShift_x, centerShift_y, img.width * ratio, img.height * ratio
         );
+
+        // **TRUE LAZY LOADING MAGIC**
+        // As the user scrolls, dynamically fetch the next upcoming frames.
+        // This guarantees we NEVER hammer the network with 300 images at once, eliminating website hang.
+        for (let i = frameToDraw + 1; i <= frameToDraw + PRELOAD_AHEAD; i++) {
+          if (i <= frameCount) {
+             loadImage(i);
+          }
+        }
       }
     }
 
-    const CONCURRENCY = 8; // Increased concurrency for faster live server loading
+    const PRELOAD_AHEAD = 25; // How many frames to preload ahead of the scroll position
 
-    const loadImage = (index: number, retries = 3) => {
-      if (images[index - 1] && images[index - 1]?.complete) return; 
+    const loadImage = (index: number) => {
+      if (index < 1 || index > frameCount) return;
+      if (images[index - 1]) return; // Already loading or loaded
       
       const img = new Image();
+      images[index - 1] = img; // Mark as loading synchronously to prevent duplicate requests
+      
       img.decoding = "async";
-      
-      // Prioritize early frames for instant scroll feel, low priority for later to avoid blocking
-      (img as any).fetchPriority = index <= 15 ? "high" : "low";
-      
-      img.src = currentFrame(index);
+      (img as any).fetchPriority = index <= 15 ? "high" : "auto";
       
       img.onload = () => {
         if (index === 1) render(); 
-        // Chain loading: load the next image in this concurrent pipeline
-        if (index + CONCURRENCY <= frameCount) {
-          loadImage(index + CONCURRENCY);
-        }
       };
 
       img.onerror = () => {
-        if (retries > 0) {
-          // Retry on failure for robust live-server performance
-          setTimeout(() => loadImage(index, retries - 1), 300);
-        } else {
-          // Skip the failed image but keep the chain alive
-          if (index + CONCURRENCY <= frameCount) {
-            loadImage(index + CONCURRENCY);
-          }
-        }
+        // Silent retry for robust live-server performance
+        setTimeout(() => {
+          if (img.src) img.src = currentFrame(index); // re-trigger fetch
+        }, 500);
       };
 
-      images[index - 1] = img;
+      img.src = currentFrame(index);
     };
 
-    // 1. Eagerly load the first few frames immediately with high priority
-    for (let i = 1; i <= Math.min(5, frameCount); i++) {
+    // 1. Eagerly load ONLY the first 15 frames so the initial load is incredibly lightweight.
+    // The rest will load strictly on-demand as the user scrolls.
+    for (let i = 1; i <= 15; i++) {
       loadImage(i);
     }
-
-    // 2. Start the massive background loading much sooner (500ms instead of 1500ms)
-    setTimeout(() => {
-      // Kick off the remaining chains starting from frame 6
-      for (let i = 6; i <= CONCURRENCY + 5; i++) {
-        if (i <= frameCount) {
-           loadImage(i);
-        }
-      }
-    }, 500);
 
     // GSAP ScrollTrigger to animate frames
     const tl = gsap.timeline({
