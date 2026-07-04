@@ -39,7 +39,8 @@ export default function HeroScrollAnimation() {
     function render() {
       if (!context || !canvas) return;
 
-      let frameToDraw = Math.floor(airpods.frame) - 1;
+      const targetFrame = Math.floor(airpods.frame);
+      let frameToDraw = targetFrame - 1;
 
       // Fallback to the nearest loaded frame if current isn't loaded
       while (frameToDraw >= 0 && (!images[frameToDraw] || !images[frameToDraw]?.complete)) {
@@ -53,7 +54,6 @@ export default function HeroScrollAnimation() {
         context.clearRect(0, 0, canvas.width, canvas.height);
 
         // Calculate scale to cover canvas (object-cover equivalent)
-        // Add a 1.15 multiplier to zoom in slightly and crop out the watermark at the edges
         const scaleFactor = 1.15;
         const hRatio = canvas.width / img.width;
         const vRatio = canvas.height / img.height;
@@ -66,15 +66,17 @@ export default function HeroScrollAnimation() {
           0, 0, img.width, img.height,
           centerShift_x, centerShift_y, img.width * ratio, img.height * ratio
         );
+      }
 
-        // **TRUE LAZY LOADING MAGIC**
-        // As the user scrolls, dynamically fetch the next upcoming frames.
-        // This guarantees we NEVER hammer the network with 300 images at once, eliminating website hang.
-        for (let i = frameToDraw + 1; i <= frameToDraw + PRELOAD_AHEAD; i++) {
-          if (i <= frameCount) {
-             loadImage(i);
-          }
-        }
+      // **TRUE LAZY LOADING MAGIC - MOVED OUTSIDE RENDER CHECK**
+      // Fetch a "window" of frames around the TARGET frame (not the fallback frame)
+      // We load 15 frames behind (for reverse scroll) and PRELOAD_AHEAD ahead.
+      // This ensures if they scroll fast, the images exactly where they are will load!
+      const startLoad = Math.max(1, targetFrame - 15);
+      const endLoad = Math.min(frameCount, targetFrame + PRELOAD_AHEAD);
+      
+      for (let i = startLoad; i <= endLoad; i++) {
+         loadImage(i);
       }
     }
 
