@@ -68,11 +68,11 @@ export default function HeroScrollAnimation() {
         );
       }
 
-      // **TRUE LAZY LOADING MAGIC - MOVED OUTSIDE RENDER CHECK**
-      // Fetch a "window" of frames around the TARGET frame (not the fallback frame)
-      // We load 15 frames behind (for reverse scroll) and PRELOAD_AHEAD ahead.
-      // This ensures if they scroll fast, the images exactly where they are will load!
-      const startLoad = Math.max(1, targetFrame - 15);
+      // **ANTI-503 MAGIC (Fix for Shared Hosting)**
+      // Shared servers (like Hostinger) crash and throw 503 errors if you request too many images at once.
+      // We strictly limit the load window to only 2 frames behind and 5 frames ahead.
+      // This keeps concurrent connections under 10, preventing the server from blocking the IP.
+      const startLoad = Math.max(1, targetFrame - 2);
       const endLoad = Math.min(frameCount, targetFrame + PRELOAD_AHEAD);
       
       for (let i = startLoad; i <= endLoad; i++) {
@@ -80,7 +80,7 @@ export default function HeroScrollAnimation() {
       }
     }
 
-    const PRELOAD_AHEAD = 25; // How many frames to preload ahead of the scroll position
+    const PRELOAD_AHEAD = 5; // Reduced from 25 to 5 to stop 503 server crashes
 
     const loadImage = (index: number) => {
       if (index < 1 || index > frameCount) return;
@@ -106,9 +106,9 @@ export default function HeroScrollAnimation() {
       img.src = currentFrame(index);
     };
 
-    // 1. Eagerly load ONLY the first 15 frames so the initial load is incredibly lightweight.
-    // The rest will load strictly on-demand as the user scrolls.
-    for (let i = 1; i <= 15; i++) {
+    // 1. Eagerly load ONLY the first 5 frames to prevent Hostinger 503 connection limits.
+    // The rest will load strictly on-demand as the user scrolls, a few at a time.
+    for (let i = 1; i <= 5; i++) {
       loadImage(i);
     }
 
