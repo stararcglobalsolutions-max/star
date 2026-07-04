@@ -4,17 +4,14 @@ import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { heroFrames } from "./heroFrames";
-
 gsap.registerPlugin(ScrollTrigger);
 
-const frameCount = heroFrames.length;
+const frameCount = 300;
 
 const currentFrame = (index: number) => {
-  const arrayIndex = Math.min(Math.max(0, index - 1), heroFrames.length - 1);
-  const rawUrl = heroFrames[arrayIndex];
-  // Compress images via Cloudinary transformations for faster loading
-  return rawUrl.replace('/upload/', '/upload/q_auto,f_auto,w_1200/');
+  const clampedIndex = Math.min(Math.max(1, index), frameCount);
+  const paddedIndex = clampedIndex.toString().padStart(3, '0');
+  return `/ezgif-774cadbbbbc65ee4-png-split/ezgif-frame-${paddedIndex}.png`;
 };
 
 export default function HeroScrollAnimation() {
@@ -36,19 +33,22 @@ export default function HeroScrollAnimation() {
 
     // Create an object to hold the current frame index for GSAP to animate
     const airpods = { frame: 1 };
+    let lastRenderedFrame = -1;
 
     // Function to draw the current frame onto the canvas
     function render() {
       if (!context || !canvas) return;
 
       let frameToDraw = Math.floor(airpods.frame) - 1;
-      
+
       // Fallback to the nearest loaded frame if current isn't loaded
       while (frameToDraw >= 0 && (!images[frameToDraw] || !images[frameToDraw]?.complete)) {
         frameToDraw--;
       }
 
-      if (frameToDraw >= 0) {
+      // Skip render if it's the exact same frame we just drew (huge performance boost)
+      if (frameToDraw >= 0 && frameToDraw !== lastRenderedFrame) {
+        lastRenderedFrame = frameToDraw;
         const img = images[frameToDraw]!;
         context.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -72,38 +72,27 @@ export default function HeroScrollAnimation() {
     const loadImage = (index: number) => {
       if (images[index - 1]) return; // already loading/loaded
       const img = new Image();
+      // Use async decoding to prevent image decompression from blocking the main thread
+      img.decoding = "async";
       img.src = currentFrame(index);
       img.onload = () => {
         if (index === 1) render(); // Render immediately once the first frame loads
+        // Chained loading: start loading the next one in this sequence chain once this completes.
+        // We run 4 concurrent chains to load fast without overloading the network/CPU.
+        if (index + 4 <= frameCount) {
+          loadImage(index + 4);
+        }
       };
       images[index - 1] = img;
     };
 
-    // 1. Eagerly load ONLY the first 3 frames for instant interaction without blocking the network
-    const initialBatch = Math.min(3, frameCount);
-    for (let i = 1; i <= initialBatch; i++) {
+    // Kick off 4 concurrent sequential load chains.
+    // e.g., chain 1 loads: 1, 5, 9...
+    // chain 2 loads: 2, 6, 10...
+    const concurrency = Math.min(4, frameCount);
+    for (let i = 1; i <= concurrency; i++) {
       loadImage(i);
     }
-
-    // 2. Progressively load the rest slowly in the background to avoid freezing the browser
-    let currentLoadIndex = initialBatch + 1;
-    const loadNextBatch = () => {
-      if (currentLoadIndex > frameCount) return;
-      
-      // Load 3 frames at a time to keep concurrent network requests low
-      const nextBatchLimit = Math.min(currentLoadIndex + 3, frameCount + 1);
-      for (let i = currentLoadIndex; i < nextBatchLimit; i++) {
-        loadImage(i);
-      }
-      currentLoadIndex = nextBatchLimit;
-      
-      if (currentLoadIndex <= frameCount) {
-         setTimeout(loadNextBatch, 150); // Wait 150ms between batches to free up the network for other assets
-      }
-    };
-    
-    // Delay the massive background loading until the rest of the page has time to render (2000ms delay)
-    setTimeout(loadNextBatch, 2000);
 
     // GSAP ScrollTrigger to animate frames
     const tl = gsap.timeline({
@@ -111,14 +100,13 @@ export default function HeroScrollAnimation() {
         trigger: containerRef.current,
         start: "top top",
         end: "+=350%", // Slightly shorter scroll for better feel
-        scrub: 0.5, // Lower scrub value for snappier, less laggy response
+        scrub: 0.15, // Snappier scrub for responsive feel
         pin: true,
       }
     });
 
     tl.to(airpods, {
       frame: frameCount,
-      snap: "frame",
       ease: "none",
       onUpdate: render,
     });
@@ -147,7 +135,7 @@ export default function HeroScrollAnimation() {
       <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-black blur-2xl z-0 pointer-events-none rounded-tl-full opacity-100"></div>
 
       {/* Hero Text Content */}
-      <div className="absolute top-[22vh] md:top-40 left-6 md:left-12 z-20 flex flex-col items-start pointer-events-auto">
+      <div className="hero-content absolute top-[22vh] md:top-40 left-6 md:left-12 z-20 flex flex-col items-start pointer-events-auto">
         <h1 className="text-[2.5rem] md:text-[4rem] font-bold tracking-tighter leading-[0.9] text-white drop-shadow-xl">
           Designed to <br />
           <span className="text-[#a0a0a0]">mean intention</span>
