@@ -203,7 +203,7 @@ export default function Header() {
         <div className="flex items-center gap-3 cursor-pointer group pointer-events-auto">
           <div className="w-[120px] md:w-[140px] h-auto group-hover:scale-105 transition-transform duration-500 ease-out">
             <img
-              src={isLight ? "/starclogo22.jpeg" : "/starclogo.png"}
+              src={isLight ? "https://star-1-8yo5.onrender.com/starclogo.png" : "/starclogo.png"}
               alt="StarArc Logo"
               className="h-full w-full object-contain"
             />
