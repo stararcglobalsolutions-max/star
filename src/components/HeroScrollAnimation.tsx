@@ -136,9 +136,9 @@ export default function HeroScrollAnimation() {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
-        start: "top 120px",
-        end: "+=80%", // Much shorter scroll duration
-        scrub: 0.15, // Snappier scrub for responsive feel
+        start: "top top",
+        end: "+=150%",
+        scrub: 0.15,
         pin: true,
       }
     });
@@ -149,9 +149,6 @@ export default function HeroScrollAnimation() {
       onUpdate: render,
     });
 
-    return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
-    };
   }, { scope: containerRef });
 
   return (
@@ -178,8 +175,7 @@ export default function HeroScrollAnimation() {
       />
 
       {/* Cinematic Black Shadow Overlays to blend edges into background */}
-      <div className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
-      <div className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-b from-black/80 via-transparent to-transparent opacity-70"></div>
+      <div className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-t from-black via-black/10 to-transparent opacity-90"></div>
       <div className="absolute inset-0 z-0 pointer-events-none shadow-[inset_0_0_150px_rgba(0,0,0,1)]"></div>
 
       {/* Corner shadows to hide any baked-in watermarks elegantly */}

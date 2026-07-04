@@ -9,7 +9,7 @@ import DashboardFeatureSection from "@/components/DashboardFeatureSection";
 
 export default function AboutPage() {
   return (
-    <main className="relative min-h-screen w-full bg-white text-gray-900 overflow-x-clip pt-[80px]">
+    <main className="relative min-h-screen w-full bg-[#030303] text-white overflow-x-clip pt-[120px]">
       <Header />
       
       <div className="relative z-10 w-full min-h-screen flex flex-col justify-between">

@@ -7,62 +7,16 @@ import { usePathname } from "next/navigation";
 
 export const navItems = [
   {
+    label: "Home",
+    dropdown: false,
+    href: "/",
+  },
+  { label: "About us", dropdown: false, href: "/about" },
+  { label: "Shop", dropdown: false, href: "/shop" },
+  {
     label: "Monitoring Package",
-    dropdown: true,
-    columns: [
-      {
-        sections: [
-          {
-            title: "Intrusion protection",
-            links: ["Superior", "Baseline"]
-          },
-          {
-            title: "Video surveillance",
-            links: ["Superior", "Baseline"]
-          },
-          {
-            title: "Fire and life safety",
-            links: ["EN54 Line", "Residence Line"]
-          },
-          {
-            title: "Comfort and automation",
-            links: []
-          }
-        ]
-      },
-      {
-        sections: [
-          {
-            title: "Services",
-            links: ["System integrations", "StarArc Ready products"]
-          }
-        ]
-      },
-      {
-        sections: [
-          {
-            title: "Software",
-            links: [
-              "StarArc Security System",
-              "StarArc PRO: Tool for Engineers",
-              "StarArc Desktop",
-              "StarArc PRO Desktop",
-              "StarArc TV",
-              "StarArc Translator PRO",
-              "StarArc Cloud Signaling",
-              "StarArc Media Player",
-              "Scenarios"
-            ]
-          },
-          {
-            title: "Communication technologies",
-            isSmall: true,
-            links: ["Fibra wired protocol", "StarArc radio protocols"]
-          }
-        ]
-      }
-    ],
-    footerLink: "View all products"
+    dropdown: false,
+    href: "/monitoring-packages",
   },
   {
     label: "Solutions",
@@ -124,8 +78,6 @@ export const navItems = [
   },
 
 
-  { label: "About us", dropdown: false, href: "/about" },
-  { label: "Shop", dropdown: false, href: "/shop" },
   { label: "For partners", dropdown: false },
 ];
 
@@ -134,9 +86,9 @@ export default function Header() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const pathname = usePathname();
 
-  // Detect light theme based on path
-  const isLight = pathname === '/about';
+  // Detect if home page for specific logic
   const isHome = pathname === '/';
+  const isLight = false; // Force dark theme globally for cinematic look
 
   useEffect(() => {
     // Subtle entry animation for the header
@@ -168,7 +120,7 @@ export default function Header() {
   return (
     <header
       ref={headerRef}
-      className={`fixed ${isHome ? '-top-8' : 'top-4'} left-0 w-full z-50 px-4 md:px-8 pt-0 pb-3 md:pt-0 md:pb-3 pointer-events-none group/header`}
+      className="fixed -top-8 left-0 w-full z-50 px-4 md:px-8 pt-0 pb-3 md:pt-0 md:pb-3 pointer-events-none group/header"
     >
       <div className="w-full flex items-center justify-between relative z-50">
         <div className="flex items-center gap-3 cursor-pointer group pointer-events-auto">

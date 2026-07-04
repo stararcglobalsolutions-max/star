@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { Manrope, Sora } from "next/font/google";
+import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
-const manrope = Manrope({
+
+const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
 });
 
-const sora = Sora({
+const outfit = Outfit({
   variable: "--font-heading",
   subsets: ["latin"],
 });
@@ -25,7 +26,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${sora.variable} h-full antialiased`}
+      className={`${inter.variable} ${outfit.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col selection:bg-white/20 selection:text-white">
         <SmoothScroll>{children}</SmoothScroll>

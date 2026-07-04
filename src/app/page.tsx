@@ -49,7 +49,7 @@ export default function Home() {
         MAIN WEBSITE CONTENT 
         Revealed after the preloader slides away
       */}
-      <div className="relative z-10 w-full pt-[100px]">
+      <div className="relative z-10 w-full">
         <HeroScrollAnimation />
         <WhyChooseUs />
         <AboutSection />

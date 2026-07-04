@@ -19,7 +19,7 @@ export default function PartnerCTASection() {
                 </p>
               </div>
               <Link href="/shop" className="relative overflow-hidden group/btn bg-gradient-to-r from-red-600 to-red-800 hover:from-red-500 hover:to-red-700 text-white font-semibold text-[15px] px-8 py-3.5 rounded-full transition-all duration-500 shadow-[0_0_20px_rgba(220,38,38,0.3)] hover:shadow-[0_0_30px_rgba(220,38,38,0.5)]">
-                <span className="relative z-10 flex items-center gap-2">Where to buy <svg className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></span>
+                <span className="relative z-10 flex items-center gap-2">Buy Now <svg className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></span>
               </Link>
             </div>
           </div>

@@ -65,37 +65,37 @@ export default function TeamSection() {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="w-full bg-white py-12 md:py-20 px-6 md:px-12 border-t border-black/[0.05]">
+    <section ref={containerRef} className="w-full bg-[#050505] py-12 md:py-20 px-6 md:px-12 border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         
         <div className="flex items-center gap-4 mb-6 team-header">
-          <div className="w-10 h-[1px] bg-gray-400"></div>
-          <p className="font-mono text-xs tracking-widest text-gray-500 uppercase">Leadership</p>
+          <div className="w-10 h-[2px] bg-red-600"></div>
+          <p className="font-bold text-xs tracking-widest text-red-500 uppercase">Leadership</p>
         </div>
-        <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900 mb-16 team-header">
+        <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-16 team-header font-heading">
           Our Team
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
           {teamMembers.map((member, index) => (
-            <div key={index} className="team-card bg-white border border-black/[0.05] shadow-xl shadow-black/[0.03] p-8 md:p-10 rounded-2xl hover:border-black/[0.1] hover:shadow-2xl transition-all duration-300">
+            <div key={index} className="team-card bg-white/[0.02] border border-white/10 shadow-xl p-8 md:p-10 rounded-[24px] hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(220,38,38,0.15)] transition-all duration-500 hover:-translate-y-1">
               {member.image && (
                 <div className="mb-6">
-                  <img src={member.image} alt={member.name} className="w-24 h-24 rounded-full object-cover border-2 border-black/5 shadow-sm" />
+                  <img src={member.image} alt={member.name} className="w-24 h-24 rounded-full object-cover border-2 border-white/10 shadow-sm grayscale hover:grayscale-0 transition-all duration-500" />
                 </div>
               )}
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">{member.name}</h3>
-              <p className="text-[#e60000] font-medium mb-1 text-sm md:text-base">{member.title}</p>
+              <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-2 font-heading">{member.name}</h3>
+              <p className="text-red-500 font-bold mb-1 text-sm md:text-base">{member.title}</p>
               
               {member.subtitle && (
-                <p className="text-gray-600 text-xs md:text-sm mb-1">{member.subtitle}</p>
+                <p className="text-gray-400 text-xs md:text-sm mb-1">{member.subtitle}</p>
               )}
               
-              <p className="font-mono text-xs text-gray-500 mb-6">{member.credentials}</p>
+              <p className="text-xs text-gray-500 mb-6 font-medium">{member.credentials}</p>
               
-              <div className="w-full h-[1px] bg-black/[0.05] my-6"></div>
+              <div className="w-full h-[1px] bg-white/10 my-6"></div>
               
-              <p className="text-gray-600 text-sm md:text-base leading-relaxed font-light">
+              <p className="text-gray-400 text-sm md:text-base leading-relaxed">
                 {member.description}
               </p>
             </div>

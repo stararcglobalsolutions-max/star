@@ -47,19 +47,19 @@ export default function DashboardFeatureSection() {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="w-full bg-white py-12 md:py-20 px-6 md:px-12 border-t border-black/[0.05] relative overflow-hidden">
+    <section ref={containerRef} className="w-full bg-[#050505] py-12 md:py-20 px-6 md:px-12 border-t border-white/5 relative overflow-hidden">
       
       {/* Background Accent */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#e60000] opacity-5 blur-[150px] pointer-events-none rounded-full"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 bg-red-600/10 blur-[150px] pointer-events-none rounded-full"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         
         <div className="text-center mb-20 dash-header">
-          <p className="font-mono text-sm tracking-widest text-[#e60000] uppercase mb-4">Experience seamless control</p>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6">
+          <p className="font-bold text-sm tracking-widest text-red-500 uppercase mb-4">Experience seamless control</p>
+          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6 font-heading">
             Your Security, In Your Hand
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto text-lg md:text-xl font-light">
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg md:text-xl font-light">
             Take command of your entire security ecosystem with the STARARC Dashboard. Designed for clarity, speed, and absolute control.
           </p>
         </div>
@@ -69,18 +69,18 @@ export default function DashboardFeatureSection() {
           {/* Key Features */}
           <div>
             <div className="flex items-center gap-4 mb-8 dash-header">
-              <div className="w-10 h-[1px] bg-gray-400"></div>
-              <h3 className="text-2xl font-bold text-gray-900">Key Features</h3>
+              <div className="w-10 h-[2px] bg-red-600"></div>
+              <h3 className="text-2xl font-bold text-white font-heading">Key Features</h3>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {features.map((item, index) => (
-                <div key={index} className="dash-card bg-white border border-black/[0.05] shadow-lg shadow-black/[0.02] p-6 rounded-xl hover:shadow-xl hover:border-black/[0.1] transition-all duration-300">
-                  <div className="w-12 h-12 bg-[#e60000]/10 rounded-full flex items-center justify-center mb-4">
-                    <item.icon className="text-[#e60000]" size={24} />
+                <div key={index} className="dash-card bg-white/[0.02] border border-white/10 shadow-lg p-6 rounded-[24px] hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(220,38,38,0.15)] transition-all duration-300">
+                  <div className="w-12 h-12 bg-red-600/10 rounded-full flex items-center justify-center mb-4 border border-red-500/20">
+                    <item.icon className="text-red-500" size={24} />
                   </div>
-                  <h4 className="text-gray-900 font-semibold mb-2">{item.title}</h4>
-                  <p className="text-gray-600 text-sm">{item.desc}</p>
+                  <h4 className="text-white font-bold mb-2 text-lg">{item.title}</h4>
+                  <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -89,18 +89,18 @@ export default function DashboardFeatureSection() {
           {/* Benefits */}
           <div>
             <div className="flex items-center gap-4 mb-8 dash-header">
-              <div className="w-10 h-[1px] bg-gray-400"></div>
-              <h3 className="text-2xl font-bold text-gray-900">Benefits</h3>
+              <div className="w-10 h-[2px] bg-red-600"></div>
+              <h3 className="text-2xl font-bold text-white font-heading">Benefits</h3>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {benefits.map((item, index) => (
-                <div key={index} className="dash-card bg-white border border-black/[0.05] shadow-lg shadow-black/[0.02] p-6 rounded-xl hover:shadow-xl hover:border-black/[0.1] transition-all duration-300">
-                  <div className="w-12 h-12 bg-[#e60000]/10 rounded-full flex items-center justify-center mb-4">
-                    <item.icon className="text-[#e60000]" size={24} />
+                <div key={index} className="dash-card bg-white/[0.02] border border-white/10 shadow-lg p-6 rounded-[24px] hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(220,38,38,0.15)] transition-all duration-300">
+                  <div className="w-12 h-12 bg-red-600/10 rounded-full flex items-center justify-center mb-4 border border-red-500/20">
+                    <item.icon className="text-red-500" size={24} />
                   </div>
-                  <h4 className="text-gray-900 font-semibold mb-2">{item.title}</h4>
-                  <p className="text-gray-600 text-sm">{item.desc}</p>
+                  <h4 className="text-white font-bold mb-2 text-lg">{item.title}</h4>
+                  <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
