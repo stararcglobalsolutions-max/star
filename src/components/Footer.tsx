@@ -127,23 +127,7 @@ export default function Footer() {
               </li>
             </ul>
 
-            <div className="flex items-start gap-4 mb-12">
-              <div className="flex flex-col">
-                <div className="flex items-center text-white font-bold gap-1 text-[15px] mb-1.5 tracking-wide">
-                  <span className="text-[#e60000] text-[18px] leading-none">★</span> Trustpilot
-                </div>
-                <div className="flex gap-[2px]">
-                  {[1, 2, 3, 4, 5].map(i => (
-                    <div key={i} className="bg-[#e60000] w-[22px] h-[22px] flex items-center justify-center text-white text-[14px]">★</div>
-                  ))}
-                </div>
-                <span className="text-[#a1a1a1] text-[11px] mt-1.5 font-medium">Rating 4.8</span>
-              </div>
-              <div className="flex flex-col pt-1">
-                <span className="text-white font-bold text-[16px] tracking-wide mb-0.5">4,500,000</span>
-                <span className="text-[#a1a1a1] text-[11px] leading-tight max-w-[120px]">people worldwide under StarArc protection</span>
-              </div>
-            </div>
+
 
             <ul className="space-y-[14px] mb-12">
               <li>
