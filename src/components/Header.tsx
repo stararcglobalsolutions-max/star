@@ -243,10 +243,10 @@ export default function Header() {
                   </div>
 
                   {/* Footer Link (e.g. View all products) */}
-                  {item.footerLink && (
+                  {(item as any).footerLink && (
                     <div className={`mt-8 pt-6 border-t ${isLight ? 'border-black/10' : 'border-white/10'}`}>
-                      <a href="#" className={`inline-flex items-center gap-2 font-bold text-[14px] transition-colors group/view ${isLight ? 'text-black hover:text-blue-600' : 'text-white hover:text-[#e60000]'}`}>
-                        {item.footerLink}
+                      <a href="#" className={`inline-flex items-center gap-2 font-bold text-[14px] transition-colors group/view ${isLight ? 'text-black hover:text-red-600' : 'text-white hover:text-red-500'}`}>
+                        {(item as any).footerLink}
                         <ArrowRight size={16} className="group-hover/view:translate-x-1 transition-transform" />
                       </a>
                     </div>

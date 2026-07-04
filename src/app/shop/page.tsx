@@ -384,10 +384,10 @@ export function ShopHeader() {
                   </div>
 
                   {/* Footer Link (e.g. View all products) */}
-                  {item.footerLink && (
+                  {(item as any).footerLink && (
                     <div className="mt-8 pt-6 border-t border-black/10">
                       <a href="#" className="inline-flex items-center gap-2 font-bold text-[14px] transition-colors group/view text-slate-900 hover:text-red-600">
-                        {item.footerLink}
+                        {(item as any).footerLink}
                         <ArrowRight size={16} className="group-hover/view:translate-x-1 transition-transform" />
                       </a>
                     </div>
