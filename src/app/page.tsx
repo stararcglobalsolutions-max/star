@@ -5,14 +5,18 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Header from "@/components/Header";
 
+import HeroScrollAnimation from "@/components/HeroScrollAnimation";
+import AboutSection from "@/components/AboutSection";
+import OurSolutions from "@/components/OurSolutions";
+import HowItWorks from "@/components/HowItWorks";
+import IndustriesWeServe from "@/components/IndustriesWeServe";
+import WhyChooseUs from "@/components/WhyChooseUs";
+import PartnerCTASection from "@/components/PartnerCTASection";
+import Footer from "@/components/Footer";
+
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
-import HeroScrollAnimation from "@/components/HeroScrollAnimation";
-import ShowcaseSection from "@/components/ShowcaseSection";
-import SolutionOverview from "@/components/SolutionOverview";
-import PartnerCTASection from "@/components/PartnerCTASection";
-import Footer from "@/components/Footer";
 
 export default function Home() {
 
@@ -45,10 +49,13 @@ export default function Home() {
         MAIN WEBSITE CONTENT 
         Revealed after the preloader slides away
       */}
-      <div className="relative z-10 w-full">
+      <div className="relative z-10 w-full pt-[100px]">
         <HeroScrollAnimation />
-        <ShowcaseSection />
-        <SolutionOverview />
+        <WhyChooseUs />
+        <AboutSection />
+        <OurSolutions />
+        <HowItWorks />
+        <IndustriesWeServe />
         <PartnerCTASection />
         
         {/* High-End Stylish Footer */}

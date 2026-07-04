@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 
 export const navItems = [
   {
-    label: "Products",
+    label: "Monitoring Package",
     dropdown: true,
     columns: [
       {
@@ -123,39 +123,10 @@ export const navItems = [
     ]
   },
 
-  {
-    label: "Company",
-    dropdown: true,
-    columns: [
-      {
-        sections: [
-          {
-            title: "",
-            isLargeLinks: true,
-            links: ["About us", "Press page", "Events", "Career", "StarArc Next"]
-          }
-        ]
-      },
-      {
-        sections: [
-          {
-            title: "Reviews and feedback",
-            isSmall: false,
-            links: [
-              "Text reviews",
-              "Video reviews",
-              "Articles on StarArc Systems",
-              "Articles on Air Alert app"
-            ]
-          }
-        ]
-      }
-    ]
-  },
+
   { label: "About us", dropdown: false, href: "/about" },
   { label: "Shop", dropdown: false, href: "/shop" },
   { label: "For partners", dropdown: false },
-  { label: "Purchase Now", dropdown: false },
 ];
 
 export default function Header() {
@@ -203,7 +174,7 @@ export default function Header() {
         <div className="flex items-center gap-3 cursor-pointer group pointer-events-auto">
           <div className="w-[120px] md:w-[140px] h-auto group-hover:scale-105 transition-transform duration-500 ease-out">
             <img
-              src={isLight ? "https://star-1-8yo5.onrender.com/starclogo.png" : "/starclogo.png"}
+              src={isLight ? "/starclogo22.jpeg" : "/starclogo.png"}
               alt="StarArc Logo"
               className="h-full w-full object-contain"
             />
@@ -213,8 +184,8 @@ export default function Header() {
         {/* Navigation (Floating Island) */}
         <nav className={`
           hidden lg:flex items-center gap-1 p-1 rounded-full pointer-events-auto transition-all duration-300
-          ${isLight 
-            ? 'bg-white/80 backdrop-blur-xl border border-black/10 shadow-[0_8px_32px_rgba(0,0,0,0.06)]' 
+          ${isLight
+            ? 'bg-white/80 backdrop-blur-xl border border-black/10 shadow-[0_8px_32px_rgba(0,0,0,0.06)]'
             : 'bg-black/60 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)]'
           }
         `}>
@@ -225,8 +196,8 @@ export default function Header() {
                 onClick={(e) => handleNavClick(e, item)}
                 className={`
                   relative px-4 py-2.5 rounded-full text-[15px] font-semibold transition-all duration-300 ease-out flex items-center gap-1.5
-                  ${activeDropdown === item.label 
-                    ? (isLight ? 'text-black bg-black/5' : 'text-white bg-white/10') 
+                  ${activeDropdown === item.label
+                    ? (isLight ? 'text-black bg-black/5' : 'text-white bg-white/10')
                     : (isLight ? 'text-gray-600 hover:text-black hover:bg-black/5' : 'text-gray-300 hover:text-white hover:bg-white/5')
                   }
                 `}
@@ -247,8 +218,8 @@ export default function Header() {
         <div className="flex items-center gap-4 pointer-events-auto">
           <button className={`
             group flex items-center gap-1.5 px-5 py-2.5 rounded-full text-[15px] font-bold transition-all duration-300 hover:scale-105 active:scale-95 whitespace-nowrap
-            ${isLight 
-              ? 'bg-black text-white hover:bg-gray-800 shadow-[0_4px_20px_rgba(0,0,0,0.15)]' 
+            ${isLight
+              ? 'bg-black text-white hover:bg-gray-800 shadow-[0_4px_20px_rgba(0,0,0,0.15)]'
               : 'bg-white text-black hover:bg-gray-100 shadow-[0_4px_20px_rgba(255,255,255,0.25)]'
             }
           `}>
@@ -267,8 +238,8 @@ export default function Header() {
       <div
         className={`
           hidden lg:block absolute top-[60px] left-1/2 -translate-x-1/2 w-[95vw] max-w-[1050px] rounded-3xl overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-auto
-          ${isLight 
-            ? 'bg-white/95 border border-black/10 shadow-[0_40px_80px_rgba(0,0,0,0.12)]' 
+          ${isLight
+            ? 'bg-white/95 border border-black/10 shadow-[0_40px_80px_rgba(0,0,0,0.12)]'
             : 'bg-[#111111]/95 border border-white/10 shadow-[0_40px_80px_rgba(0,0,0,0.6)]'
           }
           ${activeDropdown ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-4 invisible pointer-events-none'}
