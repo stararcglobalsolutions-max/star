@@ -86,13 +86,17 @@ export default function HeroScrollAnimation() {
       images[index - 1] = img;
     };
 
-    // Kick off 4 concurrent sequential load chains.
-    // e.g., chain 1 loads: 1, 5, 9...
-    // chain 2 loads: 2, 6, 10...
-    const concurrency = Math.min(4, frameCount);
-    for (let i = 1; i <= concurrency; i++) {
-      loadImage(i);
-    }
+    // 1. Eagerly load ONLY the first frame instantly so the canvas isn't blank
+    loadImage(1);
+
+    // 2. Delay the massive 300-frame background loading so we don't block the browser's page load event
+    setTimeout(() => {
+      // Kick off 4 concurrent sequential load chains starting from frame 2
+      const concurrency = Math.min(4, frameCount - 1);
+      for (let i = 2; i <= concurrency + 1; i++) {
+        loadImage(i);
+      }
+    }, 1500); // Wait 1.5 seconds before hammering the network
 
     // GSAP ScrollTrigger to animate frames
     const tl = gsap.timeline({
