@@ -165,6 +165,7 @@ export default function Header() {
 
   // Detect light theme based on path
   const isLight = pathname === '/about';
+  const isHome = pathname === '/';
 
   useEffect(() => {
     // Subtle entry animation for the header
@@ -196,7 +197,7 @@ export default function Header() {
   return (
     <header
       ref={headerRef}
-      className="fixed -top-8 left-0 w-full z-50 px-4 md:px-8 pt-0 pb-3 md:pt-0 md:pb-3 pointer-events-none group/header"
+      className={`fixed ${isHome ? '-top-8' : 'top-4'} left-0 w-full z-50 px-4 md:px-8 pt-0 pb-3 md:pt-0 md:pb-3 pointer-events-none group/header`}
     >
       <div className="w-full flex items-center justify-between relative z-50">
         <div className="flex items-center gap-3 cursor-pointer group pointer-events-auto">
