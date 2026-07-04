@@ -4,22 +4,22 @@ import React from "react";
 const solutions = [
   {
     id: 1,
-    image: "/solution1.png",
+    image: "/solution1_new.png",
     title: "Assemble your StarArc system"
   },
   {
     id: 2,
-    image: "/solution2.png",
+    image: "/solution2_new.png",
     title: "Solutions by facility type"
   },
   {
     id: 3,
-    image: "/solution3.png",
+    image: "/solution3_new.png",
     title: "Customer stories"
   },
   {
     id: 4,
-    image: "/solution4.png",
+    image: "/solution4_new.png",
     title: "StarArc Ready products"
   }
 ];
