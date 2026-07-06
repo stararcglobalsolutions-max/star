@@ -16,11 +16,11 @@ const currentFrame = (index: number) => {
 };
 
 export default function HeroScrollAnimation() {
-  // **CRITICAL PRELOAD INSTRUCTION FOR BROWSER**
-  // This forces the browser to download the first 60 frames BEFORE rendering anything else on the page.
-  // It guarantees the hero section is prioritized above all other assets.
-  for (let i = 1; i <= 60; i++) {
-    preload(currentFrame(i), { as: "image", fetchPriority: i <= 20 ? "high" : "low" });
+  // **CRITICAL FIX FOR 503 CRASH**
+  // Only preload the first 3 frames via react-dom. 
+  // If we preload too many, Next.js generates massive HTTP headers which crash Hostinger (503 Service Unavailable).
+  for (let i = 1; i <= 3; i++) {
+    preload(currentFrame(i), { as: "image", fetchPriority: "high" });
   }
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
