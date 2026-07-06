@@ -4,6 +4,7 @@ import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { preload } from "react-dom";
 gsap.registerPlugin(ScrollTrigger);
 
 const frameCount = 300;
@@ -15,6 +16,13 @@ const currentFrame = (index: number) => {
 };
 
 export default function HeroScrollAnimation() {
+  // **CRITICAL PRELOAD INSTRUCTION FOR BROWSER**
+  // This forces the browser to download the first 60 frames BEFORE rendering anything else on the page.
+  // It guarantees the hero section is prioritized above all other assets.
+  for (let i = 1; i <= 60; i++) {
+    preload(currentFrame(i), { as: "image", fetchPriority: i <= 20 ? "high" : "low" });
+  }
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
