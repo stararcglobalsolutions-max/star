@@ -136,11 +136,28 @@ export default function HeroScrollAnimation() {
       processQueue();
     };
 
-    // 1. Queue ONLY the first 10 frames instantly. 
-    // Queuing all 300 triggers Hostinger's DDoS firewall and causes 503 Service Unavailable!
-    for (let i = 1; i <= 10; i++) {
-      queueImage(i);
-    }
+    // **SMART BATCH LOADER (Bypasses DDoS Firewall)**
+    // Instead of requesting all images instantly (which crashes Hostinger),
+    // we request them in tiny batches with a 150ms delay.
+    // This allows us to secretly download the first 60 frames very quickly
+    // without triggering any server alarms!
+    let initialPreloadTarget = 80; // Preload a huge chunk of the animation
+    let currentBatchStart = 1;
+    
+    const loadNextBatch = () => {
+      const batchEnd = Math.min(currentBatchStart + 4, frameCount);
+      for (let i = currentBatchStart; i <= batchEnd; i++) {
+        queueImage(i);
+      }
+      currentBatchStart = batchEnd + 1;
+      
+      if (currentBatchStart <= initialPreloadTarget) {
+        setTimeout(loadNextBatch, 150); // 150ms delay prevents 503 firewall block!
+      }
+    };
+    
+    // Start the stealthy batch loader
+    loadNextBatch();
 
     // GSAP ScrollTrigger to animate frames - MatchMedia for responsive pinning
     let mm = gsap.matchMedia();
@@ -194,7 +211,7 @@ export default function HeroScrollAnimation() {
           src={currentFrame(1)}
           alt="Hero Background"
           fetchPriority="high"
-          className="w-full h-full object-contain md:object-cover scale-[1.15]"
+          className="w-full h-full object-contain md:object-cover"
         />
       </div>
 
