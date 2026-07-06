@@ -102,7 +102,7 @@ export default function HeroScrollAnimation() {
     
     // Tracking progress for the preloader
     let totalLoadedForPreloader = 0;
-    const targetForPreloader = 60; // Wait for 60 frames before hiding the preloader
+    const targetForPreloader = 30; // Wait for 30 frames before hiding the preloader
 
     const processQueue = () => {
       if (loadingCount >= MAX_CONCURRENT || loadQueue.length === 0) return;
@@ -172,14 +172,15 @@ export default function HeroScrollAnimation() {
     let currentBatchStart = 1;
     
     const loadNextBatch = () => {
-      const batchEnd = Math.min(currentBatchStart + 4, frameCount);
+      // Load 3 images at a time (much safer for Hostinger firewall)
+      const batchEnd = Math.min(currentBatchStart + 2, frameCount);
       for (let i = currentBatchStart; i <= batchEnd; i++) {
         queueImage(i);
       }
       currentBatchStart = batchEnd + 1;
       
       if (currentBatchStart <= targetForPreloader) {
-        setTimeout(loadNextBatch, 150); // 150ms delay prevents 503 firewall block!
+        setTimeout(loadNextBatch, 250); // 250ms delay to guarantee no DDoS IP ban
       }
     };
     
