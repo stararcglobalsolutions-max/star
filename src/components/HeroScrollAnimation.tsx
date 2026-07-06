@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -18,9 +18,6 @@ const currentFrame = (index: number) => {
 };
 
 export default function HeroScrollAnimation() {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [loadingProgress, setLoadingProgress] = useState(0);
-  
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -97,12 +94,8 @@ export default function HeroScrollAnimation() {
 
     // **BULLETPROOF ANTI-503 QUEUE SYSTEM**
     let loadingCount = 0;
-    const MAX_CONCURRENT = 4; // Safely restricted to 4 to prevent Hostinger DDoS block
+    const MAX_CONCURRENT = 3; // Reduced to absolute minimum 3 to prevent Hostinger resource limits
     const loadQueue: number[] = [];
-    
-    // Tracking progress for the preloader
-    let totalLoadedForPreloader = 0;
-    const targetForPreloader = 30; // Wait for 30 frames before hiding the preloader
 
     const processQueue = () => {
       if (loadingCount >= MAX_CONCURRENT || loadQueue.length === 0) return;
@@ -121,32 +114,11 @@ export default function HeroScrollAnimation() {
 
       img.onload = () => {
         loadingCount--;
-        
-        // Update preloader progress
-        if (index <= targetForPreloader) {
-          totalLoadedForPreloader++;
-          const progress = Math.round((totalLoadedForPreloader / targetForPreloader) * 100);
-          setLoadingProgress(progress);
-          
-          if (totalLoadedForPreloader >= targetForPreloader) {
-            setTimeout(() => setIsLoaded(true), 500); // 500ms delay for smooth fade
-          }
-        }
-        
         processQueue(); // Process next in queue
       };
 
       img.onerror = () => {
         loadingCount--;
-        
-        // Even if error, increment so we don't get stuck forever
-        if (index <= targetForPreloader) {
-          totalLoadedForPreloader++;
-          if (totalLoadedForPreloader >= targetForPreloader) {
-            setTimeout(() => setIsLoaded(true), 500);
-          }
-        }
-        
         processQueue(); // Move on so we don't block the queue forever
       };
 
@@ -164,28 +136,12 @@ export default function HeroScrollAnimation() {
       processQueue();
     };
 
-    // **SMART BATCH LOADER (Bypasses DDoS Firewall)**
-    // Instead of requesting all images instantly (which crashes Hostinger),
-    // we request them in tiny batches with a 150ms delay.
-    // This allows us to secretly download the first 60 frames very quickly
-    // without triggering any server alarms!
-    let currentBatchStart = 1;
-    
-    const loadNextBatch = () => {
-      // Load 3 images at a time (much safer for Hostinger firewall)
-      const batchEnd = Math.min(currentBatchStart + 2, frameCount);
-      for (let i = currentBatchStart; i <= batchEnd; i++) {
-        queueImage(i);
-      }
-      currentBatchStart = batchEnd + 1;
-      
-      if (currentBatchStart <= targetForPreloader) {
-        setTimeout(loadNextBatch, 250); // 250ms delay to guarantee no DDoS IP ban
-      }
-    };
-    
-    // Start the stealthy batch loader
-    loadNextBatch();
+    // ONLY queue the absolute minimum needed to start the animation.
+    // We cannot download any more in the background because Hostinger's CPU/RAM limits
+    // will forcefully crash the server with a 503 error.
+    for (let i = 1; i <= 5; i++) {
+      queueImage(i);
+    }
 
     // GSAP ScrollTrigger to animate frames - MatchMedia for responsive pinning
     let mm = gsap.matchMedia();
@@ -226,29 +182,7 @@ export default function HeroScrollAnimation() {
   }, { scope: containerRef });
 
   return (
-    <>
-      {/* FULL SCREEN LUXURY PRELOADER */}
-      <div 
-        className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-black transition-opacity duration-1000 ease-in-out ${isLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
-      >
-        <div className="flex flex-col items-center max-w-md w-full px-8">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-[0.2em] text-white mb-8 uppercase">StarArc</h2>
-          
-          <div className="w-full h-[2px] bg-white/10 rounded-full overflow-hidden relative">
-            <div 
-              className="absolute top-0 left-0 h-full bg-white transition-all duration-300 ease-out"
-              style={{ width: `${loadingProgress}%` }}
-            />
-          </div>
-          
-          <div className="mt-6 text-white/50 text-xs tracking-[0.3em] uppercase flex items-center gap-2">
-            <span>Loading Experience</span>
-            <span className="w-8 text-right font-mono">{loadingProgress}%</span>
-          </div>
-        </div>
-      </div>
-
-      <div ref={containerRef} className="h-[100svh] md:h-screen w-full relative overflow-hidden bg-black flex flex-col justify-center">
+    <div ref={containerRef} className="h-[100svh] md:h-screen w-full relative overflow-hidden bg-black flex flex-col justify-center">
 
       {/* 
         CRITICAL LCP OPTIMIZATION (PageSpeed Insights Fix): 
@@ -284,11 +218,6 @@ export default function HeroScrollAnimation() {
 
 
       </div>
-
-
-
-
     </div>
-    </>
   );
 }
