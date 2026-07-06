@@ -4,7 +4,6 @@ import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { preload } from "react-dom";
 gsap.registerPlugin(ScrollTrigger);
 
 const frameCount = 300;
@@ -16,13 +15,6 @@ const currentFrame = (index: number) => {
 };
 
 export default function HeroScrollAnimation() {
-  // **CRITICAL FIX FOR 503 CRASH**
-  // Only preload the first 3 frames via react-dom. 
-  // If we preload too many, Next.js generates massive HTTP headers which crash Hostinger (503 Service Unavailable).
-  for (let i = 1; i <= 3; i++) {
-    preload(currentFrame(i), { as: "image", fetchPriority: "high" });
-  }
-
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -95,11 +87,11 @@ export default function HeroScrollAnimation() {
       }
     }
 
-    const PRELOAD_AHEAD = 20;
+    const PRELOAD_AHEAD = 15; // Increased slightly for smoother scrolling but safely below DDoS threshold
 
     // **BULLETPROOF ANTI-503 QUEUE SYSTEM**
     let loadingCount = 0;
-    const MAX_CONCURRENT = 6; // Safely increased to 6 for much faster live server loading
+    const MAX_CONCURRENT = 4; // Safely restricted to 4 to prevent Hostinger DDoS block
     const loadQueue: number[] = [];
 
     const processQueue = () => {
@@ -141,10 +133,9 @@ export default function HeroScrollAnimation() {
       processQueue();
     };
 
-    // 1. Queue ALL 300 frames instantly on page load!
-    // The MAX_CONCURRENT limiter will ensure they download safely in the background
-    // This guarantees the images are ready before the user even thinks about scrolling.
-    for (let i = 1; i <= frameCount; i++) {
+    // 1. Queue ONLY the first 10 frames instantly. 
+    // Queuing all 300 triggers Hostinger's DDoS firewall and causes 503 Service Unavailable!
+    for (let i = 1; i <= 10; i++) {
       queueImage(i);
     }
 
