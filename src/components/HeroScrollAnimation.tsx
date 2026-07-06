@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -18,6 +18,9 @@ const currentFrame = (index: number) => {
 };
 
 export default function HeroScrollAnimation() {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [loadingProgress, setLoadingProgress] = useState(0);
+  
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -96,6 +99,10 @@ export default function HeroScrollAnimation() {
     let loadingCount = 0;
     const MAX_CONCURRENT = 4; // Safely restricted to 4 to prevent Hostinger DDoS block
     const loadQueue: number[] = [];
+    
+    // Tracking progress for the preloader
+    let totalLoadedForPreloader = 0;
+    const targetForPreloader = 60; // Wait for 60 frames before hiding the preloader
 
     const processQueue = () => {
       if (loadingCount >= MAX_CONCURRENT || loadQueue.length === 0) return;
@@ -114,11 +121,32 @@ export default function HeroScrollAnimation() {
 
       img.onload = () => {
         loadingCount--;
+        
+        // Update preloader progress
+        if (index <= targetForPreloader) {
+          totalLoadedForPreloader++;
+          const progress = Math.round((totalLoadedForPreloader / targetForPreloader) * 100);
+          setLoadingProgress(progress);
+          
+          if (totalLoadedForPreloader >= targetForPreloader) {
+            setTimeout(() => setIsLoaded(true), 500); // 500ms delay for smooth fade
+          }
+        }
+        
         processQueue(); // Process next in queue
       };
 
       img.onerror = () => {
         loadingCount--;
+        
+        // Even if error, increment so we don't get stuck forever
+        if (index <= targetForPreloader) {
+          totalLoadedForPreloader++;
+          if (totalLoadedForPreloader >= targetForPreloader) {
+            setTimeout(() => setIsLoaded(true), 500);
+          }
+        }
+        
         processQueue(); // Move on so we don't block the queue forever
       };
 
@@ -141,7 +169,6 @@ export default function HeroScrollAnimation() {
     // we request them in tiny batches with a 150ms delay.
     // This allows us to secretly download the first 60 frames very quickly
     // without triggering any server alarms!
-    let initialPreloadTarget = 80; // Preload a huge chunk of the animation
     let currentBatchStart = 1;
     
     const loadNextBatch = () => {
@@ -151,7 +178,7 @@ export default function HeroScrollAnimation() {
       }
       currentBatchStart = batchEnd + 1;
       
-      if (currentBatchStart <= initialPreloadTarget) {
+      if (currentBatchStart <= targetForPreloader) {
         setTimeout(loadNextBatch, 150); // 150ms delay prevents 503 firewall block!
       }
     };
@@ -198,7 +225,29 @@ export default function HeroScrollAnimation() {
   }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} className="h-[100svh] md:h-screen w-full relative overflow-hidden bg-black flex flex-col justify-center">
+    <>
+      {/* FULL SCREEN LUXURY PRELOADER */}
+      <div 
+        className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-black transition-opacity duration-1000 ease-in-out ${isLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+      >
+        <div className="flex flex-col items-center max-w-md w-full px-8">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-[0.2em] text-white mb-8 uppercase">StarArc</h2>
+          
+          <div className="w-full h-[2px] bg-white/10 rounded-full overflow-hidden relative">
+            <div 
+              className="absolute top-0 left-0 h-full bg-white transition-all duration-300 ease-out"
+              style={{ width: `${loadingProgress}%` }}
+            />
+          </div>
+          
+          <div className="mt-6 text-white/50 text-xs tracking-[0.3em] uppercase flex items-center gap-2">
+            <span>Loading Experience</span>
+            <span className="w-8 text-right font-mono">{loadingProgress}%</span>
+          </div>
+        </div>
+      </div>
+
+      <div ref={containerRef} className="h-[100svh] md:h-screen w-full relative overflow-hidden bg-black flex flex-col justify-center">
 
       {/* 
         CRITICAL LCP OPTIMIZATION (PageSpeed Insights Fix): 
@@ -239,5 +288,6 @@ export default function HeroScrollAnimation() {
 
 
     </div>
+    </>
   );
 }
