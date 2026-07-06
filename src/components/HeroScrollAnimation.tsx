@@ -35,8 +35,10 @@ export default function HeroScrollAnimation() {
     const airpods = { frame: 1 };
     let lastRenderedFrame = -1;
 
-    // Function to draw the current frame onto the canvas
-    function render() {
+    let animationFrameId: number;
+
+    // Function to draw the current frame onto the canvas (Runs on Animation Frame for 0 lag)
+    function renderLoop() {
       if (!context || !canvas) return;
 
       const targetFrame = Math.floor(airpods.frame);
@@ -67,11 +69,16 @@ export default function HeroScrollAnimation() {
           centerShift_x, centerShift_y, img.width * ratio, img.height * ratio
         );
       }
+      
+      animationFrameId = requestAnimationFrame(renderLoop);
+    }
+    
+    // Start the super-smooth render loop
+    renderLoop();
 
-      // **ANTI-503 MAGIC (Fix for Shared Hosting)**
-      // Shared servers (like Hostinger) crash and throw 503 errors if you request too many images at once.
-      // We strictly limit the load window to only 2 frames behind and 5 frames ahead.
-      // This keeps concurrent connections under 10, preventing the server from blocking the IP.
+    // GSAP purely handles logic and network queueing now - ZERO blocking on main thread!
+    function onScrollUpdate() {
+      const targetFrame = Math.floor(airpods.frame);
       const startLoad = Math.max(1, targetFrame - 2);
       const endLoad = Math.min(frameCount, targetFrame + PRELOAD_AHEAD);
 
@@ -80,11 +87,11 @@ export default function HeroScrollAnimation() {
       }
     }
 
-    const PRELOAD_AHEAD = 10;
+    const PRELOAD_AHEAD = 20;
 
     // **BULLETPROOF ANTI-503 QUEUE SYSTEM**
     let loadingCount = 0;
-    const MAX_CONCURRENT = 3; // NEVER allow more than 3 simultaneous network requests
+    const MAX_CONCURRENT = 6; // Safely increased to 6 for much faster live server loading
     const loadQueue: number[] = [];
 
     const processQueue = () => {
@@ -104,7 +111,6 @@ export default function HeroScrollAnimation() {
 
       img.onload = () => {
         loadingCount--;
-        if (index === 1) render();
         processQueue(); // Process next in queue
       };
 
@@ -127,8 +133,10 @@ export default function HeroScrollAnimation() {
       processQueue();
     };
 
-    // 1. Queue the first few frames instantly
-    for (let i = 1; i <= 5; i++) {
+    // 1. Queue ALL 300 frames instantly on page load!
+    // The MAX_CONCURRENT limiter will ensure they download safely in the background
+    // This guarantees the images are ready before the user even thinks about scrolling.
+    for (let i = 1; i <= frameCount; i++) {
       queueImage(i);
     }
 
@@ -146,7 +154,7 @@ export default function HeroScrollAnimation() {
           pin: true,
         }
       });
-      tl.to(airpods, { frame: frameCount, ease: "none", onUpdate: render });
+      tl.to(airpods, { frame: frameCount, ease: "none", onUpdate: onScrollUpdate });
     });
 
     mm.add("(max-width: 767px)", () => {
@@ -160,8 +168,13 @@ export default function HeroScrollAnimation() {
           pin: true, // Re-enable pin so animation plays completely
         }
       });
-      tl.to(airpods, { frame: frameCount, ease: "none", onUpdate: render });
+      tl.to(airpods, { frame: frameCount, ease: "none", onUpdate: onScrollUpdate });
     });
+
+    // Cleanup memory and animation frames
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+    };
 
   }, { scope: containerRef });
 
