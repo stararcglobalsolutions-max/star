@@ -9,7 +9,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#181818] text-white pt-16 pb-12 px-6 md:px-12 font-sans border-t border-white/5">
+    <footer className="bg-[#181818] text-white pt-16 pb-8 px-6 md:px-12 font-sans border-t border-white/5">
       <div className="max-w-[1400px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-x-8 gap-y-12">
 
@@ -17,14 +17,17 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-[15px] mb-5">Products</h4>
             <ul className="space-y-[12px] mb-10">
-              {['Intrusion protection', 'Video surveillance', 'Fire and life safety', 'Comfort and automation', 'All products', 'Services', 'System integrations', 'StarArc Ready products', 'Fibra wired protocol', 'StarArc radio protocols'].map(link => (
+              {['Intrusion protection', 'Video surveillance', 'Fire and life safety', 'Comfort and automation'].map(link => (
                 <li key={link}><a href="#" className="text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">{link}</a></li>
               ))}
+              <li><a href="/shop" className="text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">All products</a></li>
+              <li><a href="/monitoring-package" className="text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">Services</a></li>
+              <li><a href="#" className="text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">System integrations</a></li>
             </ul>
 
             <h4 className="font-semibold text-[15px] mb-5">Software</h4>
             <ul className="space-y-[12px] mb-8">
-              {['StarArc Security System', 'StarArc PRO: Tool for Engineers', 'StarArc Desktop', 'StarArc PRO Desktop', 'StarArc TV', 'StarArc Translator PRO', 'StarArc Cloud Signaling', 'StarArc Media Player', 'Scenarios'].map(link => (
+              {['Stararc Security System', 'Stararc PRO: Tool for Engineers', 'Stararc Desktop', 'Stararc Cloud Signaling', 'Stararc Mobile App'].map(link => (
                 <li key={link}><a href="#" className="text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">{link}</a></li>
               ))}
             </ul>
@@ -51,7 +54,7 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-[15px] mb-5">Solutions</h4>
             <ul className="space-y-[12px]">
-              {['Customer stories', 'Solutions by facility type', 'Commercial fire detection and alarm system', 'Wireless Grade 3 solution', 'Video surveillance solution', 'Integration with Yale smart locks', 'Upgrades and retrofits', 'Why StarArc', 'How it works'].map(link => (
+              {['Solutions by facility type', 'Commercial fire detection and alarm system', 'Wireless Grade 3 solution', 'Video surveillance solution', 'Integration with Yale smart locks', 'Upgrades and retrofits', 'Why Stararc', 'How it works', '24/7 Monitoring', 'Maintenance', 'Laser Detection'].map(link => (
                 <li key={link}><a href="#" className="text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">{link}</a></li>
               ))}
             </ul>
@@ -61,17 +64,12 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-[15px] mb-5">Support</h4>
             <ul className="space-y-[12px] mb-10">
-              {['Manuals and articles', 'Compliance with standards'].map(link => (
+              {['Compliance with standards'].map(link => (
                 <li key={link}><a href="#" className="text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">{link}</a></li>
               ))}
             </ul>
 
-            <h4 className="font-semibold text-[15px] mb-5">Tools</h4>
-            <ul className="space-y-[12px] mb-10">
-              {['StarArc device compatibility', 'CMS software compatibility', 'StarArc Services availability', 'Video storage calculator', 'Video device calculator', 'Battery life calculator', 'Radio communication range calculator', 'Switches and outlets configurator', 'Fibra power supply calculator', 'All web tools'].map(link => (
-                <li key={link}><a href="#" className="text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">{link}</a></li>
-              ))}
-            </ul>
+
 
             <h4 className="font-semibold text-[15px] mb-5 pr-4 leading-snug">Monitoring solutions and integrations</h4>
             <ul className="space-y-[12px]">
@@ -85,7 +83,7 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-[15px] mb-5">Company</h4>
             <ul className="space-y-[12px] mb-10">
-              {['Blog', 'About us', 'Press page', 'Events', 'Career', 'StarArc Next', 'Reviews and feedback'].map(link => (
+              {['Blog', 'About us', 'Career', 'Stararc Next', 'Reviews and feedback'].map(link => (
                 <li key={link}><a href="#" className="text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">{link}</a></li>
               ))}
               <li><a href="/terms-and-conditions" className="text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">Terms & Conditions</a></li>
@@ -94,7 +92,7 @@ export default function Footer() {
 
             <h4 className="font-semibold text-[15px] mb-5">For partners</h4>
             <ul className="space-y-[12px]">
-              {['For partners', 'StarArc Academy', 'Partner Portal', 'StarArc PRO channel'].map(link => (
+              {['For partners', 'Stararc Academy', 'Partner Portal'].map(link => (
                 <li key={link}><a href="#" className="text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">{link}</a></li>
               ))}
             </ul>
@@ -112,12 +110,12 @@ export default function Footer() {
             <ul className="space-y-[14px] mb-12">
               <li>
                 <a href="#" className="flex items-center gap-3 text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">
-                  <Mail size={18} /> support@stararc.com
+                  <Mail size={18} /> Support@stararc.com
                 </a>
               </li>
               <li>
                 <a href="#" className="flex items-center gap-3 text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">
-                  <Send size={18} /> @StarArcSystemsSupport_Bot
+                  <Send size={18} /> @StararcSystemsSupport_Bot
                 </a>
               </li>
               <li>
@@ -160,14 +158,29 @@ export default function Footer() {
               </a>
             </div>
           </div>
-
         </div>
-
-        {/* Floating Scroll to Top */}
-        <div className="relative mt-8">
+        
+        {/* Footer Bottom / Copyright */}
+        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 text-[#a1a1a1] text-sm relative z-10">
+          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-center md:text-left">
+            <p>© {new Date().getFullYear()} STARARC. All rights reserved.</p>
+            <p className="hidden md:block">|</p>
+            <p>
+              Developed by{" "}
+              <a 
+                href="https://eveswebworkspvtltd.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-white hover:text-red-500 transition-colors font-medium"
+              >
+                Eves Web Works Pvt Ltd
+              </a>
+            </p>
+          </div>
+          
           <button
             onClick={scrollToTop}
-            className="absolute right-0 bottom-0 border border-[#333] hover:border-white text-[#a1a1a1] hover:text-white rounded-full p-3 transition-colors flex items-center justify-center bg-[#181818]"
+            className="border border-[#333] hover:border-white text-[#a1a1a1] hover:text-white rounded-full p-2 md:p-3 transition-colors flex items-center justify-center bg-[#181818]"
             aria-label="Scroll to top"
           >
             <ChevronUp size={20} />

@@ -11,8 +11,8 @@ import OurSolutions from "@/components/OurSolutions";
 import HowItWorks from "@/components/HowItWorks";
 import IndustriesWeServe from "@/components/IndustriesWeServe";
 import WhyChooseUs from "@/components/WhyChooseUs";
-import PartnerCTASection from "@/components/PartnerCTASection";
 import Footer from "@/components/Footer";
+import CompanyOverviewSection from "@/components/CompanyOverviewSection";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -56,7 +56,8 @@ export default function Home() {
         <OurSolutions />
         <HowItWorks />
         <IndustriesWeServe />
-        <PartnerCTASection />
+        <CompanyOverviewSection />
+
         
         {/* High-End Stylish Footer */}
         <Footer />

@@ -78,10 +78,11 @@ export default function TeamSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
           {teamMembers.map((member, index) => (
-            <div key={index} className="team-card bg-white/[0.02] border border-white/10 shadow-xl p-8 md:p-10 rounded-[24px] hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(220,38,38,0.15)] transition-all duration-500 hover:-translate-y-1">
+            <div key={index} className="group team-card bg-white/[0.02] border border-white/10 shadow-xl p-8 md:p-10 rounded-[24px] hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(220,38,38,0.15)] transition-all duration-500 hover:-translate-y-1">
               {member.image && (
-                <div className="mb-6">
-                  <img src={member.image} alt={member.name} className="w-24 h-24 rounded-full object-cover border-2 border-white/10 shadow-sm grayscale hover:grayscale-0 transition-all duration-500" />
+                <div className="mb-6 relative inline-block">
+                  <div className="absolute inset-0 bg-red-600/20 rounded-full blur-md"></div>
+                  <img src={member.image} alt={member.name} className="relative w-28 h-28 rounded-full object-cover border-2 border-red-500/40 shadow-[0_0_20px_rgba(220,38,38,0.15)] transition-all duration-500 group-hover:border-red-500 group-hover:shadow-[0_0_30px_rgba(220,38,38,0.4)]" />
                 </div>
               )}
               <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-2 font-heading">{member.name}</h3>

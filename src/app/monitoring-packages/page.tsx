@@ -55,11 +55,11 @@ export default function MonitoringPackagesPage() {
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto mb-16">
           <div className="hero-text flex items-center gap-3 mb-6">
             <span className="w-8 h-[2px] bg-red-600"></span>
-            <span className="text-red-500 font-bold uppercase tracking-[0.2em] text-sm">Monitoring Plans</span>
+            <span className="text-red-500 font-bold uppercase tracking-[0.2em] text-sm">Monitoring</span>
             <span className="w-8 h-[2px] bg-red-600"></span>
           </div>
           <h1 className="hero-text text-5xl md:text-7xl font-extrabold tracking-tight mb-6 font-heading">
-            Choose Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-white">Protection</span>
+            Security, <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-white">Reimagined</span>
           </h1>
           <p className="hero-text text-gray-400 text-lg md:text-xl leading-relaxed">
             Enterprise-grade monitoring packages tailored for both Ajax intelligent ecosystems and Dahua surveillance networks.

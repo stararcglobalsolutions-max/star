@@ -10,14 +10,14 @@ if (typeof window !== "undefined") {
 }
 
 const industries = [
-  { name: "Residential", image: "/industry_residential.png" },
-  { name: "Apartments & Condos", image: "/industry_apartments.png" },
-  { name: "Commercial Offices", image: "/industry_commercial.png" },
-  { name: "Warehouses", image: "/industry_warehouse.png" },
+  { name: "Residential", image: "/residential-img.png" },
+  { name: "Apartments & Condos", image: "/apartments.png" },
+  { name: "Commercial Offices", image: "/FOR COMERCIAL OFFICIES.png" },
+  { name: "Warehouses", image: "/FOR WEARHOUSE.png" },
   { name: "Retail Stores", image: "/industry_retail.png" },
   { name: "Educational Institutions", image: "/industry_education.png" },
-  { name: "Healthcare Facilities", image: "/industry_healthcare.png" },
-  { name: "Industrial Sites", image: "/industry_industrial.png" }
+  { name: "Healthcare Facilities", image: "/HEALTHCARE FACILITIES.png" },
+  { name: "Industrial Sites", image: "/INDUSTRIAL.png" }
 ];
 
 export default function IndustriesWeServe() {
@@ -72,7 +72,7 @@ export default function IndustriesWeServe() {
         {/* Image Grid */}
         <div ref={containerRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {industries.map((item, idx) => (
-            <div key={idx} className="group relative w-full h-[280px] lg:h-[320px] rounded-xl overflow-hidden cursor-pointer shadow-xl border border-white/5">
+            <div key={idx} className="group relative w-full h-[280px] lg:h-[320px] rounded-none overflow-hidden cursor-pointer shadow-xl border border-white/5">
               {/* Background Image */}
               <img 
                 src={item.image} 

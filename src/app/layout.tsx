@@ -26,9 +26,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${outfit.variable} h-full antialiased`}
+      className={`${inter.variable} ${outfit.variable} antialiased`}
     >
-      <body className="min-h-full flex flex-col selection:bg-white/20 selection:text-white">
+      <body className="flex flex-col selection:bg-white/20 selection:text-white">
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

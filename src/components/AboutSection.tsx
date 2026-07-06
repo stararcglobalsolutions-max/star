@@ -68,8 +68,6 @@ export default function AboutSection() {
 
   return (
     <section ref={sectionRef} className="relative w-full bg-black text-white pt-16 pb-10 lg:pt-20 lg:pb-12 overflow-hidden border-t border-white/10">
-      {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-red-600/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
@@ -110,8 +108,8 @@ export default function AboutSection() {
                 const Icon = item.icon;
                 return (
                   <div key={idx} className="flex items-center gap-4 group cursor-default">
-                    <div className="w-12 h-12 rounded-xl bg-red-950/20 flex items-center justify-center border border-red-600/60 group-hover:border-red-500 group-hover:bg-red-600/20 transition-all duration-300 shadow-[0_0_10px_rgba(220,38,38,0.05)] group-hover:shadow-[0_0_20px_rgba(220,38,38,0.2)]">
-                      <Icon className="w-5 h-5 text-red-500 transition-colors" strokeWidth={2} />
+                    <div className="flex items-center justify-center transition-all duration-300">
+                      <Icon className="w-6 h-6 text-gray-400 group-hover:text-white transition-colors" strokeWidth={1.5} />
                     </div>
                     <span className="font-semibold text-gray-300 group-hover:text-white transition-colors text-[15px]">
                       {item.text}
@@ -123,28 +121,13 @@ export default function AboutSection() {
           </div>
 
           {/* Right: Image Composition */}
-          <div ref={imageRef} className="relative h-[600px] lg:h-[700px] w-full mt-10 lg:mt-0">
-            {/* Primary Image */}
-            <div className="absolute top-0 right-0 w-[85%] h-[75%] rounded-3xl overflow-hidden shadow-2xl border border-white/10 group z-10">
-              <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-700 z-10"></div>
-              <img 
-                src="/smart_security_app.png" 
-                alt="Smart Security App"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out"
-              />
-            </div>
-            
-            {/* Secondary Image */}
-            <div className="absolute bottom-0 left-0 w-[70%] h-[60%] rounded-3xl overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.8)] border border-white/10 group z-20">
-              <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-700 z-10"></div>
-              <img 
-                src="/modern_commercial_security.png"
-                alt="Commercial Security Building"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out"
-              />
-            </div>
-
-            {/* Floating Badge Removed as requested */}
+          <div ref={imageRef} className="relative h-[450px] lg:h-[600px] w-full mt-10 lg:mt-0 rounded-[32px] overflow-hidden border border-white/5 group shadow-2xl">
+            <img 
+              src="/canada img.jpeg" 
+              alt="Stararc Canada Security"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out"
+            />
+            <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-transparent to-black/20 pointer-events-none z-10"></div>
           </div>
 
         </div>

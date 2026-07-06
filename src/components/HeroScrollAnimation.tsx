@@ -132,27 +132,41 @@ export default function HeroScrollAnimation() {
       queueImage(i);
     }
 
-    // GSAP ScrollTrigger to animate frames
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        end: "+=150%",
-        scrub: 0.15,
-        pin: true,
-      }
+    // GSAP ScrollTrigger to animate frames - MatchMedia for responsive pinning
+    let mm = gsap.matchMedia();
+    
+    mm.add("(min-width: 768px)", () => {
+      // Desktop - Pin and animate over a long scroll
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "+=150%",
+          scrub: 0.15,
+          pin: true,
+        }
+      });
+      tl.to(airpods, { frame: frameCount, ease: "none", onUpdate: render });
     });
 
-    tl.to(airpods, {
-      frame: frameCount,
-      ease: "none",
-      onUpdate: render,
+    mm.add("(max-width: 767px)", () => {
+      // Mobile - Pin it, but with a shorter scroll duration, and container will be 100svh so no gap is visible
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "+=100%", // Shorter scroll distance for mobile
+          scrub: 0.15,
+          pin: true, // Re-enable pin so animation plays completely
+        }
+      });
+      tl.to(airpods, { frame: frameCount, ease: "none", onUpdate: render });
     });
 
   }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} className="h-screen w-full relative overflow-hidden bg-black">
+    <div ref={containerRef} className="h-[100svh] md:h-screen w-full relative overflow-hidden bg-black flex flex-col justify-center">
 
       {/* 
         CRITICAL LCP OPTIMIZATION (PageSpeed Insights Fix): 

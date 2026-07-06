@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { ArrowUpRight, Menu, ChevronDown, ChevronRight, ArrowRight } from "lucide-react";
+import { ArrowUpRight, Menu, X, ChevronDown, ChevronRight, ArrowRight } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 export const navItems = [
@@ -14,7 +14,7 @@ export const navItems = [
   { label: "About us", dropdown: false, href: "/about" },
   { label: "Shop", dropdown: false, href: "/shop" },
   {
-    label: "Monitoring Package",
+    label: "Monitoring",
     dropdown: false,
     href: "/monitoring-packages",
   },
@@ -84,6 +84,7 @@ export const navItems = [
 export default function Header() {
   const headerRef = useRef<HTMLElement>(null);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
   // Detect if home page for specific logic
@@ -167,22 +168,80 @@ export default function Header() {
         </nav>
 
         {/* Right Action */}
-        <div className="flex items-center gap-4 pointer-events-auto">
+        <div className="flex items-center gap-2 md:gap-4 pointer-events-auto">
           <button className={`
-            group flex items-center gap-1.5 px-5 py-2.5 rounded-full text-[15px] font-bold transition-all duration-300 hover:scale-105 active:scale-95 whitespace-nowrap
+            group flex items-center gap-1 md:gap-1.5 px-3 md:px-5 py-2 md:py-2.5 rounded-full text-[13px] md:text-[15px] font-bold transition-all duration-300 hover:scale-105 active:scale-95 whitespace-nowrap
             ${isLight
               ? 'bg-black text-white hover:bg-gray-800 shadow-[0_4px_20px_rgba(0,0,0,0.15)]'
               : 'bg-white text-black hover:bg-gray-100 shadow-[0_4px_20px_rgba(255,255,255,0.25)]'
             }
           `}>
             Start Project
-            <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+            <ArrowUpRight className="w-3 md:w-3.5 h-3 md:h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
           </button>
 
           {/* Mobile Menu Icon */}
-          <button className={`lg:hidden p-2 hover:bg-black/5 rounded-full transition-colors ${isLight ? 'text-black' : 'text-white'}`}>
-            <Menu className="w-6 h-6" />
+          <button 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className={`lg:hidden p-2 hover:bg-black/5 rounded-full transition-colors relative z-50 ${isMobileMenuOpen ? 'text-white' : (isLight ? 'text-black' : 'text-white')}`}
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <div 
+        className={`
+          absolute top-8 left-0 w-[100vw] h-[100dvh] bg-[#050505] z-40 transition-transform duration-500 ease-in-out pointer-events-auto lg:hidden
+          ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}
+        `}
+      >
+        <div className="flex flex-col h-full pt-24 px-6 pb-12 overflow-y-auto">
+          <div className="flex flex-col gap-6">
+            {navItems.map((item, idx) => (
+              <div key={idx} className="flex flex-col border-b border-white/10 pb-4">
+                {item.dropdown ? (
+                  <>
+                    <button 
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setActiveDropdown(activeDropdown === item.label ? null : item.label);
+                      }}
+                      className="flex items-center justify-between text-2xl font-bold text-white w-full text-left"
+                    >
+                      {item.label}
+                      <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${activeDropdown === item.label ? 'rotate-180' : ''}`} />
+                    </button>
+                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activeDropdown === item.label ? 'max-h-[1000px] mt-4 opacity-100' : 'max-h-0 opacity-0'}`}>
+                      {item.columns?.map((col, colIdx) => (
+                        <div key={colIdx} className="flex flex-col gap-6 mb-6">
+                          {col.sections.map((sec: any, secIdx: number) => (
+                            <div key={secIdx} className="flex flex-col gap-2">
+                              {sec.title && <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wider">{sec.title}</h4>}
+                              {sec.links.length > 0 && (
+                                <ul className="flex flex-col gap-3 mt-1">
+                                  {sec.links.map((link: string, lIdx: number) => (
+                                    <li key={lIdx}>
+                                      <a href="#" className="text-gray-300 text-base">{link}</a>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <a href={item.href || "#"} className="text-2xl font-bold text-white" onClick={() => setIsMobileMenuOpen(false)}>
+                    {item.label}
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
