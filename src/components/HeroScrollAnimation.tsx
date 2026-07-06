@@ -56,13 +56,11 @@ export default function HeroScrollAnimation() {
       if (frameToDraw >= 0 && frameToDraw !== lastRenderedFrame) {
         lastRenderedFrame = frameToDraw;
         const img = images[frameToDraw]!;
-        context.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Calculate scale to cover canvas (object-cover equivalent)
-        const scaleFactor = 1.15;
-        const hRatio = canvas.width / img.width;
-        const vRatio = canvas.height / img.height;
-        const ratio = Math.max(hRatio, vRatio) * scaleFactor;
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Calculate aspect ratio to fit the image properly like 'object-cover'
+        const ratio = Math.max(canvas.width / img.width, canvas.height / img.height);
         const centerShift_x = (canvas.width - img.width * ratio) / 2;
         const centerShift_y = (canvas.height - img.height * ratio) / 2;
 
@@ -90,11 +88,11 @@ export default function HeroScrollAnimation() {
       }
     }
 
-    const PRELOAD_AHEAD = 15; // Increased slightly for smoother scrolling but safely below DDoS threshold
+    const PRELOAD_AHEAD = 5; // Absolute minimum to avoid hitting the Hostinger 503 firewall
 
     // **BULLETPROOF ANTI-503 QUEUE SYSTEM**
     let loadingCount = 0;
-    const MAX_CONCURRENT = 3; // Reduced to absolute minimum 3 to prevent Hostinger resource limits
+    const MAX_CONCURRENT = 1; // Strictly limit to 1 concurrent request so Hostinger never sees a spike
     const loadQueue: number[] = [];
 
     const processQueue = () => {
@@ -218,6 +216,8 @@ export default function HeroScrollAnimation() {
 
 
       </div>
+
+
     </div>
   );
 }
