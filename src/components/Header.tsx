@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { ArrowUpRight, Menu, X, ChevronDown, ChevronRight, ArrowRight } from "lucide-react";
+import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 export const navItems = [
@@ -88,6 +88,7 @@ export default function Header() {
   const pathname = usePathname();
 
   // Detect if home page for specific logic
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const isHome = pathname === '/';
   const isLight = false; // Force dark theme globally for cinematic look
 
@@ -111,7 +112,7 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleNavClick = (e: React.MouseEvent, item: any) => {
+  const handleNavClick = (e: React.MouseEvent, item: { label: string, dropdown: boolean }) => {
     if (item.dropdown) {
       e.preventDefault();
       setActiveDropdown(prev => (prev === item.label ? null : item.label));
@@ -205,7 +206,7 @@ export default function Header() {
                     <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activeDropdown === item.label ? 'max-h-[1000px] mt-4 opacity-100' : 'max-h-0 opacity-0'}`}>
                       {item.columns?.map((col, colIdx) => (
                         <div key={colIdx} className="flex flex-col gap-6 mb-6">
-                          {col.sections.map((sec: any, secIdx: number) => (
+                          {col.sections.map((sec: { title?: string, links: string[] }, secIdx: number) => (
                             <div key={secIdx} className="flex flex-col gap-2">
                               {sec.title && <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wider">{sec.title}</h4>}
                               {sec.links.length > 0 && (
@@ -260,7 +261,7 @@ export default function Header() {
                         key={colIdx}
                         className={`flex flex-col gap-6 xl:gap-8 ${colIdx > 0 ? (isLight ? 'border-l border-black/10 pl-8 xl:pl-10' : 'border-l border-white/10 pl-8 xl:pl-10') : ''}`}
                       >
-                        {col.sections.map((sec: any, secIdx: number) => (
+                        {col.sections.map((sec: { title?: string, isSmall?: boolean, isLargeLinks?: boolean, links: string[] }, secIdx: number) => (
                           <div key={secIdx} className="flex flex-col">
                             {sec.title && (
                               sec.links.length === 0 ? (
@@ -291,10 +292,10 @@ export default function Header() {
                   </div>
 
                   {/* Footer Link (e.g. View all products) */}
-                  {(item as any).footerLink && (
+                  {('footerLink' in item && item.footerLink) && (
                     <div className={`mt-8 pt-6 border-t ${isLight ? 'border-black/10' : 'border-white/10'}`}>
                       <a href="#" className={`inline-flex items-center gap-2 font-bold text-[14px] transition-colors group/view ${isLight ? 'text-black hover:text-red-600' : 'text-white hover:text-red-500'}`}>
-                        {(item as any).footerLink}
+                        {item.footerLink as string}
                         <ArrowRight size={16} className="group-hover/view:translate-x-1 transition-transform" />
                       </a>
                     </div>
