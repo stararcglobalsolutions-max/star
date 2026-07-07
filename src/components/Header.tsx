@@ -169,17 +169,6 @@ export default function Header() {
 
         {/* Right Action */}
         <div className="flex items-center gap-2 md:gap-4 pointer-events-auto">
-          <button className={`
-            group flex items-center gap-1 md:gap-1.5 px-3 md:px-5 py-2 md:py-2.5 rounded-full text-[13px] md:text-[15px] font-bold transition-all duration-300 hover:scale-105 active:scale-95 whitespace-nowrap
-            ${isLight
-              ? 'bg-black text-white hover:bg-gray-800 shadow-[0_4px_20px_rgba(0,0,0,0.15)]'
-              : 'bg-white text-black hover:bg-gray-100 shadow-[0_4px_20px_rgba(255,255,255,0.25)]'
-            }
-          `}>
-            Start Project
-            <ArrowUpRight className="w-3 md:w-3.5 h-3 md:h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
-          </button>
-
           {/* Mobile Menu Icon */}
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
