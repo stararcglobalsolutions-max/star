@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
+import LoadingScreen from "@/components/LoadingScreen";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -29,6 +30,7 @@ export default function RootLayout({
       className={`${inter.variable} ${outfit.variable} antialiased`}
     >
       <body className="flex flex-col selection:bg-white/20 selection:text-white">
+        <LoadingScreen />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
