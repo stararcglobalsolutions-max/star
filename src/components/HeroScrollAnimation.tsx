@@ -98,11 +98,9 @@ export default function HeroScrollAnimation() {
           ctx.fillStyle = "black";
           ctx.fillRect(0, 0, rect.width, rect.height);
           
-          // Use contain for mobile (<768px) and cover for desktop to match CSS classes
-          const isMobile = window.innerWidth < 768;
-          const ratio = isMobile
-            ? Math.min(rect.width / img.width, rect.height / img.height)
-            : Math.max(rect.width / img.width, rect.height / img.height);
+          // Always use contain (Math.min) to ensure the device is fully visible and never cropped
+          // The black background of the frames will blend seamlessly into the container bg-black
+          const ratio = Math.min(rect.width / img.width, rect.height / img.height);
             
           const drawWidth = img.width * ratio;
           const drawHeight = img.height * ratio;
@@ -243,7 +241,7 @@ export default function HeroScrollAnimation() {
           src={currentFrame(1)}
           alt="Hero Background"
           fetchPriority="high"
-          className="w-full h-full object-contain md:object-cover"
+          className="w-full h-full object-contain"
         />
       </div>
 
