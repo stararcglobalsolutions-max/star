@@ -14,7 +14,7 @@ const frameCount = 300;
 const currentFrame = (index: number) => {
   const clampedIndex = Math.min(Math.max(1, index), frameCount);
   const paddedIndex = clampedIndex.toString().padStart(3, '0');
-  return `/ezgif-774cadbbbbc65ee4-png-split/ezgif-frame-${paddedIndex}.png`;
+  return `/ezgif-774cadbbbbc65ee4-png-split/ezgif-frame-${paddedIndex}.webp`; // Switched to WebP
 };
 
 export default function HeroScrollAnimation() {
@@ -31,114 +31,164 @@ export default function HeroScrollAnimation() {
     canvas.width = 1280;
     canvas.height = 720;
 
-    // Preload images progressively to prevent flickering and freezing
-    const images: (HTMLImageElement | null)[] = new Array(frameCount).fill(null);
-
-    // Create an object to hold the current frame index for GSAP to animate
+    // -- ADVANCED MEMORY & CACHE MANAGEMENT --
+    const CACHE_SIZE = 40; // ±20 frames
+    const frameBlobs = new Map<number, Blob>();
+    const bitmapCache = new Map<number, ImageBitmap>();
+    const loadingSet = new Set<number>();
+    
     const airpods = { frame: 1 };
     let lastRenderedFrame = -1;
+    let lastScrollFrame = 1;
 
-    let animationFrameId: number;
+    let renderPending = false;
+    
+    function requestRender() {
+      if (!renderPending) {
+        renderPending = true;
+        requestAnimationFrame(renderFrame);
+      }
+    }
 
-    // Function to draw the current frame onto the canvas (Runs on Animation Frame for 0 lag)
-    function renderLoop() {
-      if (!context || !canvas) return;
+    // Handle Resize & DPR
+    const setCanvasSize = () => {
+      const cvs = canvasRef.current;
+      const ctx = cvs?.getContext("2d", { alpha: false }); // Optimize compositing
+      if (!cvs || !ctx) return;
+      
+      const dpr = window.devicePixelRatio || 1;
+      const rect = cvs.getBoundingClientRect();
+      
+      // Use DPR for Retina displays
+      cvs.width = rect.width * dpr;
+      cvs.height = rect.height * dpr;
+      ctx.scale(dpr, dpr);
+      
+      // Force a re-render at new size
+      lastRenderedFrame = -1;
+      requestRender();
+    };
+
+    window.addEventListener("resize", setCanvasSize);
+    setCanvasSize(); // Initial sizing
+    
+    function renderFrame() {
+      renderPending = false;
+      const cvs = canvasRef.current;
+      if (!cvs) return;
+      const ctx = cvs.getContext("2d", { alpha: false });
+      if (!ctx) return;
 
       const targetFrame = Math.floor(airpods.frame);
-      let frameToDraw = targetFrame - 1;
+      let frameToDraw = targetFrame;
 
-      // Fallback to the nearest loaded frame if current isn't loaded
-      while (frameToDraw >= 0 && (!images[frameToDraw] || !images[frameToDraw]?.complete)) {
+      // Fallback if current isn't ready
+      while (frameToDraw >= 1 && !bitmapCache.has(frameToDraw)) {
         frameToDraw--;
       }
 
-      // Skip render if it's the exact same frame we just drew (huge performance boost)
-      if (frameToDraw >= 0 && frameToDraw !== lastRenderedFrame) {
+      if (frameToDraw >= 1 && frameToDraw !== lastRenderedFrame) {
         lastRenderedFrame = frameToDraw;
-        const img = images[frameToDraw]!;
-
-        context.clearRect(0, 0, canvas.width, canvas.height);
+        const img = bitmapCache.get(frameToDraw);
         
-        // Calculate aspect ratio to fit the image properly like 'object-cover'
-        const ratio = Math.max(canvas.width / img.width, canvas.height / img.height);
-        const centerShift_x = (canvas.width - img.width * ratio) / 2;
-        const centerShift_y = (canvas.height - img.height * ratio) / 2;
+        if (img) {
+          const rect = cvs.getBoundingClientRect();
+          // Clear with solid black (alpha: false canvas)
+          ctx.fillStyle = "black";
+          ctx.fillRect(0, 0, rect.width, rect.height);
+          
+          const ratio = Math.max(rect.width / img.width, rect.height / img.height);
+          const drawWidth = img.width * ratio;
+          const drawHeight = img.height * ratio;
+          const centerShift_x = (rect.width - drawWidth) / 2;
+          const centerShift_y = (rect.height - drawHeight) / 2;
 
-        context.drawImage(
-          img,
-          0, 0, img.width, img.height,
-          centerShift_x, centerShift_y, img.width * ratio, img.height * ratio
-        );
+          ctx.drawImage(img, centerShift_x, centerShift_y, drawWidth, drawHeight);
+        }
       }
+    }
+
+    function requestRender() {
+      if (!renderPending) {
+        renderPending = true;
+        requestAnimationFrame(renderFrame);
+      }
+    }
+
+    // LRU & Predictive Loading System
+    const enforceCacheLimits = (currentFrameIdx: number) => {
+      for (const [key, bitmap] of bitmapCache.entries()) {
+        if (Math.abs(key - currentFrameIdx) > CACHE_SIZE / 2) {
+          bitmap.close(); // Hardware memory release
+          bitmapCache.delete(key);
+        }
+      }
+    };
+
+    const fetchAndDecode = async (index: number) => {
+      if (bitmapCache.has(index) || loadingSet.has(index)) return;
+      loadingSet.add(index);
       
-      animationFrameId = requestAnimationFrame(renderLoop);
-    }
-    
-    // Start the super-smooth render loop
-    renderLoop();
+      try {
+        let blob = frameBlobs.get(index);
+        if (!blob) {
+          const res = await fetch(currentFrame(index), { cache: 'force-cache' });
+          blob = await res.blob();
+          frameBlobs.set(index, blob); // Cache compressed blob (low RAM)
+        }
+        
+        // Only decode if it's within our active sliding window
+        if (Math.abs(index - Math.floor(airpods.frame)) <= CACHE_SIZE / 2) {
+          const bitmap = await createImageBitmap(blob);
+          bitmapCache.set(index, bitmap);
+          requestRender();
+        }
+      } catch (err) {
+        console.error(`Frame ${index} load failed:`, err);
+      } finally {
+        loadingSet.delete(index);
+      }
+    };
 
-    // GSAP purely handles logic and network queueing now - ZERO blocking on main thread!
+    // Load a batch based on direction & velocity
+    function updateQueue() {
+      const current = Math.floor(airpods.frame);
+      const velocity = Math.abs(current - lastScrollFrame);
+      const direction = current >= lastScrollFrame ? 1 : -1;
+      lastScrollFrame = current;
+
+      enforceCacheLimits(current);
+      
+      // Lookahead window expands based on scroll speed
+      const lookahead = Math.min(20, 5 + velocity * 2);
+      
+      const toLoad = [];
+      // Always prioritize current and immediate next frame
+      toLoad.push(current);
+      if (direction > 0 && current < frameCount) toLoad.push(current + 1);
+      if (direction < 0 && current > 1) toLoad.push(current - 1);
+      
+      // Then queue predicted future frames
+      for (let i = 1; i <= lookahead; i++) {
+        const predictIdx = current + (i * direction);
+        if (predictIdx >= 1 && predictIdx <= frameCount) {
+          toLoad.push(predictIdx);
+        }
+      }
+
+      // Execute loads concurrently for speed
+      toLoad.forEach(idx => fetchAndDecode(idx));
+    }
+
+    // GSAP purely handles logic
     function onScrollUpdate() {
-      const targetFrame = Math.floor(airpods.frame);
-      const startLoad = Math.max(1, targetFrame - 2);
-      const endLoad = Math.min(frameCount, targetFrame + PRELOAD_AHEAD);
-
-      for (let i = startLoad; i <= endLoad; i++) {
-        queueImage(i);
-      }
+      requestRender();
+      updateQueue();
     }
 
-    const PRELOAD_AHEAD = 5; // Absolute minimum to avoid hitting the Hostinger 503 firewall
-
-    // **BULLETPROOF ANTI-503 QUEUE SYSTEM**
-    let loadingCount = 0;
-    const MAX_CONCURRENT = 1; // Strictly limit to 1 concurrent request so Hostinger never sees a spike
-    const loadQueue: number[] = [];
-
-    const processQueue = () => {
-      if (loadingCount >= MAX_CONCURRENT || loadQueue.length === 0) return;
-
-      const index = loadQueue.shift()!;
-      if (images[index - 1]) {
-        processQueue(); // Skip if already loaded/loading
-        return;
-      }
-
-      loadingCount++;
-      const img = new Image();
-      images[index - 1] = img; // Lock it immediately
-      img.decoding = "async";
-      (img as any).fetchPriority = index <= 10 ? "high" : "auto";
-
-      img.onload = () => {
-        loadingCount--;
-        processQueue(); // Process next in queue
-      };
-
-      img.onerror = () => {
-        loadingCount--;
-        processQueue(); // Move on so we don't block the queue forever
-      };
-
-      img.src = currentFrame(index);
-    };
-
-    const queueImage = (index: number) => {
-      if (index < 1 || index > frameCount) return;
-      if (images[index - 1]) return;
-
-      // Add to queue if not already there
-      if (!loadQueue.includes(index)) {
-        loadQueue.push(index);
-      }
-      processQueue();
-    };
-
-    // ONLY queue the absolute minimum needed to start the animation.
-    // We cannot download any more in the background because Hostinger's CPU/RAM limits
-    // will forcefully crash the server with a 503 error.
+    // Initial load sequence
     for (let i = 1; i <= 5; i++) {
-      queueImage(i);
+      fetchAndDecode(i);
     }
 
     // GSAP ScrollTrigger to animate frames - MatchMedia for responsive pinning
@@ -199,7 +249,7 @@ export default function HeroScrollAnimation() {
 
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full object-contain md:object-cover z-0"
+        className="absolute inset-0 w-full h-full object-contain md:object-cover z-0 will-change-transform"
       />
 
       {/* Cinematic Black Shadow Overlays to blend edges into background */}
