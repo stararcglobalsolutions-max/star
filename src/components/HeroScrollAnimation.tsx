@@ -42,11 +42,12 @@ export default function HeroScrollAnimation() {
     let lastScrollFrame = 1;
 
     let renderPending = false;
+    let animationFrameId: number;
     
     function requestRender() {
       if (!renderPending) {
         renderPending = true;
-        requestAnimationFrame(renderFrame);
+        animationFrameId = requestAnimationFrame(renderFrame);
       }
     }
 
@@ -108,12 +109,6 @@ export default function HeroScrollAnimation() {
       }
     }
 
-    function requestRender() {
-      if (!renderPending) {
-        renderPending = true;
-        requestAnimationFrame(renderFrame);
-      }
-    }
 
     // LRU & Predictive Loading System
     const enforceCacheLimits = (currentFrameIdx: number) => {
@@ -224,7 +219,7 @@ export default function HeroScrollAnimation() {
 
     // Cleanup memory and animation frames
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
 
   }, { scope: containerRef });
