@@ -98,7 +98,12 @@ export default function HeroScrollAnimation() {
           ctx.fillStyle = "black";
           ctx.fillRect(0, 0, rect.width, rect.height);
           
-          const ratio = Math.max(rect.width / img.width, rect.height / img.height);
+          // Use contain for mobile (<768px) and cover for desktop to match CSS classes
+          const isMobile = window.innerWidth < 768;
+          const ratio = isMobile
+            ? Math.min(rect.width / img.width, rect.height / img.height)
+            : Math.max(rect.width / img.width, rect.height / img.height);
+            
           const drawWidth = img.width * ratio;
           const drawHeight = img.height * ratio;
           const centerShift_x = (rect.width - drawWidth) / 2;
