@@ -77,8 +77,8 @@ export const navItems = [
     ]
   },
 
-
-  { label: "For partners", dropdown: false },
+  { label: "For partners", dropdown: false, href: "/become-partner" },
+  { label: "Contact us", dropdown: false, href: "/contact" },
 ];
 
 export default function Header() {

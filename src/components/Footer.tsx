@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import { Mail, Send, MessageCircle, AlertCircle, Lightbulb, ChevronUp, Apple, Play } from 'lucide-react';
 
 export default function Footer() {
@@ -17,12 +18,13 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-[15px] mb-5">Products</h4>
             <ul className="space-y-[12px] mb-10">
-              {['Intrusion protection', 'Video surveillance', 'Fire and life safety', 'Comfort and automation'].map(link => (
-                <li key={link}><a href="#" className="text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">{link}</a></li>
-              ))}
-              <li><a href="/shop" className="text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">All products</a></li>
-              <li><a href="/monitoring-package" className="text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">Services</a></li>
-              <li><a href="#" className="text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">System integrations</a></li>
+              <li><Link href="/intrusion-protection" className="text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">Intrusion protection</Link></li>
+              <li><Link href="/video-surveillance" className="text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">Video surveillance</Link></li>
+              <li><Link href="/fire-and-life-safety" className="text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">Fire and life safety</Link></li>
+              <li><Link href="/comfort-and-automation" className="text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">Comfort and automation</Link></li>
+              <li><Link href="/shop" className="text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">All products</Link></li>
+              <li><Link href="/monitoring-packages" className="text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">Services</Link></li>
+              <li><Link href="/system-integrations" className="text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">System integrations</Link></li>
             </ul>
 
             <h4 className="font-semibold text-[15px] mb-5">Software</h4>
@@ -109,13 +111,8 @@ export default function Footer() {
             <h4 className="font-semibold text-[15px] mb-5">Request extra help</h4>
             <ul className="space-y-[14px] mb-12">
               <li>
-                <a href="#" className="flex items-center gap-3 text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">
-                  <Mail size={18} /> Support@stararc.com
-                </a>
-              </li>
-              <li>
-                <a href="#" className="flex items-center gap-3 text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">
-                  <Send size={18} /> @StararcSystemsSupport_Bot
+                <a href="mailto:info@stararc.systems" className="flex items-center gap-3 text-[#a1a1a1] hover:text-white text-[13.5px] transition-colors">
+                  <Mail size={18} /> info@stararc.systems
                 </a>
               </li>
               <li>
@@ -151,7 +148,7 @@ export default function Footer() {
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
               </a>
               <a href="#" className="hover:text-white transition-colors">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5 5 9.2 5 9.2s1.5.8 2.8.5c-3.1-2-3-7.5-3-7.5s1.5 1 3 1C5.4 1.2 2 6 2 6c3 3.8 7.5 4.5 10 4.5 0-4.5 3-7.5 7-5.5 1.5.5 3-1.5 3-1.5z" /></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
               </a>
               <a href="#" className="hover:text-white transition-colors">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg>

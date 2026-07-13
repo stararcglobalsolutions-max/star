@@ -24,20 +24,6 @@ export default function ShopPage() {
     <div className="min-h-screen bg-white">
       <ShopHeader />
 
-      {/* Top Banner */}
-      <div className="w-full bg-[#111111] text-white py-2.5 text-[13px] font-medium tracking-widest uppercase flex items-center">
-        {/* @ts-ignore - marquee is deprecated but used here for effect */}
-        <marquee behavior="scroll" direction="left" scrollamount="8" className="w-full">
-          <span className="mx-8">🔥 Free Shipping on all orders over ₹5000</span>
-          <span className="mx-8">⚡ Flat 20% Off on Premium Security Kits</span>
-          <span className="mx-8">🛡️ Next-Gen Hardware Available Now</span>
-          <span className="mx-8">🔥 Free Shipping on all orders over ₹5000</span>
-          <span className="mx-8">⚡ Flat 20% Off on Premium Security Kits</span>
-          <span className="mx-8">🛡️ Next-Gen Hardware Available Now</span>
-        {/* @ts-ignore */}
-        </marquee>
-      </div>
-
       <main className="w-full px-4 md:px-8 lg:px-12 xl:px-20 py-12">
         {/* Product Grid */}
         <div className="max-w-[1400px] mx-auto">
@@ -73,10 +59,6 @@ function ProductCard({ product }: { product: any }) {
     <Link href={`/shop/${slug}`} className="group cursor-pointer flex flex-col h-full relative">
       {/* Image Box */}
       <div className="relative aspect-square overflow-hidden mb-6 rounded-2xl bg-[#f4f5f7] flex items-center justify-center p-8 transition-colors duration-500 group-hover:bg-[#ebeef2]">
-        {/* Sale Badge */}
-        <div className="absolute top-4 left-4 bg-red-600 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full z-10">
-          Save 20%
-        </div>
         
         {/* Product Image */}
         {product.image ? (
@@ -133,9 +115,6 @@ function DummyProductCard({ name, price, oldPrice }: { name: string, price: numb
   return (
     <div className="group cursor-pointer flex flex-col h-full relative">
       <div className="relative aspect-square overflow-hidden mb-6 rounded-2xl bg-[#f4f5f7] flex items-center justify-center p-8 transition-colors duration-500 group-hover:bg-[#ebeef2]">
-        <div className="absolute top-4 left-4 bg-red-600 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full z-10">
-          Save 20%
-        </div>
         
         <div className="w-full h-full flex items-center justify-center text-slate-400 font-medium">
           Demo Image

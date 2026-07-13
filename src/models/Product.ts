@@ -12,6 +12,11 @@ const ImageSchema = new mongoose.Schema({
   black: String,
 }, { _id: false });
 
+const KeyFeatureSchema = new mongoose.Schema({
+  icon: String,
+  text: String
+}, { _id: false });
+
 const ProductSchema = new mongoose.Schema({
   name: { type: String, required: true },
   tagline: { type: String },
@@ -21,6 +26,7 @@ const ProductSchema = new mongoose.Schema({
   badge: { type: String },
   colors: { type: [String] },
   features: { type: [String] },
+  keyFeatures: { type: [KeyFeatureSchema] },
   images: { type: ImageSchema },
   specs: { type: SpecSchema },
   stock: { type: Number, default: 0 },

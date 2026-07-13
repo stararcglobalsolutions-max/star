@@ -119,13 +119,13 @@ export default function BecomePartnerPage() {
     <div className="min-h-screen bg-[#030303] flex flex-col text-white font-sans pt-[120px]">
       <Header />
 
-      <main className="flex-1 w-full relative z-10 py-16 md:py-24 overflow-hidden">
+      <main className="flex-1 w-full relative z-10 py-16 md:py-1.54 overflow-hidden">
         {/* Ambient Glow */}
         <div className="absolute top-1/4 left-0 w-[800px] h-[800px] bg-red-600/10 rounded-full blur-[150px] pointer-events-none -translate-x-1/2"></div>
         <div className="absolute top-1/2 right-0 w-[600px] h-[600px] bg-red-800/10 rounded-full blur-[120px] pointer-events-none translate-x-1/2"></div>
 
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-16 lg:gap-24 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-16 lg:gap-14 items-start">
             
             {/* Left Content */}
             <div className="flex flex-col gap-10 sticky top-32">
@@ -146,7 +146,7 @@ export default function BecomePartnerPage() {
 
               <div>
                 <h3 className="text-xl font-bold mb-6 font-heading">Partner Benefits</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {benefits.map((b, i) => (
                     <div key={i} className="flex items-center gap-3">
                       <div className="bg-red-600/10 p-2 rounded-lg text-red-500 border border-red-500/20">
@@ -162,7 +162,7 @@ export default function BecomePartnerPage() {
             {/* Right Form */}
             <div className="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-[32px] shadow-[0_0_50px_rgba(0,0,0,0.5)] backdrop-blur-xl">
               {isSuccess ? (
-                <div className="flex flex-col items-center justify-center text-center py-20 gap-6">
+                <div className="flex flex-col items-center justify-center text-center py-1.50 gap-3">
                   <div className="w-24 h-24 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center mb-2 border border-green-500/20 shadow-[0_0_30px_rgba(34,197,94,0.2)]">
                     <CheckCircle2 size={48} />
                   </div>
@@ -172,52 +172,52 @@ export default function BecomePartnerPage() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-10">
+                <form onSubmit={handleSubmit} className="flex flex-col gap-3">
                   
                   {/* Step 1: Short Required */}
-                  <div className="flex flex-col gap-6">
+                  <div className="flex flex-col gap-3">
                     <h3 className="text-2xl font-bold font-heading text-red-500 border-b border-white/10 pb-4">1. Primary Contact</h3>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="flex flex-col gap-2">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <div className="flex flex-col gap-1">
                         <label className="text-sm font-bold text-gray-300">Full Name *</label>
-                        <input required type="text" name="fullName" value={formData.fullName} onChange={handleChange} className="w-full px-4 py-3.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600" placeholder="John Doe" />
+                        <input required type="text" name="fullName" value={formData.fullName} onChange={handleChange} className="w-full px-4 py-1.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600" placeholder="John Doe" />
                       </div>
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-1">
                         <label className="text-sm font-bold text-gray-300">Company Name *</label>
-                        <input required type="text" name="companyName" value={formData.companyName} onChange={handleChange} className="w-full px-4 py-3.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600" placeholder="Acme Security Ltd" />
+                        <input required type="text" name="companyName" value={formData.companyName} onChange={handleChange} className="w-full px-4 py-1.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600" placeholder="Acme Security Ltd" />
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="flex flex-col gap-2">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <div className="flex flex-col gap-1">
                         <label className="text-sm font-bold text-gray-300">Email Address *</label>
-                        <input required type="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-3.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600" placeholder="john@company.com" />
+                        <input required type="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-1.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600" placeholder="john@company.com" />
                       </div>
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-1">
                         <label className="text-sm font-bold text-gray-300">Phone Number *</label>
-                        <input required type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600" placeholder="+1 234 567 8900" />
+                        <input required type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-1.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600" placeholder="+1 234 567 8900" />
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                      <div className="flex flex-col gap-2">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                      <div className="flex flex-col gap-1">
                         <label className="text-sm font-bold text-gray-300">Country *</label>
-                        <input required type="text" name="country" value={formData.country} onChange={handleChange} className="w-full px-4 py-3.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600" placeholder="Canada" />
+                        <input required type="text" name="country" value={formData.country} onChange={handleChange} className="w-full px-4 py-1.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600" placeholder="Canada" />
                       </div>
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-1">
                         <label className="text-sm font-bold text-gray-300">State / Province *</label>
-                        <input required type="text" name="state" value={formData.state} onChange={handleChange} className="w-full px-4 py-3.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600" placeholder="Ontario" />
+                        <input required type="text" name="state" value={formData.state} onChange={handleChange} className="w-full px-4 py-1.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600" placeholder="Ontario" />
                       </div>
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-1">
                         <label className="text-sm font-bold text-gray-300">City *</label>
-                        <input required type="text" name="city" value={formData.city} onChange={handleChange} className="w-full px-4 py-3.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600" placeholder="Toronto" />
+                        <input required type="text" name="city" value={formData.city} onChange={handleChange} className="w-full px-4 py-1.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600" placeholder="Toronto" />
                       </div>
                     </div>
 
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-1">
                       <label className="text-sm font-bold text-gray-300">Partner Type *</label>
-                      <select name="partnerType" value={formData.partnerType} onChange={handleChange} className="w-full px-4 py-3.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white appearance-none">
+                      <select name="partnerType" value={formData.partnerType} onChange={handleChange} className="w-full px-4 py-1.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white appearance-none">
                         <option value="Installer">Installer</option>
                         <option value="Dealer">Dealer</option>
                         <option value="Distributor">Distributor</option>
@@ -230,28 +230,28 @@ export default function BecomePartnerPage() {
                   </div>
 
                   {/* Step 2: Business Info */}
-                  <div className="flex flex-col gap-6">
+                  <div className="flex flex-col gap-3">
                     <h3 className="text-2xl font-bold font-heading text-red-500 border-b border-white/10 pb-4">2. Business Information</h3>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="flex flex-col gap-2">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <div className="flex flex-col gap-1">
                         <label className="text-sm font-bold text-gray-300">Company Website</label>
-                        <input type="text" name="website" value={formData.website} onChange={handleChange} className="w-full px-4 py-3.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600" placeholder="https://www.company.com" />
+                        <input type="text" name="website" value={formData.website} onChange={handleChange} className="w-full px-4 py-1.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600" placeholder="https://www.company.com" />
                       </div>
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-1">
                         <label className="text-sm font-bold text-gray-300">Years in Business</label>
-                        <input type="number" name="yearsInBusiness" value={formData.yearsInBusiness} onChange={handleChange} className="w-full px-4 py-3.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600" placeholder="e.g. 5" />
+                        <input type="number" name="yearsInBusiness" value={formData.yearsInBusiness} onChange={handleChange} className="w-full px-4 py-1.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600" placeholder="e.g. 5" />
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="flex flex-col gap-2">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <div className="flex flex-col gap-1">
                         <label className="text-sm font-bold text-gray-300">Number of Employees</label>
-                        <input type="number" name="employees" value={formData.employees} onChange={handleChange} className="w-full px-4 py-3.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600" placeholder="e.g. 15" />
+                        <input type="number" name="employees" value={formData.employees} onChange={handleChange} className="w-full px-4 py-1.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600" placeholder="e.g. 15" />
                       </div>
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-1">
                         <label className="text-sm font-bold text-gray-300">Annual Projects Completed</label>
-                        <select name="annualProjects" value={formData.annualProjects} onChange={handleChange} className="w-full px-4 py-3.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white appearance-none">
+                        <select name="annualProjects" value={formData.annualProjects} onChange={handleChange} className="w-full px-4 py-1.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white appearance-none">
                           <option value="1–25">1–25</option>
                           <option value="26–100">26–100</option>
                           <option value="101–500">101–500</option>
@@ -262,9 +262,9 @@ export default function BecomePartnerPage() {
                   </div>
 
                   {/* Step 3: Areas of Interest */}
-                  <div className="flex flex-col gap-4">
+                  <div className="flex flex-col gap-3">
                     <h3 className="text-2xl font-bold font-heading text-red-500 border-b border-white/10 pb-4 mb-2">3. Areas of Interest</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                       {interestsList.map((interest, idx) => (
                         <label key={idx} className="flex items-center gap-3 cursor-pointer group">
                           <input 
@@ -281,22 +281,22 @@ export default function BecomePartnerPage() {
                   </div>
 
                   {/* Step 4: Business Details */}
-                  <div className="flex flex-col gap-6">
+                  <div className="flex flex-col gap-3">
                     <h3 className="text-2xl font-bold font-heading text-red-500 border-b border-white/10 pb-4">4. Business Details</h3>
                     
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-1">
                       <label className="text-sm font-bold text-gray-300">Current Security Brands You Install (Optional)</label>
-                      <input type="text" name="brandsInstalled" value={formData.brandsInstalled} onChange={handleChange} className="w-full px-4 py-3.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600" placeholder="e.g. Dahua, Hikvision, Honeywell" />
+                      <input type="text" name="brandsInstalled" value={formData.brandsInstalled} onChange={handleChange} className="w-full px-4 py-1.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600" placeholder="e.g. Dahua, Hikvision, Honeywell" />
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="flex flex-col gap-2">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <div className="flex flex-col gap-1">
                         <label className="text-sm font-bold text-gray-300">Monthly Project Volume</label>
-                        <input type="text" name="monthlyVolume" value={formData.monthlyVolume} onChange={handleChange} className="w-full px-4 py-3.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600" placeholder="e.g. $50,000 or 10 projects" />
+                        <input type="text" name="monthlyVolume" value={formData.monthlyVolume} onChange={handleChange} className="w-full px-4 py-1.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600" placeholder="e.g. $50,000 or 10 projects" />
                       </div>
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-1">
                         <label className="text-sm font-bold text-gray-300">In-house Installation Team?</label>
-                        <select name="inHouseTeam" value={formData.inHouseTeam} onChange={handleChange} className="w-full px-4 py-3.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white appearance-none">
+                        <select name="inHouseTeam" value={formData.inHouseTeam} onChange={handleChange} className="w-full px-4 py-1.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white appearance-none">
                           <option value="Yes">Yes</option>
                           <option value="No">No</option>
                         </select>
@@ -305,14 +305,14 @@ export default function BecomePartnerPage() {
                   </div>
 
                   {/* Step 5: Additional Info */}
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-1">
                     <h3 className="text-2xl font-bold font-heading text-red-500 border-b border-white/10 pb-4 mb-2">5. Additional Information</h3>
                     <label className="text-sm font-bold text-gray-300">Tell us about your business</label>
-                    <textarea name="message" value={formData.message} onChange={handleChange} rows={4} className="w-full px-4 py-3.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600 resize-none" placeholder="We specialize in..." />
+                    <textarea name="message" value={formData.message} onChange={handleChange} rows={4} className="w-full px-4 py-1.5 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-red-500 transition-all text-white placeholder-gray-600 resize-none" placeholder="We specialize in..." />
                   </div>
 
                   {/* Step 6: Consent */}
-                  <div className="flex flex-col gap-4 bg-red-600/5 p-6 rounded-2xl border border-red-500/10">
+                  <div className="flex flex-col gap-3 bg-red-600/5 p-6 rounded-2xl border border-red-500/10">
                     <label className="flex items-start gap-3 cursor-pointer group">
                       <input 
                         required
@@ -341,7 +341,7 @@ export default function BecomePartnerPage() {
                   <button 
                     type="submit" 
                     disabled={isSubmitting}
-                    className="w-full bg-red-600 hover:bg-red-500 text-white font-extrabold text-lg tracking-wide py-5 rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_30px_rgba(220,38,38,0.3)] hover:shadow-[0_0_50px_rgba(220,38,38,0.5)] flex items-center justify-center gap-3 mt-4"
+                    className="w-full bg-red-600 hover:bg-red-500 text-white font-extrabold text-lg tracking-wide py-2 rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_30px_rgba(220,38,38,0.3)] hover:shadow-[0_0_50px_rgba(220,38,38,0.5)] flex items-center justify-center gap-3 mt-4"
                   >
                     {isSubmitting ? 'Processing Application...' : 'Apply to Become a Partner'}
                   </button>

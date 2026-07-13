@@ -3,12 +3,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CldUploadWidget } from 'next-cloudinary';
-import { 
+import {
   Search, Bell, MessageSquare, Sun, Moon, LogOut, Settings, Users,
   LayoutDashboard, Box, ListOrdered, Lock, Activity, BarChart3, CreditCard,
   FileText, LifeBuoy, ChevronDown, CheckCircle2, AlertTriangle, XCircle,
   Clock, TrendingUp, MoreHorizontal, ArrowUpRight, Battery, Wifi, Shield,
-  Plus, Edit, Trash2, Image as ImageIcon, DollarSign, PackagePlus, Briefcase
+  Plus, Edit, Trash2, Image as ImageIcon, DollarSign, PackagePlus, Briefcase,
+  RefreshCw, Smartphone, QrCode, ShieldCheck, Truck, X
 } from 'lucide-react';
 
 // ============================================================================
@@ -62,13 +63,13 @@ export default function AdminDashboard() {
       fetch('/api/products')
         .then(res => res.json())
         .then(data => {
-          if(Array.isArray(data)) setProducts(data);
+          if (Array.isArray(data)) setProducts(data);
         })
         .catch(console.error);
       fetch('/api/partners')
         .then(res => res.json())
         .then(data => {
-          if(Array.isArray(data)) setPartners(data);
+          if (Array.isArray(data)) setPartners(data);
         })
         .catch(console.error);
     }
@@ -78,13 +79,13 @@ export default function AdminDashboard() {
 
   return (
     <div className="flex h-screen bg-[#F8FAFC] text-slate-900 font-sans overflow-hidden selection:bg-[#2563FF] selection:text-white">
-      
+
       {/* Background Ambient Glow (Light mode version) */}
       <div className="fixed top-[-20%] left-[-10%] w-[50%] h-[50%] bg-[#2563FF]/5 blur-[150px] rounded-full pointer-events-none" />
       <div className="fixed bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-[#4F46E5]/5 blur-[150px] rounded-full pointer-events-none" />
 
       {/* Sidebar */}
-      <motion.aside 
+      <motion.aside
         initial={{ width: 280 }}
         animate={{ width: isSidebarOpen ? 280 : 80 }}
         className="relative z-20 flex flex-col border-r border-slate-200 bg-white/80 backdrop-blur-3xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[4px_0_24px_rgba(0,0,0,0.02)]"
@@ -106,19 +107,19 @@ export default function AdminDashboard() {
           <div className="space-y-1">
             {isSidebarOpen && <div className="px-3 mb-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Main Menu</div>}
             {SIDEBAR_ITEMS.map(item => (
-              <SidebarItem 
-                key={item.id} 
-                item={item} 
-                isActive={activeTab === item.id || (item.id === 'products' && activeTab === 'add-product')} 
-                isOpen={isSidebarOpen} 
-                onClick={() => setActiveTab(item.id)} 
+              <SidebarItem
+                key={item.id}
+                item={item}
+                isActive={activeTab === item.id || (item.id === 'products' && activeTab === 'add-product')}
+                isOpen={isSidebarOpen}
+                onClick={() => setActiveTab(item.id)}
               />
             ))}
           </div>
           <div className="space-y-1">
             {isSidebarOpen && <div className="px-3 mb-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest">System</div>}
             {BOTTOM_SIDEBAR_ITEMS.map(item => (
-              <SidebarItem key={item.id} item={item} isActive={activeTab === item.id} isOpen={isSidebarOpen} onClick={() => {}} />
+              <SidebarItem key={item.id} item={item} isActive={activeTab === item.id} isOpen={isSidebarOpen} onClick={() => { }} />
             ))}
           </div>
         </div>
@@ -139,7 +140,7 @@ export default function AdminDashboard() {
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-w-0 relative z-10">
-        
+
         {/* Header */}
         <header className="h-20 flex items-center justify-between px-8 border-b border-slate-200 bg-white/80 backdrop-blur-xl sticky top-0 z-30 shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
           <div className="flex items-center gap-6 flex-1">
@@ -174,13 +175,13 @@ export default function AdminDashboard() {
             >
               {activeTab === 'dashboard' && <DashboardView activeOrders={orders.length} />}
               {activeTab === 'products' && <ProductsView products={products} setProducts={setProducts} onAdd={() => { setEditingProduct(null); setActiveTab('add-product'); }} onEdit={(p) => { setEditingProduct(p); setActiveTab('add-product'); }} />}
-              {activeTab === 'add-product' && <AddProductView initialData={editingProduct} onCancel={() => setActiveTab('products')} onAdd={(p) => { 
+              {activeTab === 'add-product' && <AddProductView initialData={editingProduct} onCancel={() => setActiveTab('products')} onAdd={(p) => {
                 if (editingProduct) {
                   setProducts(products.map(prod => prod._id === p._id ? p : prod));
                 } else {
-                  setProducts([p, ...products]); 
+                  setProducts([p, ...products]);
                 }
-                setActiveTab('products'); 
+                setActiveTab('products');
               }} />}
               {activeTab === 'orders' && <OrdersView orders={orders} />}
               {activeTab === 'partners' && <PartnersView partners={partners} />}
@@ -212,8 +213,8 @@ function LoginView({ onLogin }: { onLogin: () => void }) {
     <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center p-6 relative overflow-hidden">
       <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#2563FF]/10 rounded-full blur-[150px] mix-blend-multiply pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-[#4F46E5]/10 rounded-full blur-[150px] mix-blend-multiply pointer-events-none" />
-      
-      <motion.div 
+
+      <motion.div
         initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}
         className="w-full max-w-md relative z-10"
       >
@@ -251,12 +252,12 @@ function LoginView({ onLogin }: { onLogin: () => void }) {
 function DashboardView({ activeOrders }: { activeOrders: number }) {
   return (
     <div className="space-y-8 pb-10">
-      
+
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <StatCard title="Total Revenue" value="₹124,592.00" trend="+14.5%" icon={DollarSign} chartData={[30,40,35,50,49,60,70]} />
-        <StatCard title="Active Orders" value={activeOrders.toString()} trend="+8.2%" icon={ListOrdered} chartData={[20,15,25,22,30,28,35]} />
-        <StatCard title="Total Customers" value="8,402" trend="+3.1%" icon={Users} chartData={[10,20,15,25,30,40,45]} />
+        <StatCard title="Total Revenue" value="₹124,592.00" trend="+14.5%" icon={DollarSign} chartData={[30, 40, 35, 50, 49, 60, 70]} />
+        <StatCard title="Active Orders" value={activeOrders.toString()} trend="+8.2%" icon={ListOrdered} chartData={[20, 15, 25, 22, 30, 28, 35]} />
+        <StatCard title="Total Customers" value="8,402" trend="+3.1%" icon={Users} chartData={[10, 20, 15, 25, 30, 40, 45]} />
       </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
@@ -275,19 +276,19 @@ function DashboardView({ activeOrders }: { activeOrders: number }) {
           {/* Mock Chart visually constructed for safety without Recharts */}
           <div className="h-[300px] flex items-end justify-between gap-2 pt-4 relative">
             <div className="absolute inset-0 flex flex-col justify-between pointer-events-none pb-8">
-              {[4,3,2,1,0].map(i => (
+              {[4, 3, 2, 1, 0].map(i => (
                 <div key={i} className="w-full border-t border-slate-100 flex-1 relative">
                   <span className="absolute -left-2 -top-2 -translate-x-full text-[10px] text-slate-400">{i * 25}k</span>
                 </div>
               ))}
             </div>
             {/* Bars */}
-            {['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].map((month, i) => {
+            {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map((month, i) => {
               const height = 30 + Math.random() * 60;
               return (
                 <div key={month} className="flex-1 flex flex-col items-center gap-4 group z-10">
                   <div className="w-full bg-slate-50 rounded-t-xl overflow-hidden flex items-end relative h-full">
-                    <motion.div 
+                    <motion.div
                       initial={{ height: 0 }} animate={{ height: `${height}%` }} transition={{ duration: 1, delay: i * 0.05 }}
                       className="w-full bg-gradient-to-t from-[#2563FF] to-[#4F46E5] rounded-t-xl relative group-hover:opacity-80 transition-opacity"
                     >
@@ -311,8 +312,8 @@ function DashboardView({ activeOrders }: { activeOrders: number }) {
 // ============================================================================
 // PRODUCTS VIEW
 // ============================================================================
-function ProductsView({ products, setProducts, onAdd, onEdit }: { products: any[], setProducts: any, onAdd: () => void, onEdit: (p:any) => void }) {
-  
+function ProductsView({ products, setProducts, onAdd, onEdit }: { products: any[], setProducts: any, onAdd: () => void, onEdit: (p: any) => void }) {
+
   const handleDelete = async (id: string) => {
     if (confirm('Are you sure you want to delete this product?')) {
       try {
@@ -350,9 +351,9 @@ function ProductsView({ products, setProducts, onAdd, onEdit }: { products: any[
           </thead>
           <tbody>
             {products.map((p, i) => (
-              <motion.tr 
+              <motion.tr
                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}
-                key={p._id || p.id} 
+                key={p._id || p.id}
                 className="border-b border-slate-100 hover:bg-slate-50 transition-colors group"
               >
                 <td className="py-5 px-8">
@@ -393,6 +394,7 @@ function AddProductView({ onCancel, onAdd, initialData }: { onCancel: () => void
   const [tagline, setTagline] = useState(initialData?.category || "");
   const [description, setDescription] = useState(initialData?.description || "");
   const [featuresText, setFeaturesText] = useState(initialData?.features?.join('\n') || "");
+  const [keyFeatures, setKeyFeatures] = useState<{ icon: string, text: string }[]>(initialData?.keyFeatures || []);
   const [price, setPrice] = useState(initialData?.price?.toString() || "");
   const [stock, setStock] = useState(initialData?.stock?.toString() || "");
   const [colors, setColors] = useState<string[]>(initialData?.colors || []);
@@ -405,12 +407,13 @@ function AddProductView({ onCancel, onAdd, initialData }: { onCancel: () => void
   const handlePublish = async () => {
     if (!name || !price) return;
     setIsPublishing(true);
-    
+
     const productData = {
       name,
       category: tagline || 'General',
       description,
       features: featuresText.split('\n').map((f: string) => f.trim()).filter(Boolean),
+      keyFeatures,
       price: parseFloat(price) || 0,
       stock: parseInt(stock) || 0,
       status: parseInt(stock) > 0 ? 'Active' : 'Out of Stock',
@@ -454,7 +457,7 @@ function AddProductView({ onCancel, onAdd, initialData }: { onCancel: () => void
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
-          
+
           <div className="bg-white border border-slate-200 rounded-[32px] p-8 shadow-[0_8px_30px_rgba(0,0,0,0.02)]">
             <h3 className="text-lg font-bold mb-6 flex items-center gap-3 text-slate-900"><PackagePlus className="text-[#2563FF]" /> Basic Info</h3>
             <div className="grid grid-cols-2 gap-6">
@@ -471,8 +474,54 @@ function AddProductView({ onCancel, onAdd, initialData }: { onCancel: () => void
                 <textarea value={description} onChange={e => setDescription(e.target.value)} placeholder="Detailed product description..." rows={4} className="w-full bg-slate-50 border border-slate-200 rounded-2xl py-4 px-5 text-sm text-slate-900 outline-none focus:bg-white focus:border-[#2563FF] focus:ring-1 focus:ring-[#2563FF]/50 transition-all shadow-inner resize-none" />
               </div>
               <div className="col-span-2">
-                <label className="block text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-3">Key Features (One per line)</label>
+                <label className="block text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-3">Standard Features (One per line)</label>
                 <textarea value={featuresText} onChange={e => setFeaturesText(e.target.value)} placeholder="e.g. 5-year battery life&#10;Wireless connectivity&#10;Tamper protection" rows={3} className="w-full bg-slate-50 border border-slate-200 rounded-2xl py-4 px-5 text-sm text-slate-900 outline-none focus:bg-white focus:border-[#2563FF] focus:ring-1 focus:ring-[#2563FF]/50 transition-all shadow-inner resize-none leading-relaxed" />
+              </div>
+              <div className="col-span-2">
+                <label className="block text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-3">Key Features with Icons</label>
+                <div className="space-y-3">
+                  {keyFeatures.map((kf, index) => (
+                    <div key={index} className="flex items-center gap-3 bg-slate-50 border border-slate-200 p-3 rounded-2xl">
+                      <select
+                        value={kf.icon}
+                        onChange={(e) => {
+                          const newFeatures = [...keyFeatures];
+                          newFeatures[index].icon = e.target.value;
+                          setKeyFeatures(newFeatures);
+                        }}
+                        className="bg-white border border-slate-200 rounded-xl py-2 px-3 text-sm text-slate-900 outline-none focus:border-[#2563FF] shadow-inner"
+                      >
+                        <option value="CheckCircle2">Check Circle</option>
+                        <option value="RefreshCw">Refresh / Update</option>
+                        <option value="MessageSquare">Message / Notification</option>
+                        <option value="Bell">Bell / Alarm</option>
+                        <option value="Wifi">Wifi / Connection</option>
+                        <option value="AlertTriangle">Alert / Tamper</option>
+                        <option value="Activity">Activity / Frequency</option>
+                        <option value="Smartphone">Smartphone / App</option>
+                        <option value="QrCode">QR Code</option>
+                        <option value="ShieldCheck">Shield Check</option>
+                      </select>
+                      <input
+                        type="text"
+                        value={kf.text}
+                        onChange={(e) => {
+                          const newFeatures = [...keyFeatures];
+                          newFeatures[index].text = e.target.value;
+                          setKeyFeatures(newFeatures);
+                        }}
+                        placeholder="Feature description..."
+                        className="flex-1 bg-white border border-slate-200 rounded-xl py-2 px-4 text-sm text-slate-900 outline-none focus:border-[#2563FF] shadow-inner"
+                      />
+                      <button type="button" onClick={() => setKeyFeatures(keyFeatures.filter((_, i) => i !== index))} className="p-2 text-red-500 hover:bg-red-50 rounded-xl transition-colors">
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                  ))}
+                  <button type="button" onClick={() => setKeyFeatures([...keyFeatures, { icon: 'CheckCircle2', text: '' }])} className="text-sm font-bold text-[#2563FF] flex items-center gap-2 hover:underline">
+                    <Plus className="w-4 h-4" /> Add Key Feature
+                  </button>
+                </div>
               </div>
               <div>
                 <label className="block text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-3">Price (₹)</label>
@@ -523,7 +572,7 @@ function AddProductView({ onCancel, onAdd, initialData }: { onCancel: () => void
         <div className="space-y-8">
           <div className="bg-white border border-slate-200 rounded-[32px] p-8 shadow-[0_8px_30px_rgba(0,0,0,0.02)]">
             <h3 className="text-lg font-bold mb-6 flex items-center gap-3 text-slate-900"><ImageIcon className="text-[#2563FF]" /> Media</h3>
-            <CldUploadWidget uploadPreset="ml_default" onSuccess={(r:any) => setImageUrl(r?.info?.secure_url)}>
+            <CldUploadWidget uploadPreset="ml_default" onSuccess={(r: any) => setImageUrl(r?.info?.secure_url)}>
               {({ open }) => (
                 <div onClick={() => open()} className="border-2 border-dashed border-slate-200 bg-slate-50 rounded-3xl p-10 flex flex-col items-center justify-center text-center hover:bg-white hover:border-[#2563FF]/50 hover:shadow-md transition-all cursor-pointer group h-64">
                   {imageUrl ? (
@@ -581,9 +630,9 @@ function OrdersView({ orders }: { orders: any[] }) {
           </thead>
           <tbody>
             {orders.map((order, i) => (
-              <motion.tr 
+              <motion.tr
                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}
-                key={order.id} 
+                key={order.id}
                 className="border-b border-slate-100 hover:bg-slate-50 transition-colors cursor-pointer"
               >
                 <td className="py-5 px-8 font-bold text-sm text-slate-900">{order.id}</td>
@@ -719,9 +768,9 @@ function PartnersView({ partners }: { partners: any[] }) {
           </thead>
           <tbody>
             {partners.map((partner, i) => (
-              <motion.tr 
+              <motion.tr
                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}
-                key={partner._id || i} 
+                key={partner._id || i}
                 className="border-b border-slate-100 hover:bg-slate-50 transition-colors"
               >
                 <td className="py-5 px-8 font-bold text-sm text-slate-900">{partner.fullName}</td>
