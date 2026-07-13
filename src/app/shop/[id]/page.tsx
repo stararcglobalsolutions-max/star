@@ -12,6 +12,10 @@ import { CombiProtect8inSpecs } from './CombiProtect8inSpecs';
 import { MotionProtect8inSpecs } from './MotionProtect8inSpecs';
 import { MotionCam8inSpecs } from './MotionCam8inSpecs';
 import { MotionCamPhod8inSpecs } from './MotionCamPhod8inSpecs';
+import { MotionProtectCurtain8inSpecs } from './MotionProtectCurtain8inSpecs';
+import { CurtainOutdoor8inSpecs } from './CurtainOutdoor8inSpecs';
+import { DualCurtainOutdoor8inSpecs } from './DualCurtainOutdoor8inSpecs';
+import { MotionProtectOutdoor8inSpecs } from './MotionProtectOutdoor8inSpecs';
 
 export default function SingleProductPage({ params }: { params: Promise<{ id: string }> }) {
   const unwrappedParams = use(params);
@@ -171,6 +175,10 @@ export default function SingleProductPage({ params }: { params: Promise<{ id: st
       <CombiProtect8inSpecs slug={unwrappedParams.id} />
       <MotionCam8inSpecs slug={unwrappedParams.id} />
       <MotionCamPhod8inSpecs slug={unwrappedParams.id} />
+      <MotionProtectCurtain8inSpecs slug={unwrappedParams.id} />
+      <CurtainOutdoor8inSpecs slug={unwrappedParams.id} />
+      <DualCurtainOutdoor8inSpecs slug={unwrappedParams.id} />
+      <MotionProtectOutdoor8inSpecs slug={unwrappedParams.id} />
 
       <Footer />
     </div>

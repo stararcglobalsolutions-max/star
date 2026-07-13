@@ -1,0 +1,166 @@
+1
+GlassProtect Jeweller
+Wireless indoor glass break detector.
+Technical Data Sheet: GlassProtect Jeweller
+An Ajax hub is required for operation. 
+Find the detailed information on the 
+device at the link:
+http://ajax.systems/support/devices/glassprotect/
+Jeweller
+Key features
+Up to 9 m glass break detection 
+distance with 180° horizontal
+detection angle 
+Filter for false alarms caused by dogs 
+barking or the sound of passing trucks
+Up to 7 years of operation 
+on pre-installed battery
+Configuring in the Ajax mobile 
+and desktop apps
+Two-factor glass break verification 
+algorithm: by low and high frequencies
+Additional NC input for connecting a
+third-party detector
+Up to 1,000 m of two-way encrypted 
+wireless communication
+Pairing with the security 
+system via QR code
+Glass break sensor coverage angle
+180°
+9 m
+0 m
+3 m
+6 m
+9 m
+2
+Technical Data Sheet: GlassProtect Jeweller
+Jeweller
+communication technology
+Jeweller is a two-way wireless protocol that provides fast and reliable communication between hub and 
+connected devices. The protocol delivers instant data-rich alarms: security companies and users know which 
+device was triggered, when and where it happened.
+Jeweller features encryption and authentication to prevent forgery, and polling to display devices’ status in 
+real time. Supporting up to 1,000 m of wireless connectivity, Jeweller is ready to protect facilities and deliver 
+the best user experience for both end users and installers.
+Technical specifications
+Compliance with 
+standards
+EN 50131 (Grade 2)
+PD 6662:2017
+
+
+
+Communication with 
+control panel and 
+range extenders
+        Jeweller 
+communication 
+technology
+
+Frequency bands
+866.0 – 866.5 MHz
+868.0 – 868.6 MHz
+868.7 – 869.2 MHz
+905.0 – 926.5 MHz
+915.85 – 926.5 MHz
+921.0 – 922.0 MHz
+
+Maximum effective 
+radiated power (ERP)
+≤ 20 mW 
+Depends on the region of 
+sales
+Compatibility
+Hubs
+all Ajax hubs
+
+Range extenders
+all Ajax radio signal range 
+extenders 
+Detection
+Sensing element
+electret microphone
+
+Glass break detection 
+distance
+up to 9 m
+
+Glass break detection 
+angles
+horizontal — 180°
+vertical — N/A
+
+Sensitivity
+3 levels 
+Adjusted by PRO or user 
+with admin rights in the 
+Ajax app 
+3
+Technical Data Sheet: GlassProtect Jeweller
+Communication with 
+control panel and 
+range extenders
+Communication range
+up to 1,000 m
+
+Polling interval
+12–300 sec 
+
+Protection against 
+forgery
+Device authentication 
+In an open space
+Adjusted by PRO or user 
+with admin rights in the 
+Ajax app
+Power supply
+Battery type
+1  × CR123A 
+
+Battery life
+up to 7 years
+
+
+Pre-installed
+Enclosure
+Colours
+white, black
+
+Dimensions
+Ø 20 × 90 mm
+
+Weight
+30 g 
+Detection
+False alarm protection
+DualTone
+
+
+Third-party detector 
+connection
+wired detector with the 
+normally closed (NC) 
+contact type
+Two-factor glass break 
+verification software 
+algorithm: by low and high 
+frequencies
+Installation
+Operating temperature 
+range
+from –10°С to +40°С
+
+Operating humidity
+up to 75%
+
+Ingress protection
+IP50 
+Complete set
+GlassProtect Jeweller
+1 × CR123A
+SmartBracket
+Installation kit
+External contact for NC 
+detector
+Quick Start Guide 
+Pre-installed

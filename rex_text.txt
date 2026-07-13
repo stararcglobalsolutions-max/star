@@ -1,0 +1,187 @@
+
+--- PAGE 1 ---
+1
+Technical Data Sheet: ReX
+ReX
+Radio signal range extender boosting the 
+range of Ajax security system devices that 
+uses Jeweller communication protocol. 
+An Ajax hub is required for operation. Find the 
+detailed information on the device by the link: 
+http://ajax.systems/support/devices/rex
+Jeweller
+Key features
+Frequency hopping against jamming
+Up to 35 hours on the back-up battery in 
+case of external power loss
+Fast connection with security system 
+via QR code
+Tampering alarm for lid protection
+Over-the-air updates
+Remote control and setup via an Ajax 
+apps
+Security for large and complex facilities
+1 800 m
+1 700 m
+Hub
+ReX
+MotionProtect
+The maximum range of radio communication with connected devices is 1700 meters without obstacles. Up 
+to 5 range extenders can be connected to the Ajax security system. It allows using Ajax products for large-
+scale facilities protection. Regardless of the number of devices connected to the ReX, alarms are delivered in 
+0.3 seconds.
+
+--- PAGE 2 ---
+2
+Technical Data Sheet: ReX
+Encrypted two-way communication 
+Jeweller is a two-way wireless protocol that provides fast and reliable communication between both: hub 
+and ReX, and ReX and connected devices. The protocol delivers instant data-rich alarms and events: security 
+companies and users know which device was triggered, when and where it happened.
+Jeweller features encryption and authentication to prevent forgery, and polling to display connected devices 
+statuses. Supporting up to 1,800 m of wireless connectivity, Jeweller is ready to protect facilities and deliver 
+the best user experience for both end users and installers.
+ReX connects to the hub only directly. Connection to another range extender is not provided.
+1800
+Up to 1,800 m communication range
+Alarms and events delivery in 0.3 s
+Quick installation
+Connecting and configuring ReX is a straightforward 
+process that saves the installer time. To add the range 
+extender to the system, just scan a QR code in the Ajax 
+app and assign a name, room, and group to the device. 
+If necessary, the installer can deactivate or reconfigure 
+ReX remotely without visiting the facility.
+Technical specifications
+Compliance with 
+standards
+EN 50131 (Grade 2)
+PD 6662:2017
+
+
+
+
+Compatibility
+Hubs
+all Ajax hubs
+
+Range extenders
+Connection to another 
+range extender is not 
+provided
+
+--- PAGE 3 ---
+3
+Technical Data Sheet: ReX
+Communication with 
+control panel and 
+range extenders
+        Jeweller 
+communication 
+technology
+
+Frequency bands
+866.0 – 866.5 MHz
+868.0 – 868.6 MHz
+868.7 – 869.2 MHz
+905.0 – 926.5 MHz
+915.85 – 926.5 MHz
+921.0 – 922.0 MHz
+Maximum effective 
+radiated power (ERP)
+≤ 20 mW
+
+Communication range
+up to 1,800 m 
+Polling interval
+12–300 s 
+Alarms and events 
+delivery speed
+0.3 s
+
+Protection against forgery
+Device authentication
+
+Protection against 
+jamming
+Frequency hopping 
+Depends on the region of 
+sales
+
+In an open space
+
+Adjusted by PRO or user 
+with admin rights in the 
+Ajax app
+
+Installation
+Operating temperature 
+range
+from –10°С to +40°С
+
+Operating humidity
+up to 75%
+Power supply
+Main power supply
+110–240 V~, 50/60 Hz
+
+Backup power supply
+Li-Ion 2 Ah 
+Up to 35 hours of 
+autonomous operation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Enclosure
+Colours
+white, black
+
+Dimensions
+163 × 163 × 36 mm
+
+--- PAGE 4 ---
+4
+Technical Data Sheet: ReX
+Installation
+Protection class
+IP50
+
+Complete set
+ReX Jeweller
+SmartBracket mounting 
+panel
+Power supply cable
+Installation kit
+Quick start guide
+Enclosure
+Weight
+330 g
+
+Tampering alarm

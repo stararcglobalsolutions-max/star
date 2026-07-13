@@ -1,0 +1,168 @@
+
+--- PAGE 1 ---
+MotionCam Jeweller
+Wireless indoor IR motion detector supporting photo verification of alarms.
+An Ajax hub is required for operation. Find
+the detailed information on the device by the
+link:
+http://ajax.systems/support/devices/motioncam/
+Key features
+Up to 12 m detection distance
+88.5°/80°88.5°/80° viewing angles
+Temperature compensation
+Pet immunity
+A built-in camera for photo verification
+False alarms prevention algorithm
+Up to 4 years of operation
+Effortless installation and replacement
+on pre-installed batteries
+Remote control and setup via the app
+Connecting via QR code
+Angles and detection range
+8 m0 m6 m12 m
+Up to 12 m
+2.4 m
+4 m
+80°
+1.2 m
+88.5°0 m
+4 m
+0 m
+0 m3 m6 m9 m12 m
+8 m
+1Technical Data Sheet: MotionCam Jeweller
+
+--- PAGE 2 ---
+False alarms prevention
+Optics
+The detector lens increases sensitivity to human motion, cutting off false alarms caused by other sources of IR radiation. It is designed so that potential IR radiation from pets and other interferences affect only the small lens sections. Large sections, on the contrary, are aimed at the most likely places of burglar motion.
+Software
+For additional protection against false alarms, the detector uses the SmartDetect algorithm. The armed detector constantly analyses the thermal diagram from the IR sensor: the intensity of IR radiation, the size of the thermal spots, the speed of movement and other parameters.
+Installation
+When properly installed and configured, the detector does not react to common sources of false alarms and pets under 50 cm tall and 20 kg in weight. The detector has pre-installed batteries and the SmartBracket mounting panel. So, installers don’t need to disassemble the device and won’t damage the electronics during installation.
+Photo verification
+MotionCam equipped with a built-in camera to show the
+real situation at the facility. A built-in camera is activated if
+the detector is armed and motion is detected. Only users
+with access to the hub event feed and security company
+employees can view the photos. The detector software
+architecture does not support taking a photo on demand.
+Up to 640 × 480 pixels
+photo resolutionUp to 5 photos in a seriesIR backlight for low light
+conditions
+Privacy on demand
+MotionCam is designed to control security, not privacy. Graphic data is securely protected by encryption at
+each step of transmission and storage. Only hub users can access its virtual storage on Ajax Cloud and view
+photos taken by MotionCam detectors. Photos are stored for up to 6 months in the hub event log in Ajax
+apps. The Ajax Cloud is located on geographically distributed servers in compliance with the General Data
+Protection Regulation (GDPR) requirements.
+2Technical Data Sheet: MotionCam Jeweller
+
+--- PAGE 3 ---
+Monitoring software supporting the Ajax photo verification
+SentinelWBBSBNManitouHorus
+See the full list by the link:ajax.systems/connecting-to-cms/
+Two-way encrypted communication
+JewellerWings
+communication technology
+Jeweller and Wings are two-way wireless data transfer protocols that provide fast and reliable
+communication between hubs and connected devices. Jeweller delivers instant data-rich alarms: security
+companies and users know which device was triggered, when and where it happened. Wings delivers photos
+taken by a detector built-in camera.
+Both protocols feature encryption and authentication to prevent forgery, and polling to display devices’
+status. Supporting up to 1,700 m of wireless connectivity between MotionCam detectors and hub (or range
+extender), Jeweller and Wings are ready to protect facilities and deliver the best user experience for both end
+users and installers.
+The first photo delivery in 9 s1Alarm delivery within 0.3 s
+2Technical Data Sheet:MotionCam Jeweller
+
+--- PAGE 4 ---
+Technical specifications
+EN 50131 (Grade 2)
+PD 6662:2017
+Compliance with standards
+CMS connectivityHubs
+Hub 2
+Hub 2 Plus
+Hub Hybrid (2G)
+Hub Hybrid (4G)
+Range extenders
+ReX 2
+Motion detectionSensitive element
+PIR sensor
+Jeweller communication technology
+Communication channels with Ajax devices
+Detection distance
+up to 12 m
+Wings communication technology
+When installed at a height of 2.4 m.
+Frequency bands
+866.0 – 866.5 MHz
+868.0 – 868.6 MHz
+868.7 – 869.2 MHz
+905.0 – 926.5 MHz
+915.85 – 926.5 MHz
+921.0 – 922.0 MHz
+Detection angles
+horizontal — 88.5° 
+vertical — 80°
+Motion detection speed
+from 0.3 to 2.0 m/s
+Depends on the region of sales.
+The direction of the detector lens should be perpendicular to an alleged intrusion path into the facility.
+Maximum effective radiated power (ERP)
+≤ 20 mW
+Temperature compensation
+Communication range
+up to 1,700 m
+In an open space.
+Sensitivity
+3 levels
+Polling interval
+12–300 s
+Adjusted by PRO or user with admin rights in the Ajax app.
+Adjusted by PRO or user with admin rights in the Ajax app.
+Pet immunity
+weight: up to 20 kg
+height: up to 50 cm
+Protection against forgery
+Device authentication
+5Technical Data Sheet: MotionCam Jeweller
+
+--- PAGE 5 ---
+InstallationRecommended installation height
+2.4 m
+Photo verificationPhoto resolution in pixels
+640 × 480
+320 × 240 (default)
+160 × 120
+Adjusted by PRO or user with admin rights in the Ajax app
+Operating temperature range
+from –10°С to +40°С
+Operating humidity
+up to 75%
+Photos in a series
+from 1 to 5 pics
+Adjusted by PRO or user with admin rights in the Ajax app
+Protection class
+IP50
+IR backlight
+Power supplyBattery
+2 x CR123A
+EnclosureColour
+white, black
+Pre-installed.
+Dimensions
+110 × 65 × 50 mm
+Battery life
+up to 4 years
+Weight
+86 g
+Tampering alarm
+Complete setMotionCam Jeweller
+2 × CR123A battery
+Pre-installed
+SmartBracket mounting panel
+Installation kit
+Quick Start Guide
+5Technical Data Sheet: MotionCam Jeweller

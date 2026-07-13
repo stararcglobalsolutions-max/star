@@ -1,0 +1,144 @@
+Hub Jeweller
+Security system contr ol panel. 
+Has two independent communication channels: Ethernet and a 2G SIM car d. 
+ Find the detailed information on the 
+de vice at the link:
+ajax.systems/suppor t/de vices/hub/
+K e y f eatur es
+F r ee softwar e updates
+Connection t o security company CMS
+T ampering alarm
+Remote contr ol and setup via the appInforming users with push 
+notifications, calls, and SMS
+Communication with wir eless Ajax 
+de vices at a distance of up t o 2,000 m
+F r equency hopping
+Connecting t o Ajax apps via QR code
+Alwa ys online
+T o guar antee pr ompt alarm tr ansmission t o the monit oring station and users, H u b  can b e connected t o two 
+Internet pr o viders at a time via E thernet and SIM  car d (2G).  Channels work in par allel, and aut omatic 
+switching b etween them tak es seconds .
+H u b  is connected t o the apps, security companies and users thr ough the Ajax Cloud ser v er with an 
+a v aila b ility of 99.995%  in 202 1.  F or mor e ex cellent r elia b ility , the ser v ers ar e located in se v er al data centr es .  
+W e use the pr oprietar y b inar y pr ot ocol and aut omatic load b alancing for the uninterrupted pr ocessing of 
+millions of data pack ets and the sta b le oper ation of security systems .
+1 T echnical D ata Sheet: H u b  Jeweller J eweller
+
+2 T echnical Data Sheet: Hub Jeweller Hub r educes the security system dependence on the conditions at the facility . The contr ol panel is equipped 
+with a backup batter y , pr o viding up t o 16 hours of aut onomous oper ation in case of a blackout. The system will r epor t a power-down and a power r est or ation t o the CMS and all users.
+Jeweller
+communication technology
+Jeweller r adio pr ot ocol pr o vides two-wa y communication between a hub and de vices at a distance of up t o 
+2,000 m. Jeweller uses time fr ames t o synchr oniz e communication with connected de vices, authentication t o eliminate for ger y , and encr yption t o pr otect against data theft. 
+T o expand the r adio co v er age ar ea, a r ange extender can be connected t o Hub, incr easing the r ange 
+t o 1,800 m mor e.
+F ast connection and installation
+Hub is r eady t o work right out of the bo x. It comes with pr e-installed communication modules, a power 
+supply unit, and a backup batter y . T o begin the system setup, an installer needs t o plug the de vice int o a power sock et, connect it t o the Internet, inser t a SIM car d, and scan the app ' s QR code. Thanks t o Smar tBr ack et, installers don ’t need t o disassemble the enclosur e t o mount the hub.Contr olled with apps 
+W e ’v e de v eloped two types of applications: for users 
+and P R O . U sers’ apps ar e designed for monit oring 
+alarms and managing security via smar tphone. A pps 
+for P R O  ar e designed t o manage system settings via 
+P C or smar tphone.  
+A ll types of Aj ax apps connect t o a hub using a secur e 
+channel with Aj ax Cloud —  our ser v er solution located 
+at se v er al A W S data centr es. A ll security system 
+settings ar e alwa ys a v ailable in the app.
+The k e yboar d also allows y ou t o cr eate passcodes for those who ar e not added t o the hub users or use the system fr om time 
+t o time. In this case, the users and the monit oring company oper at or also know exactly who and when changed the security mode. It is conv enient, for example, t o cr eate a passcode for a cleaning company .
+3 T echnical Data Sheet: Hub Jeweller T echnical specifications
+Compliance with 
+standar dsEN 50131 (Gr ade 2)
+PD 6662:2017
+
+Connected de vices up t o 100 wir eless de vices
+Including 1 r ange extender 
+and up t o 10 sir ens.
+Communication 
+channels with Ajax 
+de vices         J e w e l l e r  
+c o m m u n i c a t i o n  t e c h n o l o g y
+
+F r equency bands
+866.0–866.5 MHz
+868.0–868.6 MHz
+868.7–869.2 MHz
+905.0–926.5 MHz
+915.85–926.5 MHz
+921.0–922.0 MHz
+Maximum eff ectiv e 
+r adiated power (ERP)
+≤25 mW
+
+Communication r ange
+up t o 2,000 m
+Depends on the sales 
+r egion.
+
+In an open space.
+P ower supply Main power suppl y
+100–2 4 0 V~ , 50 / 60 H z
+
+B ac k up power suppl y
+L i - Ion b atter y  with 2 A⋅ h 
+capacit y
+U p t o 16 hours o f  
+aut onomous oper ation.
+Connection t o C M S S urGar d ( C ontact ID)
+S I A  (D C- 09)
+A DEM CO  68 5
+O ther pr oprietar y  pr ot ocols
+F eatur es 50 users
+10 camer as or D VR s
+5 aut omation scenarios
+9 securit y  gr oups
+E xternal 
+communication 
+channelsEtherne t
+8P8 C  slo t
+Cellular networ k
+1 slot f or micr o -S I M
+
+2G (G S M900 / D CS 1800 
+( B 3 /B 8 ))
+
+
+
+
+
+
+
+
+
+
+U p t o 100 M b/ s.  
+
+I nstallation O per ating temper atur e 
+r ange
+f r om - 10 °С  t o + 4 0 °С
+
+O per ating humidit y
+up t o 75 %
+
+Pr otection class
+IP20
+4 T echnical Data Sheet: Hub Jeweller Enclosur e Colour
+white
+black
+
+Dimensions
+163 × 163 × 36 mm
+
+W eight
+350 g
+
+T ampering alarmComplete set Hub Jeweller
+P ower cable
+Ethernet cable
+SIM car d 
+Installation kit
+Quick Star t Guide
+
+
+Depends on the r egion of 
+sale.

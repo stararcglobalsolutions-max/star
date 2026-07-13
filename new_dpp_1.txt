@@ -1,0 +1,97 @@
+Technical Data Sheet: DoorProtect Plus Jeweller
+2
+Technical specifications
+Compliance with 
+standards
+EN 50131 (Grade 2)
+PD 6662:2017
+
+
+
+Communication with 
+control panel and 
+range extenders
+        Jeweller 
+communication 
+technology
+
+Frequency bands
+866.0 – 866.5 MHz
+868.0 – 868.6 MHz
+868.7 – 869.2 MHz
+905.0 – 926.5 MHz
+915.85 – 926.5 MHz
+921.0 – 922.0 MHz
+Maximum effective 
+radiated power (ERP)
+≤ 20 mW
+
+Communication range
+up to 1,200 m
+Polling interval
+12–300 sec 
+Protection against 
+forgery
+Device authentication
+Depends on the region 
+of sales
+
+In an open space
+
+Adjusted by PRO or user 
+with admin rights in the 
+Ajax app  
+Compatibility
+Hubs
+all Ajax hubs
+
+Range extenders
+all Ajax radio signal range 
+extenders
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Detection
+Sensing element
+1 × reed switch
+1 × accelerometer
+
+Opening sensors resource
+2,000,000 openings
+
+Shock sensor sensitivity
+3 levels 
+Option to ignore single 
+shocks
+Tilt sensor activation 
+threshold
+from 5° to 25°
+Third-party detector 
+connection
+wired detector with the 
+normally closed (NC) 
+contact type
+Adjusted by PRO or user 
+with admin rights in the 
+Ajax app
+
+Enabled by PRO or user 
+with admin rights in the 
+Ajax app
+
+Adjusted by PRO or user 
+with admin rights in the 
+Ajax app
+

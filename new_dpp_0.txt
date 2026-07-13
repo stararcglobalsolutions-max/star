@@ -1,0 +1,32 @@
+1
+DoorProtect Plus 
+Jeweller
+Wireless indoor opening detector 
+with shock and tilt sensors
+Technical Data Sheet: DoorProtect Plus Jeweller
+An Ajax hub is required for operation. 
+Find the detailed information on the 
+device at the link:
+https://ajax.systems/support/devices/doorprotect-plus/ 
+Jeweller
+Jeweller communication technology
+Jeweller is a two-way wireless protocol that provides fast and reliable communication between hubs and 
+devices. The protocol delivers instant data-rich alarms: security companies and users know which device 
+was triggered, when and where it happened.
+Jeweller features encryption and authentication to prevent forgery, and polling to display devices’ status in 
+real time. Supporting up to 1,200 m of wireless connectivity, Jeweller is ready to protect facilities and deliver 
+the best user experience for both end users and installers.
+Built-in accelerometer for shock and tilt 
+detection
+Ignores chattering and single shocks to 
+avoid false alarms 
+Up to 5 years of operation on pre-
+installed battery
+Remote control and setup via the app
+Adjustable tilt angle for alarm triggering
+Additional NC input for connecting a 
+third-party detector
+Up to 1,200 m of two-way encrypted 
+wireless communication
+Pairing via QR code
+Key features

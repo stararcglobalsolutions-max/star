@@ -1,0 +1,170 @@
+Baseline product line
+Hub 2 (2G) Jeweller
+Security system control panel with 3 communication channels: 
+Ethernet and 2 SIM cards (2G). Supports photo verification 
+provided by detectors of the MotionCam series.
+Free over-the-air software updates
+Connection to CMS
+Integration with third-party CCTV cameras or DVRs
+Informing users with push notifications, calls, 
+and SMS
+Always online
+To guarantee timely alarm transmission to the security company and users, Hub 2 supports connection to three Internet providers 
+simultaneously: via Ethernet and two SIM cards with a 2G cellular network. Communication channels operate in parallel, 
+and automatic switching between them takes seconds.
+The Ajax product portfolio includes Hub 2 with a 4G cellular modem. This version supports 2G, 3G, and LTE cellular 
+networks. Please note that 2G/3G networks have been shut down in some regions or are planned to be disabled soon.
+In-app control and 
+configuration
+Hub is connected to Ajax apps, security companies, and users 
+via a secure channel through the Ajax Cloud server located 
+in several AWS data centres. Server availability is 99.995%. 
+Intuitive Ajax apps provide remote configuration and all 
+information about system devices from anywhere the Internet 
+is available, on a smartphone or PC. An installer can remotely 
+change the settings and provide services in time — no need 
+to visit the object.
+Sabotage-resistant
+\ Built-in backup battery giving up to 16 hours of autonomous 
+operation
+\ Detecting loss of connection with Ajax Cloud in 1 minute
+\ Detecting loss of connection with devices in 36 seconds
+\ Tamper alarm
+Guaranteed delivery of alarms and photos
+An Ajax system uses two-way secure radio communication based on Jeweller and Wings proprietary protocols. Radio protocols work 
+in parallel and focus on their function, guaranteeing instant data delivery despite weak signal and communication interruptions.
+Encrypted two-way radio communication
+Frequency hopping against radio interference 
+and signal interception
+Automatic power adjustment of radio transmitters
+Notifications about jamming and connection loss
+Find detailed information by the link:
+ajax.systems/support/devices/hub-2/
+support@ajax.systems
+@AjaxSystemsSupport_Bot
+ajax.systems 
+Jeweller
+transmits alarms, events, and all readings
+c Up to 2,000 m of radio communication in an open space
+c Encryption and device authentication to prevent spoofing
+c Regular polling to display current devices' statuses
+Wings
+transmits photos and large data packages
+c Up to 1,700 m of radio communication in an open space
+c Unique uploading algorithm and data delivery confirmation
+c Data backup and resend in case of transmission interruptions
+Hassle-free installation
+The hub is ready to operate straight out of the box. There 
+is no need to disassemble the enclosure during installation. 
+With a SmartBracket panel, an installer can effortlessly mount 
+the hub on the wall or ceilings. The installation kit with all 
+the necessary fasteners is included in a complete set.
+Quick connection and setup
+Firstly, an installer needs to plug the hub into a power socket, 
+and connect it to the Internet via Ethernet and SIM cards. 
+The next step is pairing with Ajax apps by scanning the hub’s 
+QR code or entering its ID manually. And lastly, an installer only 
+needs to name the hub and add other Ajax devices.
+Compliance with standards
+EN 50131 (Grade 2)
+PD 6662:2017
+
+
+Connected devices
+up to 100 wireless Ajax devices
+Including up to 5 range extenders 
+and up to 10 sirens.
+ 
+Connection to CMS 
+SurGard (Contact ID)
+SIA (DC-09)
+ADEMCO 685
+And other proprietary protocols.
+Features
+50 users
+25 cameras or DVRs
+32 automation scenarios
+9 security groups
+photo verification support
+Communication with Ajax 
+devices
+       Jeweller communication 
+technology
+
+       Wings communication 
+technology
+
+Frequency bands
+866.0–866.5 MHz
+868.0–868.6 MHz
+868.7–869.2 MHz
+905.0–926.5 MHz
+915.85–926.5 MHz
+921.0–922.0 MHz
+Jeweller communication range
+up to 2,000 m
+Wings communication range
+up to 1,700 m
+Depends on the sales region.
+
+In an open space.
+
+In an open space.
+External communication 
+channels
+Ethernet
+8P8C slot
+Cellular network
+2 slots for micro-SIM
+Up to 100 Mb/s. 
+
+2G (GSM900/DCS1800 (B3/B8)).
+Enclosure
+Dimensions
+163 × 163 × 36 mm
+
+Weight
+362 g
+
+Colours
+white
+black
+Power supply
+Main power supply
+100–240 V~, 50/60 Hz
+
+Backup power supply
+built-in Li-Ion battery, 2 A⋅h 
+Up to 16 hours of autonomous 
+operation.
+Complete set
+Hub 2 (2G) Jeweller
+Power cable
+Ethernet cable
+SIM card 
+Depends on the sales region
+Installation kit
+Quick start guide
+ 
+Installation
+Operating temperature range
+from -10°С to +40°С
+
+Operating humidity
+up to 75%
+
+Protection class
+IP20
+
+
+
+
+
+
+
+
+
+
+
+
+
