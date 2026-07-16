@@ -250,13 +250,10 @@ export default function HeroScrollAnimation() {
         className="absolute inset-0 w-full h-full object-contain md:object-cover z-0 will-change-transform"
       />
 
-      {/* Cinematic Black Shadow Overlays to blend edges into background */}
-      <div className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-t from-black via-black/10 to-transparent opacity-90"></div>
-      <div className="absolute inset-0 z-0 pointer-events-none shadow-[inset_0_0_150px_rgba(0,0,0,1)]"></div>
-
-      {/* Corner shadows to hide any baked-in watermarks elegantly */}
-      <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-black blur-2xl z-0 pointer-events-none rounded-tr-full opacity-100"></div>
-      <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-black blur-2xl z-0 pointer-events-none rounded-tl-full opacity-100"></div>
+      {/* Targeted black shadow overlays to perfectly hide the watermark on the right */}
+      <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-black via-black/90 to-transparent z-0 pointer-events-none"></div>
+      <div className="absolute bottom-0 inset-x-0 h-1/3 bg-gradient-to-t from-black via-black/90 to-transparent z-0 pointer-events-none"></div>
+      <div className="absolute bottom-[20%] right-[10%] w-96 h-96 bg-black blur-[120px] z-0 pointer-events-none rounded-full"></div>
 
       {/* Hero Text Content */}
       <div className="hero-content absolute top-[22vh] md:top-40 left-6 md:left-12 z-20 flex flex-col items-start pointer-events-auto">

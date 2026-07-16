@@ -16,6 +16,20 @@ import { MotionProtectCurtain8inSpecs } from './MotionProtectCurtain8inSpecs';
 import { CurtainOutdoor8inSpecs } from './CurtainOutdoor8inSpecs';
 import { DualCurtainOutdoor8inSpecs } from './DualCurtainOutdoor8inSpecs';
 import { MotionProtectOutdoor8inSpecs } from './MotionProtectOutdoor8inSpecs';
+import { HoodSpecs } from './HoodSpecs';
+import { MotionCamOutdoor8inSpecs } from './MotionCamOutdoor8inSpecs';
+import { MotionCamOutdoorPhod8inSpecs } from './MotionCamOutdoorPhod8inSpecs';
+import { MotionCamOutdoorHighMountPhod8inSpecs } from './MotionCamOutdoorHighMountPhod8inSpecs';
+import { LeaksProtect8inSpecs } from './LeaksProtect8inSpecs';
+import { LifeQuality8inSpecs } from './LifeQuality8inSpecs';
+import { FireProtect8inSpecs } from './FireProtect8inSpecs';
+import { FireProtect2Heat8inSpecs } from './FireProtect2Heat8inSpecs';
+import { FireProtect2HeatSmoke8inSpecs } from './FireProtect2HeatSmoke8inSpecs';
+import { FireProtect2HeatSmokeCo8inSpecs } from './FireProtect2HeatSmokeCo8inSpecs';
+import { ManualCallPoint8inSpecs } from './ManualCallPoint8inSpecs';
+import { Button8inSpecs } from './Button8inSpecs';
+import { DoubleButton8inSpecs } from './DoubleButton8inSpecs';
+import { HolderSpecs } from './HolderSpecs';
 
 export default function SingleProductPage({ params }: { params: Promise<{ id: string }> }) {
   const unwrappedParams = use(params);
@@ -130,7 +144,7 @@ export default function SingleProductPage({ params }: { params: Promise<{ id: st
               </div>
               <button
                 onClick={handleAddToCart}
-                className="w-full sm:flex-1 shrink-0 h-14 bg-black text-white font-bold tracking-wide uppercase text-sm flex items-center justify-center gap-2 transition-all shadow-lg shadow-black/10 hover:shadow-black/20 hover:-translate-y-0.5 hover:bg-slate-800"
+                className="w-full sm:flex-1 shrink-0 h-14 bg-[#0066cc] text-white font-bold tracking-wide uppercase text-sm flex items-center justify-center gap-2 transition-all shadow-lg shadow-[#0066cc]/20 hover:shadow-[#0066cc]/30 hover:-translate-y-0.5 hover:bg-[#005bb5] rounded-full"
               >
                 {isAdded ? <Check size={18} /> : <ShoppingCart size={18} />}
                 {isAdded ? 'Added!' : 'Add to Cart'}
@@ -179,6 +193,20 @@ export default function SingleProductPage({ params }: { params: Promise<{ id: st
       <CurtainOutdoor8inSpecs slug={unwrappedParams.id} />
       <DualCurtainOutdoor8inSpecs slug={unwrappedParams.id} />
       <MotionProtectOutdoor8inSpecs slug={unwrappedParams.id} />
+      <HoodSpecs slug={unwrappedParams.id} />
+      <MotionCamOutdoor8inSpecs slug={unwrappedParams.id} />
+      <MotionCamOutdoorPhod8inSpecs slug={unwrappedParams.id} />
+      <MotionCamOutdoorHighMountPhod8inSpecs slug={unwrappedParams.id} />
+      <LeaksProtect8inSpecs slug={unwrappedParams.id} />
+      <LifeQuality8inSpecs slug={unwrappedParams.id} />
+      <FireProtect8inSpecs slug={unwrappedParams.id} />
+      <FireProtect2Heat8inSpecs slug={unwrappedParams.id} />
+      <FireProtect2HeatSmoke8inSpecs slug={unwrappedParams.id} />
+      <FireProtect2HeatSmokeCo8inSpecs slug={unwrappedParams.id} />
+      <ManualCallPoint8inSpecs slug={unwrappedParams.id} />
+      <Button8inSpecs slug={unwrappedParams.id} />
+      <DoubleButton8inSpecs slug={unwrappedParams.id} />
+      <HolderSpecs slug={unwrappedParams.id} />
 
       <Footer />
     </div>

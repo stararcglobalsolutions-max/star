@@ -13,7 +13,7 @@ export function MotionProtectPlus8inSpecs({ slug }: { slug: string }) {
 
   return (
     <section className="w-full bg-white pb-16">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col gap-0">
+      <div className="w-full flex flex-col gap-0">
         {PAGES.map((page) => (
           <div key={page.num} className="w-full bg-white">
             <img
@@ -24,6 +24,7 @@ export function MotionProtectPlus8inSpecs({ slug }: { slug: string }) {
             />
           </div>
         ))}
+
       </div>
     </section>
   );

@@ -14,7 +14,7 @@ export function MotionCam8inSpecs({ slug }: { slug: string }) {
         <div className="flex flex-col lg:flex-row justify-between items-start w-full relative mb-24">
           
           <div className="flex flex-col w-full lg:w-[40%]">
-            <div className="text-[40px] md:text-[52px] font-black tracking-tighter mb-4 leading-none">AJAX</div>
+            <img src="/pawered by stararc.png" alt="Powered by StarArc" className="h-16 w-auto mb-4 object-contain" />
             <h1 className="text-[32px] md:text-[44px] font-bold mb-2 leading-tight">MotionCam <span className="font-normal">Jeweller</span></h1>
             <p className="text-[20px] md:text-[22px] font-medium text-black mb-8">Wireless indoor IR motion detector supporting photo verification of alarms.</p>
             
