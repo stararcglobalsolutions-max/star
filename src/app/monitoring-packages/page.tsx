@@ -158,7 +158,29 @@ const ajaxPackages = [
 ];
 
 const dahuaPackages = [
-  { name: "Core", popular: false, desc: "High-definition essential surveillance.", price: "Custom", features: ["24/7 Professional Monitoring", "Instant App Notifications", "Priority Response Times"] },
+  { 
+    name: "Core", 
+    popular: false, 
+    desc: "High-definition essential surveillance.", 
+    price: "₹89,998.00",
+    isTableLayout: true,
+    equipment: [
+      { name: "Alarm Hub 2", qty: 1 },
+      { name: "D/W Sensor", qty: 1 },
+      { name: "Motion Seneor Indoor", qty: 1 },
+      { name: "Panic + Control Remote", qty: 1 },
+      { name: "D/W Sensor Plus", qty: 1 },
+      { name: "Seiren Indoor", qty: 1 }
+    ],
+    details: [
+      { label: "MONOTERING COST", value: "24 Months" },
+      { label: "STARARC APP & ONLINE INTG", value: "Integration, Service & Software" },
+      { label: "Sales", value: "Delear/RM" },
+      { label: "Installation cost", value: "Technician" },
+      { label: "Total Quote", value: "Eq + Install." }
+    ],
+    features: []
+  },
   { name: "Prime", popular: false, desc: "Enhanced clarity with night-vision and remote access.", price: "Custom", features: ["24/7 Professional Monitoring", "Instant App Notifications", "Priority Response Times"] },
   { name: "Elite", popular: true, desc: "AI-powered analytics, facial recognition, and active deterrence.", price: "Custom", features: ["24/7 Professional Monitoring", "Instant App Notifications", "Priority Response Times"] },
   { name: "Prestige", popular: false, desc: "Enterprise-grade 4K multi-site monitoring systems.", price: "Custom", features: ["24/7 Professional Monitoring", "Instant App Notifications", "Priority Response Times"] },
