@@ -58,7 +58,37 @@ const ajaxPackages = [
     ],
     features: []
   },
-  { name: "Elite", popular: false, desc: "Comprehensive ecosystem for large properties.", price: "Custom", features: ["24/7 Professional Monitoring", "Instant App Notifications", "Priority Response Times", "Full Property Coverage"] },
+  { 
+    name: "Elite", 
+    popular: false, 
+    desc: "Comprehensive ecosystem for large properties.", 
+    price: "₹319,999.00",
+    isTableLayout: true,
+    equipment: [
+      { name: "Hub 4G (8IN)", qty: 1 },
+      { name: "KEYPAD PANEL", qty: 1 },
+      { name: "Fire+Heat with sounder", qty: 1 },
+      { name: "Yale Safe", qty: 1 },
+      { name: "Panic + Control Remote", qty: 1 },
+      { name: "Shock Locker Sensor system", qty: 1 },
+      { name: "Seiren Outdoor", qty: 1 },
+      { name: "D/W Sensor", qty: 3 },
+      { name: "Motion Seneor Indoor", qty: 1 },
+      { name: "Panic + Control Remote", qty: 1 },
+      { name: "Camera", qty: 4 },
+      { name: "Seiren Indoor", qty: 1 },
+      { name: "Yale Door lock KYRA Pro", qty: 1 }
+    ],
+    details: [
+      { label: "TOTAL EQ", value: "18" },
+      { label: "Monitoring cost", value: "24 Months" },
+      { label: "STARARC", value: "Integration 10%" },
+      { label: "Sales", value: "Delear/RM" },
+      { label: "Installation cost", value: "Technician" },
+      { label: "Total Quote", value: "Eq + Install." }
+    ],
+    features: []
+  },
   { name: "Prestige", popular: false, desc: "Total integration with automation and maximum security.", price: "Custom", features: ["24/7 Professional Monitoring", "Instant App Notifications", "Priority Response Times", "Smart Home Integration"] },
   { name: "Private", popular: false, desc: "Custom bespoke architecture for highly sensitive environments.", price: "Custom", features: ["Bespoke Architecture", "Dedicated Security Team", "Advanced Encryption", "On-site Server"] },
 ];
