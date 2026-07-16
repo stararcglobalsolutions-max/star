@@ -121,7 +121,40 @@ const ajaxPackages = [
     ],
     features: []
   },
-  { name: "Private", popular: false, desc: "Custom bespoke architecture for highly sensitive environments.", price: "Custom", features: ["Bespoke Architecture", "Dedicated Security Team", "Advanced Encryption", "On-site Server"] },
+  { 
+    name: "Private", 
+    popular: false, 
+    desc: "Custom bespoke architecture for highly sensitive environments.", 
+    price: "₹899,999.00",
+    isTableLayout: true,
+    equipment: [
+      { name: "Hub 2 4G (8IN)", qty: 1 },
+      { name: "Pannel", qty: 1 },
+      { name: "Fire+Heat with sounder", qty: 2 },
+      { name: "Access TAG", qty: 2 },
+      { name: "Shock Locker Sensor system", qty: 1 },
+      { name: "Seiren Outdoor", qty: 2 },
+      { name: "D/W Sensor", qty: 4 },
+      { name: "Motion Cam Indoor (phod)", qty: 2 },
+      { name: "Motion Protect Outdoor", qty: 1 },
+      { name: "Yale Safe", qty: 1 },
+      { name: "Yale Door lock", qty: 1 },
+      { name: "Motion Seneor Indoor", qty: 1 },
+      { name: "Panic + Control Remote", qty: 1 },
+      { name: "Seiren Indoor", qty: 1 },
+      { name: "Cameras +dvr", qty: 8 },
+      { name: "Outdoor Motion CameraSensored", qty: 1 }
+    ],
+    details: [
+      { label: "Total Quote", value: "30" },
+      { label: "Monitoring cost", value: "24 Months" },
+      { label: "STARARC", value: "Integration" },
+      { label: "Sales", value: "Delear/RM" },
+      { label: "Installation cost", value: "Technician" },
+      { label: "Total Quote", value: "Eq + Install." }
+    ],
+    features: []
+  },
 ];
 
 const dahuaPackages = [
