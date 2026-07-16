@@ -181,7 +181,35 @@ const dahuaPackages = [
     ],
     features: []
   },
-  { name: "Prime", popular: false, desc: "Enhanced clarity with night-vision and remote access.", price: "Custom", features: ["24/7 Professional Monitoring", "Instant App Notifications", "Priority Response Times"] },
+  { 
+    name: "Prime", 
+    popular: false, 
+    desc: "Enhanced clarity with night-vision and remote access.", 
+    price: "₹139,999.00",
+    isTableLayout: true,
+    equipment: [
+      { name: "Alarm Hub 2", qty: 1 },
+      { name: "D/W Sensor", qty: 1 },
+      { name: "Motion Sensor Indoor", qty: 1 },
+      { name: "Panic + Control Remote", qty: 1 },
+      { name: "Shock Locker Sensor system", qty: 1 },
+      { name: "Seiren Outdoor", qty: 1 },
+      { name: "Fire+Heat with sounder", qty: 1 },
+      { name: "Glass break detector", qty: 1 },
+      { name: "Maxwell Safe", qty: 1 },
+      { name: "D/W Sensor", qty: 2 },
+      { name: "Camera", qty: 2 }
+    ],
+    details: [
+      { label: "Total Quote", value: "13" },
+      { label: "Monitoring Cost", value: "24 Months" },
+      { label: "STARARC", value: "Integration, Service & Software" },
+      { label: "Sales", value: "Delear/RM" },
+      { label: "Installation cost", value: "Technician" },
+      { label: "Total Quote", value: "Eq + Install." }
+    ],
+    features: []
+  },
   { name: "Elite", popular: true, desc: "AI-powered analytics, facial recognition, and active deterrence.", price: "Custom", features: ["24/7 Professional Monitoring", "Instant App Notifications", "Priority Response Times"] },
   { name: "Prestige", popular: false, desc: "Enterprise-grade 4K multi-site monitoring systems.", price: "Custom", features: ["24/7 Professional Monitoring", "Instant App Notifications", "Priority Response Times"] },
 ];
