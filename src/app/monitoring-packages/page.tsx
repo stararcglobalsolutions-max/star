@@ -236,22 +236,22 @@ function PackageCard({ pkg }: { pkg: any }) {
               </div>
             ))}
 
-            <div className="h-6"></div>
+            {isExpanded && pkg.details && pkg.details.length > 0 && <div className="h-6"></div>}
 
             {/* Details Rows */}
-            {pkg.details?.map((item: any, i: number) => (
+            {isExpanded && pkg.details?.map((item: any, i: number) => (
               <div key={`detail-${i}`} className="grid grid-cols-[1fr_auto] gap-4 py-3 border-b border-white/5 items-center hover:bg-white/[0.02] px-2 -mx-2 rounded transition-colors">
                 <div className="text-gray-400 font-medium text-sm">{item.label}</div>
                 <div className="text-right text-white font-semibold text-sm">{item.value}</div>
               </div>
             ))}
 
-            {hasMoreEquipment && (
+            {((pkg.equipment?.length || 0) + (pkg.details?.length || 0) > maxItems) && (
               <button 
                 onClick={() => setIsExpanded(!isExpanded)} 
                 className="py-3 mt-2 text-red-500 text-sm font-bold hover:text-red-400 text-left transition-colors border-t border-white/5 w-full"
               >
-                {isExpanded ? "View Less -" : `View More (+${pkg.equipment.length - maxItems} Items)`}
+                {isExpanded ? "View Less -" : `View More (+${((pkg.equipment?.length || 0) + (pkg.details?.length || 0)) - maxItems} Items)`}
               </button>
             )}
           </div>
