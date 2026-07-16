@@ -241,7 +241,41 @@ const dahuaPackages = [
     ],
     features: []
   },
-  { name: "Prestige", popular: false, desc: "Enterprise-grade 4K multi-site monitoring systems.", price: "Custom", features: ["24/7 Professional Monitoring", "Instant App Notifications", "Priority Response Times"] },
+  { 
+    name: "Prestige", 
+    popular: false, 
+    desc: "Enterprise-grade 4K multi-site monitoring systems.", 
+    price: "₹289,999.00",
+    isTableLayout: true,
+    equipment: [
+      { name: "Alarm Hub 2", qty: 1 },
+      { name: "D/W Sensor", qty: 1 },
+      { name: "Motion Seneor Indoor", qty: 1 },
+      { name: "Panic + Control Remote", qty: 1 },
+      { name: "Pannel", qty: 1 },
+      { name: "Fire+Heat with sounder", qty: 1 },
+      { name: "Glass breaker detector", qty: 1 },
+      { name: "Shock Locker Sensor system", qty: 1 },
+      { name: "Siren Indoor (1 IN HUB2)", qty: 1 },
+      { name: "D/W Sensor", qty: 4 },
+      { name: "Motion Sensor Indoor", qty: 3 },
+      { name: "Panic + Control Remote", qty: 1 },
+      { name: "Siren Indoor (1 IN HUB2)", qty: 2 },
+      { name: "Cameras +DRV", qty: 6 },
+      { name: "Outdoor Motion CameraSensored", qty: 1 },
+      { name: "Yale safe", qty: 1 },
+      { name: "Door Bell intercome", qty: 1 }
+    ],
+    details: [
+      { label: "Total Quote", value: "25" },
+      { label: "Monitoring cost", value: "24 Months" },
+      { label: "STARARC", value: "Integration, Service & Software" },
+      { label: "Sales", value: "Delear/RM" },
+      { label: "Installation cost", value: "Technician" },
+      { label: "Total Quote", value: "Eq + Install." }
+    ],
+    features: []
+  },
 ];
 
 export default function MonitoringPackagesPage() {
