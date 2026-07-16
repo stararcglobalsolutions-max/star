@@ -89,7 +89,38 @@ const ajaxPackages = [
     ],
     features: []
   },
-  { name: "Prestige", popular: false, desc: "Total integration with automation and maximum security.", price: "Custom", features: ["24/7 Professional Monitoring", "Instant App Notifications", "Priority Response Times", "Smart Home Integration"] },
+  { 
+    name: "Prestige", 
+    popular: false, 
+    desc: "Total integration with automation and maximum security.", 
+    price: "₹429,999.00",
+    isTableLayout: true,
+    equipment: [
+      { name: "Hub 4G (8IN)", qty: 1 },
+      { name: "Pannel Keypad Plus", qty: 1 },
+      { name: "Yale Safe", qty: 1 },
+      { name: "Fire+Heat with sounder", qty: 1 },
+      { name: "Access TAG", qty: 2 },
+      { name: "Shock Locker Sensor system", qty: 1 },
+      { name: "Seiren Outdoor", qty: 1 },
+      { name: "Motion curtain pro", qty: 1 },
+      { name: "D/W Sensor", qty: 5 },
+      { name: "Motion Seneor Indoor", qty: 1 },
+      { name: "Panic + Control Remote", qty: 1 },
+      { name: "Seiren Indoor", qty: 1 },
+      { name: "Cameras +dvr", qty: 6 },
+      { name: "Yale Door lock KYRA Pro", qty: 1 }
+    ],
+    details: [
+      { label: "Total Quote", value: "24" },
+      { label: "Monitoring cost", value: "24 Months" },
+      { label: "STARARC", value: "Integration" },
+      { label: "Sales", value: "Delear/RM" },
+      { label: "Installation cost", value: "Technician" },
+      { label: "Total Quote", value: "Eq + Install." }
+    ],
+    features: []
+  },
   { name: "Private", popular: false, desc: "Custom bespoke architecture for highly sensitive environments.", price: "Custom", features: ["Bespoke Architecture", "Dedicated Security Team", "Advanced Encryption", "On-site Server"] },
 ];
 
