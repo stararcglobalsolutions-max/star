@@ -22,11 +22,12 @@ const ajaxPackages = [
       { name: "Siren Indoor", qty: 1 }
     ],
     details: [
-      { label: "Monitoring Contract", value: "24 Months" },
-      { label: "STARARC Integration", value: "Included" },
-      { label: "Sales Support", value: "Dealer / RM" },
-      { label: "Installation", value: "Technician" },
-      { label: "Total Quote", value: "Equipment + Installation" }
+      { label: "TOTAL EQ", value: "7" },
+      { label: "Monitoring cost", value: "24 Months" },
+      { label: "STARARC", value: "Integration" },
+      { label: "Sales", value: "Dealer/RM" },
+      { label: "Installation cost", value: "Technician" },
+      { label: "Total Quote", value: "Eq + Install." }
     ],
     features: []
   },
@@ -49,12 +50,7 @@ const ajaxPackages = [
       { name: "Camera", qty: 2 }
     ],
     details: [
-      { label: "Total Equipment", value: "13" },
-      { label: "Monitoring Contract", value: "24 Months" },
-      { label: "STARARC Integration", value: "Included" },
-      { label: "Sales Support", value: "Dealer / RM" },
-      { label: "Installation", value: "Technician" },
-      { label: "Total Quote", value: "Equipment + Installation" }
+      { label: "Total Equipment", value: "13" }
     ],
     features: []
   },
