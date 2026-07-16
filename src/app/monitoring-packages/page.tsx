@@ -236,15 +236,6 @@ function PackageCard({ pkg }: { pkg: any }) {
               </div>
             ))}
 
-            {hasMoreEquipment && (
-              <button 
-                onClick={() => setIsExpanded(!isExpanded)} 
-                className="py-3 text-red-500 text-sm font-bold hover:text-red-400 text-left transition-colors border-b border-white/5 w-full"
-              >
-                {isExpanded ? "View Less -" : `View More (+${pkg.equipment.length - maxItems} Items)`}
-              </button>
-            )}
-
             <div className="h-6"></div>
 
             {/* Details Rows */}
@@ -254,6 +245,15 @@ function PackageCard({ pkg }: { pkg: any }) {
                 <div className="text-right text-white font-semibold text-sm">{item.value}</div>
               </div>
             ))}
+
+            {hasMoreEquipment && (
+              <button 
+                onClick={() => setIsExpanded(!isExpanded)} 
+                className="py-3 mt-2 text-red-500 text-sm font-bold hover:text-red-400 text-left transition-colors border-t border-white/5 w-full"
+              >
+                {isExpanded ? "View Less -" : `View More (+${pkg.equipment.length - maxItems} Items)`}
+              </button>
+            )}
           </div>
         )}
 
