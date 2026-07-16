@@ -22,7 +22,6 @@ const ajaxPackages = [
       { name: "Siren Indoor", qty: 1 }
     ],
     details: [
-      { label: "TOTAL EQ", value: "7" },
       { label: "Monitoring cost", value: "24 Months" },
       { label: "STARARC", value: "Integration" },
       { label: "Sales", value: "Dealer/RM" },
