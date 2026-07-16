@@ -49,7 +49,12 @@ const ajaxPackages = [
       { name: "Camera", qty: 2 }
     ],
     details: [
-      { label: "Total Equipment", value: "13" }
+      { label: "Total Quote", value: "13" },
+      { label: "Monitoring cost", value: "24 Months" },
+      { label: "STARARC", value: "Integration" },
+      { label: "Sales", value: "Dealer/RM" },
+      { label: "Installation cost", value: "Technician" },
+      { label: "Total Quote", value: "Eq + Install." }
     ],
     features: []
   },
