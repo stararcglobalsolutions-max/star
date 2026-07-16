@@ -34,7 +34,7 @@ const ajaxPackages = [
     name: "Prime Custom Package", 
     popular: true, 
     desc: "Advanced security with expanded coverage and smart alerts.",
-    price: "Custom",
+    price: "₹219,999.00",
     isTableLayout: true,
     equipment: [
       { name: "Hub 4G (8IN)", qty: 1 },
