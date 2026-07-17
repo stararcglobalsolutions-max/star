@@ -6,7 +6,6 @@ export function MotionCamOutdoor8inSpecs({ slug }: { slug: string }) {
   const BASE = '/images/products/motioncam-outdoor-8in';
 
   const PAGES = [
-    { num: 1, src: `${BASE}/hires_page_1.png` },
     { num: 2, src: `${BASE}/hires_page_2.png` },
     { num: 3, src: `${BASE}/hires_page_3.png` },
   ];

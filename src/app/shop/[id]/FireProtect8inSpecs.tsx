@@ -6,7 +6,6 @@ export function FireProtect8inSpecs({ slug }: { slug: string }) {
   const BASE = '/images/products/fire-protect-8in';
 
   const PAGES = [
-    { num: 1, src: `${BASE}/hires_page_1.png` },
     { num: 2, src: `${BASE}/hires_page_2.png` },
     { num: 3, src: `${BASE}/hires_page_3.png` },
     { num: 4, src: `${BASE}/hires_page_4.png` },

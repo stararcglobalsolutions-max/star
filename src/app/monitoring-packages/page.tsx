@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Check, Shield, Star, Zap } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const ajaxPackages = [
   { 
@@ -24,8 +25,6 @@ const ajaxPackages = [
     details: [
       { label: "Monitoring cost", value: "24 Months" },
       { label: "STARARC", value: "Integration" },
-      { label: "Sales", value: "Dealer/RM" },
-      { label: "Installation cost", value: "Technician" },
       { label: "Total Quote", value: "Eq + Install." }
     ],
     features: []
@@ -52,8 +51,6 @@ const ajaxPackages = [
       { label: "Total Quote", value: "13" },
       { label: "Monitoring cost", value: "24 Months" },
       { label: "STARARC", value: "Integration" },
-      { label: "Sales", value: "Dealer/RM" },
-      { label: "Installation cost", value: "Technician" },
       { label: "Total Quote", value: "Eq + Install." }
     ],
     features: []
@@ -83,8 +80,6 @@ const ajaxPackages = [
       { label: "TOTAL EQ", value: "18" },
       { label: "Monitoring cost", value: "24 Months" },
       { label: "STARARC", value: "Integration 10%" },
-      { label: "Sales", value: "Delear/RM" },
-      { label: "Installation cost", value: "Technician" },
       { label: "Total Quote", value: "Eq + Install." }
     ],
     features: []
@@ -115,8 +110,6 @@ const ajaxPackages = [
       { label: "Total Quote", value: "24" },
       { label: "Monitoring cost", value: "24 Months" },
       { label: "STARARC", value: "Integration" },
-      { label: "Sales", value: "Delear/RM" },
-      { label: "Installation cost", value: "Technician" },
       { label: "Total Quote", value: "Eq + Install." }
     ],
     features: []
@@ -149,8 +142,6 @@ const ajaxPackages = [
       { label: "Total Quote", value: "30" },
       { label: "Monitoring cost", value: "24 Months" },
       { label: "STARARC", value: "Integration" },
-      { label: "Sales", value: "Delear/RM" },
-      { label: "Installation cost", value: "Technician" },
       { label: "Total Quote", value: "Eq + Install." }
     ],
     features: []
@@ -175,8 +166,6 @@ const dahuaPackages = [
     details: [
       { label: "MONOTERING COST", value: "24 Months" },
       { label: "STARARC APP & ONLINE INTG", value: "Integration, Service & Software" },
-      { label: "Sales", value: "Delear/RM" },
-      { label: "Installation cost", value: "Technician" },
       { label: "Total Quote", value: "Eq + Install." }
     ],
     features: []
@@ -204,8 +193,6 @@ const dahuaPackages = [
       { label: "Total Quote", value: "13" },
       { label: "Monitoring Cost", value: "24 Months" },
       { label: "STARARC", value: "Integration, Service & Software" },
-      { label: "Sales", value: "Delear/RM" },
-      { label: "Installation cost", value: "Technician" },
       { label: "Total Quote", value: "Eq + Install." }
     ],
     features: []
@@ -235,8 +222,6 @@ const dahuaPackages = [
       { label: "Total Quote", value: "19" },
       { label: "Monitoring Cost", value: "24 Months" },
       { label: "STARC", value: "Integration, Service & Software" },
-      { label: "Sales", value: "Delear/RM" },
-      { label: "Installation cost", value: "Technician" },
       { label: "Total Quote", value: "Eq + Install." }
     ],
     features: []
@@ -270,8 +255,6 @@ const dahuaPackages = [
       { label: "Total Quote", value: "25" },
       { label: "Monitoring cost", value: "24 Months" },
       { label: "STARARC", value: "Integration, Service & Software" },
-      { label: "Sales", value: "Delear/RM" },
-      { label: "Installation cost", value: "Technician" },
       { label: "Total Quote", value: "Eq + Install." }
     ],
     features: []
@@ -364,7 +347,32 @@ export default function MonitoringPackagesPage() {
 
 function PackageCard({ pkg }: { pkg: any }) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const router = useRouter();
+  
   const displayFeatures = pkg.highlights || pkg.features || [];
+
+  const handleSelectPackage = () => {
+    let price = 0;
+    if (pkg.price && pkg.price !== "Custom") {
+      const priceStr = pkg.price.replace(/[^0-9.-]+/g, "");
+      price = parseFloat(priceStr);
+    }
+    
+    const newItem = {
+      name: pkg.name + " Package",
+      price: isNaN(price) ? 0 : price,
+      quantity: 1,
+      image: null,
+      color: "Standard",
+    };
+
+    const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+    cartItems.push(newItem);
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    window.dispatchEvent(new Event('cartUpdated'));
+
+    router.push('/cart');
+  };
 
   const maxItems = 4;
   const hasMoreEquipment = pkg.equipment && pkg.equipment.length > maxItems;
@@ -472,7 +480,9 @@ function PackageCard({ pkg }: { pkg: any }) {
 
         {/* Buttons (Fixed to bottom) */}
         <div className="mt-auto flex flex-col gap-4">
-          <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg
+          <button 
+            onClick={handleSelectPackage}
+            className={`w-full py-4 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg
             ${pkg.popular 
               ? 'bg-red-600 hover:bg-red-500 text-white shadow-red-600/20 hover:shadow-red-500/40 hover:-translate-y-0.5' 
               : 'bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-white/20 hover:-translate-y-0.5'

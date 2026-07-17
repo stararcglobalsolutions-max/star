@@ -6,7 +6,6 @@ export function FireProtect2HeatSmokeCo8inSpecs({ slug }: { slug: string }) {
   const BASE = '/images/products/fire-protect-2-heat-smoke-co-8in';
 
   const PAGES = [
-    { num: 1, src: `${BASE}/hires_page_1.png` },
     { num: 2, src: `${BASE}/hires_page_2.png` },
   ];
 

@@ -6,7 +6,6 @@ export function CurtainOutdoor8inSpecs({ slug }: { slug: string }) {
   const BASE = '/images/products/curtain-outdoor-8in';
 
   const PAGES = [
-    { num: 1, src: `${BASE}/hires_page_1.png` },
     { num: 2, src: `${BASE}/hires_page_2.png` },
   ];
 

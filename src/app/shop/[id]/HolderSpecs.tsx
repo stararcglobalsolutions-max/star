@@ -6,7 +6,6 @@ export function HolderSpecs({ slug }: { slug: string }) {
   const BASE = '/images/products/holder';
 
   const PAGES = [
-    { num: 1, src: `${BASE}/hires_page_1.png` },
     { num: 2, src: `${BASE}/hires_page_2.png` },
   ];
 

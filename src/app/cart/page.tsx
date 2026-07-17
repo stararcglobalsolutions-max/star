@@ -35,6 +35,8 @@ export default function CartPage() {
   if (!mounted) return null;
 
   const subtotal = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+  const gst = subtotal * 0.18;
+  const estimatedTotal = subtotal + gst;
 
   return (
     <div className="min-h-screen bg-[#F9FAFB]">
@@ -69,13 +71,11 @@ export default function CartPage() {
                     
                     {/* Product Info */}
                     <div className="col-span-1 sm:col-span-6 flex items-center gap-6">
-                      <div className="w-24 h-24 rounded-lg p-2 shrink-0 flex items-center justify-center">
-                        {item.image ? (
+                      {item.image && !item.name?.includes('Package') && (
+                        <div className="w-24 h-24 rounded-lg p-2 shrink-0 flex items-center justify-center">
                           <img src={item.image} alt={item.name} className="w-full h-full object-contain" />
-                        ) : (
-                          <div className="w-full h-full bg-slate-200 rounded" />
-                        )}
-                      </div>
+                        </div>
+                      )}
                       <div>
                         <h3 className="font-bold text-[#0f2b4c] text-lg mb-1">{item.name}</h3>
                         {item.color && <p className="text-sm text-slate-500">Color: {item.color}</p>}
@@ -130,15 +130,15 @@ export default function CartPage() {
                   <span className="font-semibold text-emerald-600">Free</span>
                 </div>
                 <div className="flex justify-between text-slate-600">
-                  <span>Taxes</span>
-                  <span className="font-semibold text-slate-800">Calculated at checkout</span>
+                  <span>GST (18%)</span>
+                  <span className="font-semibold text-slate-800">₹{gst.toFixed(2)}</span>
                 </div>
               </div>
 
               <div className="border-t border-slate-200 pt-6 mb-8">
                 <div className="flex justify-between items-center">
                   <span className="text-base font-bold text-slate-800">Estimated Total</span>
-                  <span className="text-2xl font-bold text-red-600">₹{subtotal.toFixed(2)}</span>
+                  <span className="text-2xl font-bold text-red-600">₹{estimatedTotal.toFixed(2)}</span>
                 </div>
               </div>
 

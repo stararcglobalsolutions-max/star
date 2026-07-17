@@ -219,7 +219,6 @@ export function HubJewellerSpecs({ slug }: { slug: string }) {
   const BASE = '/images/products/hub-8in';
 
   const PAGES = [
-    { num: 1, src: `${BASE}/hires_page_1.png` },
     { num: 2, src: `${BASE}/hires_page_2.png` },
     { num: 3, src: `${BASE}/hires_page_3.png` },
     { num: 4, src: `${BASE}/hires_page_4.png` },
@@ -251,7 +250,6 @@ export function Hub28inSpecs({ slug }: { slug: string }) {
   const BASE = '/images/products/hub2-8in';
 
   const PAGES = [
-    { num: 1, src: `${BASE}/hires_page_1.png` },
     { num: 2, src: `${BASE}/hires_page_2.png` },
   ];
 
@@ -281,7 +279,6 @@ export function Hub24G8inSpecs({ slug }: { slug: string }) {
   const BASE = '/images/products/hub2-4g-8in';
 
   const PAGES = [
-    { num: 1, src: `${BASE}/hires_page_1.png` },
     { num: 2, src: `${BASE}/hires_page_2.png` },
     { num: 3, src: `${BASE}/hires_page_3.png` },
     { num: 4, src: `${BASE}/hires_page_4.png` },
@@ -313,7 +310,6 @@ export function Hub2Plus8inSpecs({ slug }: { slug: string }) {
   const BASE = '/images/products/hub2-plus-8in';
 
   const PAGES = [
-    { num: 1, src: `${BASE}/hires_page_1.png` },
     { num: 2, src: `${BASE}/hires_page_2.png` },
     { num: 3, src: `${BASE}/hires_page_3.png` },
     { num: 4, src: `${BASE}/hires_page_4.png` },
@@ -346,7 +342,6 @@ export function Rex8inSpecs({ slug }: { slug: string }) {
   const BASE = '/images/products/rex-8in';
 
   const PAGES = [
-    { num: 1, src: `${BASE}/hires_page_1.png` },
     { num: 2, src: `${BASE}/hires_page_2.png` },
     { num: 3, src: `${BASE}/hires_page_3.png` },
     { num: 4, src: `${BASE}/hires_page_4.png` },
@@ -377,7 +372,6 @@ export function Rex28inSpecs({ slug }: { slug: string }) {
   const BASE = '/images/products/rex2-8in';
 
   const PAGES = [
-    { num: 1, src: `${BASE}/hires_page_1.png` },
     { num: 2, src: `${BASE}/hires_page_2.png` },
     { num: 3, src: `${BASE}/hires_page_3.png` },
     { num: 4, src: `${BASE}/hires_page_4.png` },
@@ -409,7 +403,6 @@ export function DoorProtect8inSpecs({ slug }: { slug: string }) {
   const BASE = '/images/products/door-protect-8in';
 
   const PAGES = [
-    { num: 1, src: `${BASE}/hires_page_1.png` },
     { num: 2, src: `${BASE}/hires_page_2.png` },
   ];
 
@@ -436,7 +429,6 @@ export function DoorProtectPlus8inSpecs({ slug }: { slug: string }) {
   const BASE = '/images/products/door-protect-plus-8in';
 
   const PAGES = [
-    { num: 1, src: `${BASE}/hires_page_1.png` },
     { num: 2, src: `${BASE}/hires_page_2.png` },
     { num: 3, src: `${BASE}/hires_page_3.png` },
   ];

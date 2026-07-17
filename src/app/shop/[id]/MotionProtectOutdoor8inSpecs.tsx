@@ -6,7 +6,6 @@ export function MotionProtectOutdoor8inSpecs({ slug }: { slug: string }) {
   const BASE = '/images/products/motion-protect-outdoor-8in';
 
   const PAGES = [
-    { num: 1, src: `${BASE}/hires_page_1.png` },
     { num: 2, src: `${BASE}/hires_page_2.png` },
   ];
 
