@@ -5,7 +5,7 @@ export function CombiProtect8inSpecs({ slug }: { slug: string }) {
 
   const BASE = '/images/products/combi-protect-8in';
 
-  const PAGES = [
+  const PAGES: { num: number; src: string }[] = [
     { num: 2, src: `${BASE}/hires_page_2.png` },
   ];
 

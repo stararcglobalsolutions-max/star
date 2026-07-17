@@ -5,7 +5,7 @@ export function GlassProtect8inSpecs({ slug }: { slug: string }) {
 
   const BASE = '/images/products/glass-protect-8in';
 
-  const PAGES = [
+  const PAGES: { num: number; src: string }[] = [
     { num: 2, src: `${BASE}/hires_page_2.png` },
     { num: 3, src: `${BASE}/hires_page_3.png` },
   ];

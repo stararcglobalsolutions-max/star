@@ -5,7 +5,7 @@ export function DoubleButton8inSpecs({ slug }: { slug: string }) {
 
   const BASE = '/images/products/double-button-8in';
 
-  const PAGES = [
+  const PAGES: { num: number; src: string }[] = [
   ];
 
   return (

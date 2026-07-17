@@ -5,7 +5,7 @@ export function HoodSpecs({ slug }: { slug: string }) {
 
   const BASE = '/images/products/hood';
 
-  const PAGES = [
+  const PAGES: { num: number; src: string }[] = [
     { num: 2, src: `${BASE}/hires_page_2.png` },
   ];
 

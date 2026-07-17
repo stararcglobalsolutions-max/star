@@ -6,7 +6,7 @@ export function MotionCamPhod8inSpecs({ slug }: { slug: string }) {
 
   const BASE = '/images/products/motion-cam-phod-8in';
 
-  const PAGES = [
+  const PAGES: { num: number; src: string }[] = [
     { num: 2, src: `${BASE}/hires_page_2.png` },
     { num: 3, src: `${BASE}/hires_page_3.png` },
     { num: 4, src: `${BASE}/hires_page_4.png` },
