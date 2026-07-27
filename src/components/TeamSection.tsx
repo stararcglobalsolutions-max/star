@@ -31,14 +31,6 @@ const teamMembers = [
     title: "Chief Operating Officer",
     credentials: "(BIB - Langara - CANADA)",
     description: "With over 4 years of experience in security systems and alarm technologies, Anubhav leads Stararc's operational execution and client delivery. He specialises in intrusion detection systems, CCTV surveillance networks, access control solutions, fire alarm systems, and 24/7 remote monitoring infrastructure. His transparent communication and solution-oriented approach foster trust and long-term relationships. Anubhav ensures every security installation meets the highest industry standards while delivering unmatched service excellence across Canada and India."
-  },
-  {
-    name: "PRADEEP MAITHANI",
-    image: "https://res.cloudinary.com/dsizhtxet/image/upload/v1782975997/stararc_products/iwhvtmzishvfdkr7mk8m.png",
-    title: "Chief Financial Officer & CIO",
-    credentials: "(MBA, BBA, CFP, CFA I - USA)",
-    subtitle: "Former Portfolio Management Head - ICICI Prudential | Axis Bank | ICICI Bank",
-    description: "With over 15 years of leadership in corporate finance and portfolio management at ICICI Bank, Axis Bank, and ICICI Prudential, Pradeep brings unmatched financial acumen to Stararc's security division. He connects banking-grade risk management with top-tier surveillance infrastructure, helping Stararc stand out at premier security systems and security technology expos and surveillance industry conferences. His expertise in capital allocation, investor relations, and strategic financial planning fuels the company's growth in advanced security solutions across India."
   }
 ];
 
