@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 export async function GET() {
   const productsDir = path.join(process.cwd(), 'public', 'images', 'products');
   const files = fs.readdirSync(productsDir);
-  const stats = {};
+  const stats: Record<string, number> = {};
 
   for (const slug of files) {
     const page1Path = path.join(productsDir, slug, 'hires_page_1.png');

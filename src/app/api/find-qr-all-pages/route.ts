@@ -12,7 +12,7 @@ export async function GET() {
   }
 
   const products = fs.readdirSync(productsDir);
-  const results = {};
+  const results: Record<string, any> = {};
 
   for (const product of products) {
     const productDir = path.join(productsDir, product);
@@ -20,8 +20,10 @@ export async function GET() {
     
     // Sort files by page number
     files.sort((a, b) => {
-       const numA = parseInt(a.match(/hires_page_(\d+)/)[1]);
-       const numB = parseInt(b.match(/hires_page_(\d+)/)[1]);
+       const matchA = a.match(/hires_page_(\d+)/);
+       const matchB = b.match(/hires_page_(\d+)/);
+       const numA = matchA ? parseInt(matchA[1]) : 0;
+       const numB = matchB ? parseInt(matchB[1]) : 0;
        return numA - numB;
     });
 
@@ -30,7 +32,8 @@ export async function GET() {
     for (const file of files) {
       if (foundQr) break;
 
-      const pageNum = parseInt(file.match(/hires_page_(\d+)/)[1]);
+      const matchFile = file.match(/hires_page_(\d+)/);
+      const pageNum = matchFile ? parseInt(matchFile[1]) : 1;
       const pagePath = path.join(productDir, file);
 
       try {
