@@ -97,7 +97,7 @@ export async function GET() {
       })) });
 
     } catch (e) {
-      results.push({ product, error: e.message });
+      results.push({ product, error: e instanceof Error ? e.message : String(e) });
     }
   }
 

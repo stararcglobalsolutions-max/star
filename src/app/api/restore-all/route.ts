@@ -12,6 +12,7 @@ export async function GET() {
     child.unref();
     return NextResponse.json({ success: true, message: "Started in background detached" });
   } catch (e) {
-    return NextResponse.json({ success: false, error: e.message, stdout: e.stdout?.toString() });
+    const err = e as any;
+    return NextResponse.json({ success: false, error: err.message, stdout: err.stdout?.toString() });
   }
 }

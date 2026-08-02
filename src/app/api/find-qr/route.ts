@@ -12,7 +12,7 @@ export async function GET() {
   }
 
   const products = fs.readdirSync(productsDir);
-  const results = {};
+  const results: Record<string, any> = {};
 
   for (const product of products) {
     const page1Path = path.join(productsDir, product, 'hires_page_1.png');
@@ -116,7 +116,7 @@ export async function GET() {
       }
 
     } catch (e) {
-      results[product] = { top: '27.5%', height: '12.5%', error: e.message };
+      results[product] = { top: '27.5%', height: '12.5%', error: e instanceof Error ? e.message : String(e) };
     }
   }
 

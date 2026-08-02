@@ -14,7 +14,7 @@ export async function GET() {
   }
 
   const coords = JSON.parse(fs.readFileSync(coordsPath, 'utf-8'));
-  const results = {};
+  const results: Record<string, string> = {};
 
   for (const slug of Object.keys(coords)) {
     const page1Path = path.join(productsDir, slug, 'hires_page_1.png');
@@ -83,7 +83,7 @@ export async function GET() {
 
       results[slug] = 'success';
     } catch (e) {
-      results[slug] = 'error: ' + e.message;
+      results[slug] = 'error: ' + (e instanceof Error ? e.message : String(e));
     }
   }
 

@@ -14,6 +14,7 @@ export async function GET(request: Request) {
     const output = execSync(`python ${script}`, { cwd: scratchDir, encoding: 'utf-8' });
     return NextResponse.json({ success: true, output });
   } catch (e) {
-    return NextResponse.json({ success: false, error: e.message, stdout: e.stdout?.toString() });
+    const err = e as any;
+    return NextResponse.json({ success: false, error: err.message, stdout: err.stdout?.toString() });
   }
 }

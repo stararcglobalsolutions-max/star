@@ -13,6 +13,7 @@ export async function GET() {
 
     return NextResponse.json({ success: true, status });
   } catch (e) {
-    return NextResponse.json({ success: false, error: e.message, stdout: e.stdout?.toString() });
+    const err = e as any;
+    return NextResponse.json({ success: false, error: err.message, stdout: err.stdout?.toString() });
   }
 }
