@@ -30,6 +30,13 @@ import { ManualCallPoint8inSpecs } from './ManualCallPoint8inSpecs';
 import { Button8inSpecs } from './Button8inSpecs';
 import { DoubleButton8inSpecs } from './DoubleButton8inSpecs';
 import { HolderSpecs } from './HolderSpecs';
+import { SpaceControl8inSpecs } from './SpaceControl8inSpecs';
+import { Keypad8inSpecs } from './Keypad8inSpecs';
+import { KeypadPlus8inSpecs } from './KeypadPlus8inSpecs';
+import { KeypadTouchScreen8inSpecs } from './KeypadTouchScreen8inSpecs';
+import { TagSpecs } from './TagSpecs';
+import { HomeSiren8inSpecs } from './HomeSiren8inSpecs';
+import { StreetSiren8inSpecs } from './StreetSiren8inSpecs';
 
 export default function SingleProductPage({ params }: { params: Promise<{ id: string }> }) {
   const unwrappedParams = use(params);
@@ -105,7 +112,7 @@ export default function SingleProductPage({ params }: { params: Promise<{ id: st
     <div className="min-h-screen bg-white flex flex-col">
       <ShopHeader />
 
-      <main className="max-w-7xl mx-auto px-6 pt-4 lg:pt-6 pb-12">
+      <main className="max-w-5xl mx-auto px-6 pt-4 lg:pt-6 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
           {/* Left: Image */}
           <div className="aspect-square relative flex items-center justify-center p-6 lg:p-10">
@@ -207,6 +214,13 @@ export default function SingleProductPage({ params }: { params: Promise<{ id: st
       <Button8inSpecs slug={unwrappedParams.id} />
       <DoubleButton8inSpecs slug={unwrappedParams.id} />
       <HolderSpecs slug={unwrappedParams.id} />
+      <SpaceControl8inSpecs slug={unwrappedParams.id} />
+      <Keypad8inSpecs slug={unwrappedParams.id} />
+      <KeypadPlus8inSpecs slug={unwrappedParams.id} />
+      <KeypadTouchScreen8inSpecs slug={unwrappedParams.id} />
+      <TagSpecs slug={unwrappedParams.id} />
+      <HomeSiren8inSpecs slug={unwrappedParams.id} />
+      <StreetSiren8inSpecs slug={unwrappedParams.id} />
 
       <Footer />
     </div>
@@ -219,22 +233,28 @@ export function HubJewellerSpecs({ slug }: { slug: string }) {
   const BASE = '/images/products/hub-8in';
 
   const PAGES: { num: number; src: string }[] = [
-    { num: 2, src: `${BASE}/hires_page_2.png` },
-    { num: 3, src: `${BASE}/hires_page_3.png` },
-    { num: 4, src: `${BASE}/hires_page_4.png` },
+    { num: 1, src: `${BASE}/hires_page_1.png?v=105` },
+    { num: 2, src: `${BASE}/hires_page_2.png?v=105` },
+    { num: 3, src: `${BASE}/hires_page_3.png?v=105` },
+    { num: 4, src: `${BASE}/hires_page_4.png?v=105` },
   ];
 
   return (
     <section className="w-full bg-white pb-16">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col gap-0">
+      <div className="max-w-5xl mx-auto px-6 flex flex-col gap-0">
         {PAGES.map((page) => (
-          <div key={page.num} className="w-full bg-white">
+          <div 
+            key={page.num} 
+            className={`w-full bg-white relative ${page.num === 4 ? 'overflow-hidden' : ''}`}
+            style={page.num === 4 ? { aspectRatio: '1 / 0.45' } : {}}
+          >
             <img
               src={page.src}
               alt={`Hub Product Documentation - Page ${page.num}`}
               className="w-full h-auto block select-none pointer-events-none"
               loading="lazy"
             />
+            
           </div>
         ))}
       </div>
@@ -250,20 +270,26 @@ export function Hub28inSpecs({ slug }: { slug: string }) {
   const BASE = '/images/products/hub2-8in';
 
   const PAGES: { num: number; src: string }[] = [
-    { num: 2, src: `${BASE}/hires_page_2.png` },
+    { num: 1, src: `${BASE}/hires_page_1.png?v=105` },
+    { num: 2, src: `${BASE}/hires_page_2.png?v=105` },
   ];
 
   return (
     <section className="w-full bg-white pb-16">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col gap-0">
+      <div className="max-w-5xl mx-auto px-6 flex flex-col gap-0">
         {PAGES.map((page) => (
-          <div key={page.num} className="w-full bg-white">
+          <div 
+            key={page.num} 
+            className={`w-full bg-white relative ${page.num === PAGES.length ? 'overflow-hidden' : ''}`}
+            style={page.num === PAGES.length ? { aspectRatio: '1 / 0.45' } : {}}
+          >
             <img
               src={page.src}
               alt={`Hub 2 Product Documentation - Page ${page.num}`}
               className="w-full h-auto block select-none pointer-events-none"
               loading="lazy"
             />
+            
           </div>
         ))}
       </div>
@@ -279,23 +305,28 @@ export function Hub24G8inSpecs({ slug }: { slug: string }) {
   const BASE = '/images/products/hub2-4g-8in';
 
   const PAGES: { num: number; src: string }[] = [
-    { num: 2, src: `${BASE}/hires_page_2.png` },
-    { num: 3, src: `${BASE}/hires_page_3.png` },
-    { num: 4, src: `${BASE}/hires_page_4.png` },
-    { num: 5, src: `${BASE}/hires_page_5.png` },
+    { num: 1, src: `${BASE}/hires_page_1.png?v=108` },
+    { num: 2, src: `${BASE}/hires_page_2.png?v=108` },
+    { num: 3, src: `${BASE}/hires_page_3.png?v=108` },
+    { num: 4, src: `${BASE}/hires_page_4.png?v=108` },
+    { num: 5, src: `${BASE}/hires_page_5.png?v=108` },
   ];
 
   return (
     <section className="w-full bg-white pb-16">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col gap-0">
+      <div className="max-w-5xl mx-auto px-6 flex flex-col gap-0">
         {PAGES.map((page) => (
-          <div key={page.num} className="w-full bg-white">
+          <div 
+            key={page.num} 
+            className="w-full bg-white relative"
+          >
             <img
               src={page.src}
               alt={`Hub 2 4G Product Documentation - Page ${page.num}`}
               className="w-full h-auto block select-none pointer-events-none"
               loading="lazy"
             />
+            
           </div>
         ))}
       </div>
@@ -310,23 +341,29 @@ export function Hub2Plus8inSpecs({ slug }: { slug: string }) {
   const BASE = '/images/products/hub2-plus-8in';
 
   const PAGES: { num: number; src: string }[] = [
-    { num: 2, src: `${BASE}/hires_page_2.png` },
-    { num: 3, src: `${BASE}/hires_page_3.png` },
-    { num: 4, src: `${BASE}/hires_page_4.png` },
-    { num: 5, src: `${BASE}/hires_page_5.png` },
+    { num: 1, src: `${BASE}/hires_page_1.png?v=106` },
+    { num: 2, src: `${BASE}/hires_page_2.png?v=106` },
+    { num: 3, src: `${BASE}/hires_page_3.png?v=106` },
+    { num: 4, src: `${BASE}/hires_page_4.png?v=106` },
+    { num: 5, src: `${BASE}/hires_page_5.png?v=106` },
   ];
 
   return (
     <section className="w-full bg-white pb-16">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col gap-0">
+      <div className="max-w-5xl mx-auto px-6 flex flex-col gap-0">
         {PAGES.map((page) => (
-          <div key={page.num} className="w-full bg-white">
+          <div 
+            key={page.num} 
+            className={`w-full bg-white relative ${page.num === PAGES.length ? 'overflow-hidden' : ''}`}
+            style={page.num === PAGES.length ? { aspectRatio: '1 / 0.45' } : {}}
+          >
             <img
               src={page.src}
               alt={`Hub 2 Plus Product Documentation - Page ${page.num}`}
               className="w-full h-auto block select-none pointer-events-none"
               loading="lazy"
             />
+            
           </div>
         ))}
       </div>
@@ -342,22 +379,27 @@ export function Rex8inSpecs({ slug }: { slug: string }) {
   const BASE = '/images/products/rex-8in';
 
   const PAGES: { num: number; src: string }[] = [
-    { num: 2, src: `${BASE}/hires_page_2.png` },
-    { num: 3, src: `${BASE}/hires_page_3.png` },
-    { num: 4, src: `${BASE}/hires_page_4.png` },
+    { num: 1, src: `${BASE}/hires_page_1.png?v=106` },
+    { num: 2, src: `${BASE}/hires_page_2.png?v=106` },
+    { num: 3, src: `${BASE}/hires_page_3.png?v=106` },
+    { num: 4, src: `${BASE}/hires_page_4.png?v=106` },
   ];
 
   return (
     <section className="w-full bg-white pb-16">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col gap-0">
+      <div className="max-w-5xl mx-auto px-6 flex flex-col gap-0">
         {PAGES.map((page) => (
-          <div key={page.num} className="w-full bg-white">
+          <div 
+            key={page.num} 
+            className="w-full bg-white relative"
+          >
             <img
               src={page.src}
               alt={`ReX Product Documentation - Page ${page.num}`}
               className="w-full h-auto block select-none pointer-events-none"
               loading="lazy"
             />
+            
           </div>
         ))}
       </div>
@@ -372,23 +414,28 @@ export function Rex28inSpecs({ slug }: { slug: string }) {
   const BASE = '/images/products/rex2-8in';
 
   const PAGES: { num: number; src: string }[] = [
-    { num: 2, src: `${BASE}/hires_page_2.png` },
-    { num: 3, src: `${BASE}/hires_page_3.png` },
-    { num: 4, src: `${BASE}/hires_page_4.png` },
-    { num: 5, src: `${BASE}/hires_page_5.png` },
+    { num: 1, src: `${BASE}/hires_page_1.png?v=106` },
+    { num: 2, src: `${BASE}/hires_page_2.png?v=106` },
+    { num: 3, src: `${BASE}/hires_page_3.png?v=106` },
+    { num: 4, src: `${BASE}/hires_page_4.png?v=106` },
+    { num: 5, src: `${BASE}/hires_page_5.png?v=106` },
   ];
 
   return (
     <section className="w-full bg-white pb-16">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col gap-0">
+      <div className="max-w-5xl mx-auto px-6 flex flex-col gap-0">
         {PAGES.map((page) => (
-          <div key={page.num} className="w-full bg-white">
+          <div 
+            key={page.num} 
+            className="w-full bg-white relative"
+          >
             <img
               src={page.src}
               alt={`ReX 2 Product Documentation - Page ${page.num}`}
               className="w-full h-auto block select-none pointer-events-none"
               loading="lazy"
             />
+            
           </div>
         ))}
       </div>
@@ -403,20 +450,26 @@ export function DoorProtect8inSpecs({ slug }: { slug: string }) {
   const BASE = '/images/products/door-protect-8in';
 
   const PAGES: { num: number; src: string }[] = [
-    { num: 2, src: `${BASE}/hires_page_2.png` },
+    { num: 1, src: `${BASE}/hires_page_1.png?v=107` },
+    { num: 2, src: `${BASE}/hires_page_2.png?v=107` },
   ];
 
   return (
     <section className="w-full bg-white pb-16">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col gap-0">
+      <div className="max-w-5xl mx-auto px-6 flex flex-col gap-0">
         {PAGES.map((page) => (
-          <div key={page.num} className="w-full bg-white">
+          <div 
+            key={page.num} 
+            className={`w-full bg-white relative ${page.num === PAGES.length ? 'overflow-hidden' : ''}`}
+            style={page.num === PAGES.length ? { aspectRatio: '1 / 0.45' } : {}}
+          >
             <img
               src={page.src}
               alt={`Door Protect Product Documentation - Page ${page.num}`}
               className="w-full h-auto block select-none pointer-events-none"
               loading="lazy"
             />
+            
           </div>
         ))}
       </div>
@@ -429,21 +482,27 @@ export function DoorProtectPlus8inSpecs({ slug }: { slug: string }) {
   const BASE = '/images/products/door-protect-plus-8in';
 
   const PAGES: { num: number; src: string }[] = [
-    { num: 2, src: `${BASE}/hires_page_2.png` },
-    { num: 3, src: `${BASE}/hires_page_3.png` },
+    { num: 1, src: `${BASE}/hires_page_1.png?v=107` },
+    { num: 2, src: `${BASE}/hires_page_2.png?v=107` },
+    { num: 3, src: `${BASE}/hires_page_3.png?v=107` },
   ];
 
   return (
     <section className="w-full bg-white pb-16">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col gap-0">
+      <div className="max-w-5xl mx-auto px-6 flex flex-col gap-0">
         {PAGES.map((page) => (
-          <div key={page.num} className="w-full bg-white">
+          <div 
+            key={page.num} 
+            className={`w-full bg-white relative ${page.num === PAGES.length ? 'overflow-hidden' : ''}`}
+            style={page.num === PAGES.length ? { aspectRatio: '1 / 0.45' } : {}}
+          >
             <img
               src={page.src}
               alt={`Door Protect Plus Product Documentation - Page ${page.num}`}
               className="w-full h-auto block select-none pointer-events-none"
               loading="lazy"
             />
+            
           </div>
         ))}
       </div>

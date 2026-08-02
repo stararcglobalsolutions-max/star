@@ -98,9 +98,8 @@ export default function HeroScrollAnimation() {
           ctx.fillStyle = "black";
           ctx.fillRect(0, 0, rect.width, rect.height);
           
-          // Always use contain (Math.min) to ensure the device is fully visible and never cropped
-          // The black background of the frames will blend seamlessly into the container bg-black
-          const ratio = Math.min(rect.width / img.width, rect.height / img.height);
+          // Use cover (Math.max) to remove black spaces on the sides
+          const ratio = Math.max(rect.width / img.width, rect.height / img.height);
             
           const drawWidth = img.width * ratio;
           const drawHeight = img.height * ratio;
@@ -241,13 +240,13 @@ export default function HeroScrollAnimation() {
           src={currentFrame(1)}
           alt="Hero Background"
           fetchPriority="high"
-          className="w-full h-full object-contain"
+          className="w-full h-full object-cover"
         />
       </div>
 
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full object-contain md:object-cover z-0 will-change-transform"
+        className="absolute inset-0 w-full h-full object-cover z-0 will-change-transform"
       />
 
       {/* Targeted black shadow overlays to perfectly hide the watermark on the right */}

@@ -38,18 +38,7 @@ function HubJewellerSpecs({ slug, product }: { slug: string, product: any }) {
               Security system control panel. Has two independent communication channels: Ethernet and a 2G SIM card.
             </p>
             
-            <div className="flex items-start gap-5">
-              <div className="w-20 h-20 bg-white rounded-lg p-1.5 border-2 border-slate-900 shrink-0 shadow-sm flex items-center justify-center">
-                <QrCode className="w-14 h-14 text-slate-900" />
-              </div>
-              <div className="flex flex-col justify-center pt-1">
-                <p className="text-[13px] text-slate-600 mb-1.5 leading-snug max-w-[200px]">Find the detailed information on the device at the link:</p>
-                <a href="#" className="text-emerald-700 text-[13px] font-bold hover:underline flex items-center gap-1.5 underline decoration-emerald-700/30 underline-offset-4">
-                  <LinkIcon size={14} />
-                  ajax.systems/support/devices/hub/
-                </a>
-              </div>
-            </div>
+
           </div>
           
           <div className="relative flex justify-center items-center">

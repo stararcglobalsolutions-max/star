@@ -42,3 +42,24 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 *.zip
+
+# Temporary/scratch files
+*.pdf
+*.png
+*.txt
+!README.md
+scratch/
+*.py
+/dist/
+/lighthouse.json
+/urls.json
+/parse-urls.js
+/read_pdf.js
+/convert_images.js
+/create-cloudinary-preset.js
+/fix-base.js
+/scratch_replace3.js
+/update-features.js
+/inject.py
+/temp_*.tsx
+/# Create Next App.txt

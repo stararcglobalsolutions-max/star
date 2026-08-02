@@ -195,7 +195,7 @@ export function ShopHeader() {
   };
 
   return (
-    <header ref={headerRef} className="w-full bg-white border-b border-slate-100 sticky top-0 z-50">
+    <header ref={headerRef} className="w-full bg-white border-b border-slate-100 relative z-50">
       <div className="w-full px-4 md:px-8 lg:px-12 xl:px-20 h-20 flex items-center justify-between relative z-50 bg-white">
 
         {/* Mobile Menu & Logo */}

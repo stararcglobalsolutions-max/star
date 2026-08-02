@@ -3,24 +3,24 @@ import os
 
 # Define the PDF configurations
 pdfs_config = {
-    "combi_protect_8in.pdf": {"slug": "combi-protect-8in", "is_high_res": True, "top_crop": 120.0},
-    "curtain_outdoor_8in.pdf": {"slug": "curtain-outdoor-8in", "is_high_res": True, "top_crop": 120.0},
-    "door_protect_8in.pdf": {"slug": "door-protect-8in", "is_high_res": True, "top_crop": 120.0},
-    "door_protect_plus_8in.pdf": {"slug": "door-protect-plus-8in", "is_high_res": True, "top_crop": 120.0},
-    "dual_curtain_outdoor_8in.pdf": {"slug": "dual-curtain-outdoor-8in", "is_high_res": True, "top_crop": 120.0},
-    "glass_protect_8in.pdf": {"slug": "glass-protect-8in", "is_high_res": True, "top_crop": 120.0},
-    "hub2_8in.pdf": {"slug": "hub2-8in", "is_high_res": True, "top_crop": 120.0},
-    "hub2_4g_8in.pdf": {"slug": "hub2-4g-8in", "is_high_res": False, "top_crop": 25.0},
-    "hub2_plus_8in.pdf": {"slug": "hub2-plus-8in", "is_high_res": True, "top_crop": 120.0},
-    "hub_8in.pdf": {"slug": "hub-8in", "is_high_res": True, "top_crop": 120.0},
-    "motion_cam_8in.pdf": {"slug": "motion-cam-8in", "is_high_res": True, "top_crop": 120.0},
-    "motion_cam_phod_8in.pdf": {"slug": "motion-cam-phod-8in", "is_high_res": True, "top_crop": 120.0},
-    "motion_protect_8in.pdf": {"slug": "motion-protect-8in", "is_high_res": True, "top_crop": 120.0},
-    "motion_protect_curtain_8in.pdf": {"slug": "motion-protect-curtain-8in", "is_high_res": True, "top_crop": 120.0},
-    "motion_protect_outdoor_8in.pdf": {"slug": "motion-protect-outdoor-8in", "is_high_res": True, "top_crop": 120.0},
+    "combi_protect_8in.pdf": {"slug": "combi-protect-8in", "is_high_res": True, "top_crop": 0.0},
+    "curtain_outdoor_8in.pdf": {"slug": "curtain-outdoor-8in", "is_high_res": True, "top_crop": 0.0},
+    "door_protect_8in.pdf": {"slug": "door-protect-8in", "is_high_res": True, "top_crop": 0.0},
+    "door_protect_plus_8in.pdf": {"slug": "door-protect-plus-8in", "is_high_res": True, "top_crop": 0.0},
+    "dual_curtain_outdoor_8in.pdf": {"slug": "dual-curtain-outdoor-8in", "is_high_res": True, "top_crop": 0.0},
+    "glass_protect_8in.pdf": {"slug": "glass-protect-8in", "is_high_res": True, "top_crop": 0.0},
+    "hub2_8in.pdf": {"slug": "hub2-8in", "is_high_res": True, "top_crop": 0.0},
+    "hub2_4g_8in.pdf": {"slug": "hub2-4g-8in", "is_high_res": False, "top_crop": 0.0},
+    "hub2_plus_8in.pdf": {"slug": "hub2-plus-8in", "is_high_res": True, "top_crop": 0.0},
+    "hub_8in.pdf": {"slug": "hub-8in", "is_high_res": True, "top_crop": 0.0},
+    "motion_cam_8in.pdf": {"slug": "motion-cam-8in", "is_high_res": True, "top_crop": 0.0},
+    "motion_cam_phod_8in.pdf": {"slug": "motion-cam-phod-8in", "is_high_res": True, "top_crop": 0.0},
+    "motion_protect_8in.pdf": {"slug": "motion-protect-8in", "is_high_res": True, "top_crop": 0.0},
+    "motion_protect_curtain_8in.pdf": {"slug": "motion-protect-curtain-8in", "is_high_res": True, "top_crop": 0.0},
+    "motion_protect_outdoor_8in.pdf": {"slug": "motion-protect-outdoor-8in", "is_high_res": True, "top_crop": 0.0},
     "motion_protect_plus_8in.pdf": {"slug": "motion-protect-plus-8in", "is_high_res": False, "top_crop": 0.0},
-    "rex2_8in.pdf": {"slug": "rex2-8in", "is_high_res": True, "top_crop": 120.0},
-    "rex_8in.pdf": {"slug": "rex-8in", "is_high_res": True, "top_crop": 120.0},
+    "rex2_8in.pdf": {"slug": "rex2-8in", "is_high_res": True, "top_crop": 0.0},
+    "rex_8in.pdf": {"slug": "rex-8in", "is_high_res": True, "top_crop": 0.0},
 }
 
 base_output_dir = r"c:\react project\sv2\public\images\products"
@@ -56,8 +56,8 @@ for filename, cfg in pdfs_config.items():
         # 1. Handle header replacement on Page 1
         if i == 0:
             if is_high_res:
-                # Cover the top 320 points with white to fully cover the AJAX logo
-                header_rect = fitz.Rect(0, 0, orig_rect.x1, 320.0)
+                # Cover the top 320 points with white on the left side to fully cover the AJAX logo
+                header_rect = fitz.Rect(0, 0, orig_rect.x1 * 0.65, 320.0)
                 page.draw_rect(header_rect, color=(1, 1, 1), fill=(1, 1, 1), overlay=True)
                 
                 # Insert the logo with better size and alignment
@@ -66,13 +66,11 @@ for filename, cfg in pdfs_config.items():
                 page.insert_image(logo_rect, filename=logo_path)
             else:
                 # Low-res PDF
-                # Cover the top 70 points
-                header_rect = fitz.Rect(0, 0, orig_rect.x1, 70.0)
+                # Cover the top 70 points on the left side
+                header_rect = fitz.Rect(0, 0, orig_rect.x1 * 0.65, 70.0)
                 page.draw_rect(header_rect, color=(1, 1, 1), fill=(1, 1, 1), overlay=True)
                 
                 # Insert the logo (height = 30 points, width = 30 * 3.177 = 95.3)
-                # For motion_protect_plus_8in, top_crop is 0.0, logo starts at y=20 (gap of 20pt)
-                # For hub2_4g_8in, top_crop is 25.0, logo starts at y=28 (gap of 3pt)
                 y_start = 28.0 if top_crop > 0 else 20.0
                 logo_rect = fitz.Rect(36.0, y_start, 36.0 + 95.3, y_start + 30.0)
                 page.insert_image(logo_rect, filename=logo_path)

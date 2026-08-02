@@ -1,0 +1,207 @@
+{
+  "button-8in": {
+    "pageNum": 1,
+    "top": "10.33%",
+    "height": "8.01%"
+  },
+  "combi-protect-8in": {
+    "pageNum": 1,
+    "top": "65.90%",
+    "height": "5.76%"
+  },
+  "curtain-outdoor-8in": {
+    "pageNum": 1,
+    "top": "27.5%",
+    "height": "12.5%",
+    "note": "fallback"
+  },
+  "door-protect-8in": {
+    "pageNum": 1,
+    "top": "27.5%",
+    "height": "12.5%",
+    "note": "fallback"
+  },
+  "door-protect-plus-8in": {
+    "pageNum": 1,
+    "top": "46.15%",
+    "height": "5.13%"
+  },
+  "double-button-8in": {
+    "pageNum": 1,
+    "top": "57.03%",
+    "height": "5.37%"
+  },
+  "dual-curtain-outdoor-8in": {
+    "pageNum": 1,
+    "top": "61.08%",
+    "height": "5.00%"
+  },
+  "fire-protect-2-heat-8in": {
+    "pageNum": 1,
+    "top": "32.18%",
+    "height": "5.04%"
+  },
+  "fire-protect-2-heat-smoke-8in": {
+    "pageNum": 1,
+    "top": "55.85%",
+    "height": "5.04%"
+  },
+  "fire-protect-2-heat-smoke-co-8in": {
+    "pageNum": 1,
+    "top": "27.5%",
+    "height": "12.5%",
+    "note": "fallback"
+  },
+  "fire-protect-8in": {
+    "pageNum": 1,
+    "top": "32.18%",
+    "height": "5.04%"
+  },
+  "glass-protect-8in": {
+    "pageNum": 1,
+    "top": "21.25%",
+    "height": "7.35%"
+  },
+  "holder": {
+    "pageNum": 1,
+    "top": "27.5%",
+    "height": "12.5%",
+    "note": "fallback"
+  },
+  "home-siren-8in": {
+    "pageNum": 1,
+    "top": "76.14%",
+    "height": "9.86%"
+  },
+  "hood": {
+    "pageNum": 1,
+    "top": "27.5%",
+    "height": "12.5%",
+    "note": "fallback"
+  },
+  "hub-8in": {
+    "pageNum": 1,
+    "top": "27.57%",
+    "height": "8.05%"
+  },
+  "hub2-4g-8in": {
+    "pageNum": 1,
+    "top": "11.02%",
+    "height": "5.07%"
+  },
+  "hub2-8in": {
+    "pageNum": 1,
+    "top": "27.5%",
+    "height": "12.5%",
+    "note": "fallback"
+  },
+  "hub2-plus-8in": {
+    "pageNum": 1,
+    "top": "28.33%",
+    "height": "7.53%"
+  },
+  "keypad-8in": {
+    "pageNum": 1,
+    "top": "22.73%",
+    "height": "7.70%"
+  },
+  "keypad-plus-8in": {
+    "pageNum": 1,
+    "top": "24.48%",
+    "height": "8.09%"
+  },
+  "keypad-touchscreen-8in": {
+    "pageNum": 1,
+    "top": "64.40%",
+    "height": "5.11%"
+  },
+  "leaks-protect-8in": {
+    "pageNum": 1,
+    "top": "28.26%",
+    "height": "5.04%"
+  },
+  "life-quality-8in": {
+    "pageNum": 1,
+    "top": "56.71%",
+    "height": "5.01%"
+  },
+  "manual-call-point-8in": {
+    "pageNum": 1,
+    "top": "27.5%",
+    "height": "12.5%",
+    "note": "fallback"
+  },
+  "motion-cam-8in": {
+    "pageNum": 1,
+    "top": "24.61%",
+    "height": "7.53%"
+  },
+  "motion-cam-phod-8in": {
+    "pageNum": 1,
+    "top": "30.18%",
+    "height": "7.53%"
+  },
+  "motion-protect-8in": {
+    "pageNum": 1,
+    "top": "25.91%",
+    "height": "7.35%"
+  },
+  "motion-protect-curtain-8in": {
+    "pageNum": 1,
+    "top": "27.95%",
+    "height": "7.81%"
+  },
+  "motion-protect-outdoor-8in": {
+    "pageNum": 1,
+    "top": "49.87%",
+    "height": "5.23%"
+  },
+  "motion-protect-plus-8in": {
+    "pageNum": 1,
+    "top": "11.02%",
+    "height": "5.07%"
+  },
+  "motioncam-outdoor-8in": {
+    "pageNum": 1,
+    "top": "27.5%",
+    "height": "12.5%",
+    "note": "fallback"
+  },
+  "motioncam-outdoor-highmount-phod-8in": {
+    "pageNum": 1,
+    "top": "27.5%",
+    "height": "12.5%",
+    "note": "fallback"
+  },
+  "motioncam-outdoor-phod-8in": {
+    "pageNum": 1,
+    "top": "35.28%",
+    "height": "5.04%"
+  },
+  "rex-8in": {
+    "pageNum": 1,
+    "top": "74.14%",
+    "height": "8.05%"
+  },
+  "rex2-8in": {
+    "pageNum": 1,
+    "top": "49.46%",
+    "height": "5.11%"
+  },
+  "space-control-8in": {
+    "pageNum": 1,
+    "top": "49.76%",
+    "height": "5.57%"
+  },
+  "street-siren-8in": {
+    "pageNum": 1,
+    "top": "47.69%",
+    "height": "5.11%"
+  },
+  "tag": {
+    "pageNum": 1,
+    "top": "27.5%",
+    "height": "12.5%",
+    "note": "fallback"
+  }
+}
