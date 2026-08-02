@@ -26,7 +26,7 @@ export async function GET() {
     // Let's do a precise replace for each component part
     parts[i] = part.replace(
       /(<div\s+key=\{page\.num\}\s+className="[^"]*?")(>[\s\S]*?<img\s+src=\{page\.src\}[^>]*?className="w-full h-auto block select-none pointer-events-none"\s+loading="lazy"\s*\/>)(\s*\{?\/\*.*?\*\/\}?\s*(\{page\.num === 1 && \([\s\S]*?\}\))?)?\s*<\/div>/,
-      (match, p1, p2) => {
+      (match: string, p1: string, p2: string) => {
          // p2 contains the alt attribute. Let's extract it.
          const altMatch = p2.match(/alt=\{([^}]+)\}/) || p2.match(/alt="([^"]+)"/);
          let altStr = altMatch ? (altMatch[1].startsWith('`') || altMatch[1].startsWith('"') ? altMatch[1] : `\`${altMatch[1]}\``) : '`Product Page ${page.num}`';

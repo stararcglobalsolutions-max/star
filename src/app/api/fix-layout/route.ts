@@ -29,14 +29,14 @@ export async function GET() {
 
     content = content.replace(
       /(<div\s+key=\{page\.num\}\s+className="[^"]*?")(>[\s\S]*?<img\s+src=\{page\.src\}[^>]*?className="w-full h-auto block select-none pointer-events-none"\s+loading="lazy"\s*\/>)/g,
-      (match, p1, p2) => {
+      (match: string, p1: string, p2: string) => {
         // p1 is the opening div with key and className
         // p2 is the > and the img tag
         
         // We inject the relative positioning and aspect ratio logic into the opening div.
         // But since p1 ends with a quote, we need to modify the className.
         
-        const newP1 = p1.replace(/className="(.*?)"/, (m, classes) => {
+        const newP1 = p1.replace(/className="(.*?)"/, (m: string, classes: string) => {
            return `className={\`${classes} relative \${page.num === PAGES.length ? 'overflow-hidden' : ''}\`} style={page.num === PAGES.length ? { aspectRatio: '1 / 0.45' } : {}}`;
         });
 

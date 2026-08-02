@@ -13,7 +13,7 @@ export async function GET() {
   
   const regex = /alt=\{`([^$]+)\$\{page\.num\}\r?\n\s+className="w-full h-auto block/g;
   
-  content = content.replace(regex, (match, p1) => {
+  content = content.replace(regex, (match: string, p1: string) => {
      return `alt={\`${p1}\${page.num}\`}\n              className="w-full h-auto block`;
   });
 
